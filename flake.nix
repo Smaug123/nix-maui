@@ -399,11 +399,7 @@
             postFixup =
               old.postFixup
               + ''
-                rm "$out/bin/dotnet"
-                makeBinaryWrapper "$out/dotnet" "$out/bin/dotnet" \
-                  --set DOTNETSDK_WORKLOAD_PACK_ROOTS "${macosWorkload}" \
-                  --set DOTNETSDK_WORKLOAD_MANIFEST_ROOTS "${macosWorkload}/sdk-manifests" \
-                  --set DYLD_FALLBACK_LIBRARY_PATH "${rpath}"
+              $out/bin/dotnet run maui-dotnet-flake.fsproj fooo
               '';
             sandboxProfile = ''(allow file-read* (literal "/usr/share/icu/icudt70l.dat"))'';
           });
