@@ -379,6 +379,24 @@
 
           macosWorkload = Microsoft.NET.Sdk.macOS;
 
+          fsharpThing = buildDotnetPackage rec {
+            pname = "maui-dotnet-flake";
+            baseName = pname; # workaround for "called without baseName"
+            version = "0.0.1";
+            src = ./MauiDotnetFlake;
+            projectFile = ["maui-dotnet-flake.fsproj"];
+            propagatedBuildInputs = [
+            ];
+            nativeBuildInputs = [
+              pkg-config
+            ];
+            meta = with lib; {
+              homepage = "some_homepage";
+              description = "some_description";
+              license = licenses.mit;
+            };
+          };
+
           dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old: let
             major = lib.versions.major old.version;
             minor = lib.versions.minor old.version;
