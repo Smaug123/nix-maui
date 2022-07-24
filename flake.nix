@@ -394,12 +394,14 @@
                 libuuid
                 openssl
               ];
+          script = ./MauiDotnetFlake;
           in {
             nativeBuildInputs = old.nativeBuildInputs or [] ++ [channels.nixpkgs.makeBinaryWrapper];
             postFixup =
               old.postFixup
               + ''
-              $out/bin/dotnet run maui-dotnet-flake.fsproj fooo
+              export HOME=$(mktemp -d) # Dotnet expects a writable home directory for its configuration files
+              $out/bin/dotnet run --project ${script}/maui-dotnet-flake.fsproj fooo
               '';
             sandboxProfile = ''(allow file-read* (literal "/usr/share/icu/icudt70l.dat"))'';
           });
