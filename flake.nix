@@ -379,24 +379,6 @@
 
           macosWorkload = Microsoft.NET.Sdk.macOS;
 
-          fsharpThing = buildDotnetPackage rec {
-            pname = "maui-dotnet-flake";
-            baseName = pname; # workaround for "called without baseName"
-            version = "0.0.1";
-            src = ./MauiDotnetFlake;
-            projectFile = ["maui-dotnet-flake.fsproj"];
-            propagatedBuildInputs = [
-            ];
-            nativeBuildInputs = [
-              pkg-config
-            ];
-            meta = with lib; {
-              homepage = "some_homepage";
-              description = "some_description";
-              license = licenses.mit;
-            };
-          };
-
           dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old: let
             major = lib.versions.major old.version;
             minor = lib.versions.minor old.version;
@@ -412,14 +394,20 @@
                 libuuid
                 openssl
               ];
+
           script = ./MauiDotnetFlake;
+          manifest = import ./manifest.nix;
+          targetManifest = fetchNuGet { inherit (manifest) pname version hash; };
+
           in {
             nativeBuildInputs = old.nativeBuildInputs or [] ++ [channels.nixpkgs.makeBinaryWrapper];
             postFixup =
               old.postFixup
               + ''
               export HOME=$(mktemp -d) # Dotnet expects a writable home directory for its configuration files
-              $out/bin/dotnet run --project ${script}/maui-dotnet-flake.fsproj fooo
+              PROJ=$(mktemp -d)
+              cp -r "${script}"/* "$PROJ"
+              $out/bin/dotnet run --project "$PROJ/maui-dotnet-flake.fsproj" ${targetManifest} ${manifest.workloadName}
               '';
             sandboxProfile = ''(allow file-read* (literal "/usr/share/icu/icudt70l.dat"))'';
           });
