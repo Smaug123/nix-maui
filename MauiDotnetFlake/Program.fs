@@ -181,6 +181,21 @@ module Program =
         | _ ->
             failwith $"Unexpected formatting: {output}"
 
+    let requiredWorkloads (w : WorkloadKey) (m : Manifest) : WorkloadKey Set =
+        let rec go (toAcc : WorkloadKey list) (results : WorkloadKey Set) =
+            match toAcc with
+            | [] -> results
+            | x :: toAcc ->
+                match Map.tryFind x m.Workloads with
+                | None ->
+                    go toAcc (Set.add x results)
+                | Some found ->
+                    if Object.ReferenceEquals (null, found.Extends) then
+                        go toAcc results
+                    else
+                        go (found.Extends @ toAcc) results
+        go [w] Set.empty
+
     [<EntryPoint>]
     let main argv =
         let pathToManifestNupkg, workloadName =
@@ -190,44 +205,17 @@ module Program =
 
         async {
             use client = new HttpClient ()
-            // The first thing we do is refresh the manifests.
-            (*
-            let installedWorkloadUpdates = printAvailableWorkloads ()
-
-            let! manifestUpdates =
-                installedWorkloadUpdates
-                |> Map.toSeq
-                |> Seq.map (fun (details, uri) ->
-                    async {
-                        let! ct = Async.CancellationToken
-                        try
-                            let! t = Async.AwaitTask (client.GetStreamAsync (uri.AbsoluteUri, ct))
-                            let! ret = fetchManifest' t
-                            let! flattened = flatten client None ret
-                            return details, flattened
-                        with
-                        | e ->
-                            return raise <| AggregateException (uri.ToString (), e)
-                    }
-                )
-                |> Async.Parallel
-            *)
 
             let! manifest, flattened =
                 async {
                     let! manifest = fetchManifest pathToManifestNupkg
+                    let requiredWorkloads = requiredWorkloads (WorkloadKey workloadName) manifest
                     let! flattened = flatten client (Some workloadName) manifest
                     return manifest, flattened
                 }
 
             State.toNix pathToManifestNupkg manifest flattened
             |> printfn "%s"
-
-            //let baseDir = dotnet.Directory.Parent
-
-            //State.write baseDir flattened
-            //manifestUpdates
-            //|> Seq.iter (fun (_, state) -> State.write baseDir state)
 
             return 0
         }
