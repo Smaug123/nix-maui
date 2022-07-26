@@ -74,6 +74,12 @@ type [<JsonConverter (typeof<PackManifestKindJsonConverter>) ; TypeConverter (ty
         | Framework -> 1
         | Sdk -> 0
         | Template -> 3
+    override this.ToString () =
+        match this with
+        | Library -> "library"
+        | Framework -> "framework"
+        | Sdk -> "sdk"
+        | Template -> "template"
 
 and PackManifestKindJsonConverter () =
     inherit JsonConverter<PackManifestKind> ()
@@ -121,45 +127,11 @@ type Registration =
     }
 
 /// A NuGet package such as "Microsoft.Maui.Controls.Ref.android".
-/// The installation procedure for this is to unpack it into /packs
-/// at Name/Version
-type Framework =
+type Pack =
     {
         Name : PackKey
         Version : Version
         /// The bytes of a zip file.
         Data : Stream
+        Type : PackManifestKind
     }
-
-/// A NuGet package such as "Microsoft.AspNetCore.Components.WebView.Maui".
-/// The installation procedure for this is to copy directly into /library-packs
-/// at <lowercase package name>.<version>.nupkg
-type Library =
-    {
-        Name : PackKey
-        Version : Version
-        /// The bytes of a zip file.
-        Data : Stream
-    }
-
-/// A NuGet package such as "Microsoft.Maui.Templates-6.0".
-/// This gets copied directly into template-packs as a nupkg, and not extracted
-type Template =
-    {
-        Name : PackKey
-        Version : Version
-        /// The bytes of a zip file.
-        Data : Stream
-    }
-
-/// A NuGet package such as "Microsoft.Maui.Sdk".
-/// The installation procedure for this is to unpack it into /packs
-/// at Name/Version
-type Sdk =
-    {
-        Name : PackKey
-        Version : Version
-        /// The bytes of a zip file.
-        Data : Stream
-    }
-

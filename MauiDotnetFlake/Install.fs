@@ -9,7 +9,8 @@ module Install =
 
     /// baseDir is the top-level folder, e.g. /nix/store/<blah>-dotnet-sdk-6.0.301
     /// This function consumes the stream in the input Framework.
-    let framework (baseDir : DirectoryInfo) (f : Framework) =
+    let private framework (baseDir : DirectoryInfo) (f : Pack) =
+        assert (f.Type = PackManifestKind.Framework)
         let dest =
             Path.Combine (baseDir.FullName, "packs", f.Name.ToString (), f.Version.ToString ())
             |> DirectoryInfo
@@ -53,7 +54,8 @@ module Install =
 
     /// baseDir is the top-level folder, e.g. /nix/store/<blah>-dotnet-sdk-6.0.301
     /// This function consumes the stream in the input Sdk.
-    let sdk (baseDir : DirectoryInfo) (s : Sdk) =
+    let private sdk (baseDir : DirectoryInfo) (s : Pack) =
+        assert (s.Type = PackManifestKind.Sdk)
         let dest =
             Path.Combine (baseDir.FullName, "packs", s.Name.ToString (), s.Version.ToString ())
             |> DirectoryInfo
@@ -97,7 +99,8 @@ module Install =
 
     /// baseDir is the top-level folder, e.g. /nix/store/<blah>-dotnet-sdk-6.0.301
     /// This function consumes the stream in the input Template.
-    let template (baseDir : DirectoryInfo) (t : Template) =
+    let private template (baseDir : DirectoryInfo) (t : Pack) =
+        assert (t.Type = PackManifestKind.Template)
         let dest =
             Path.Combine (baseDir.FullName, "template-packs", $"{t.Name.ToString().ToLowerInvariant()}.{t.Version.ToString ()}.nupkg")
             |> FileInfo
@@ -131,7 +134,8 @@ module Install =
 
     /// baseDir is the top-level folder, e.g. /nix/store/<blah>-dotnet-sdk-6.0.301
     /// This function consumes the stream in the input Library.
-    let library (baseDir : DirectoryInfo) (l : Library) =
+    let private library (baseDir : DirectoryInfo) (l : Pack) =
+        assert (l.Type = PackManifestKind.Library)
         let dest =
             Path.Combine (baseDir.FullName, "library-packs", $"{l.Name.ToString().ToLowerInvariant()}.{l.Version.ToString ()}.nupkg")
             |> FileInfo
@@ -163,3 +167,9 @@ module Install =
                 }
             File.WriteAllText (workloadFile.FullName, JsonConvert.SerializeObject registration)
 
+    let install (baseDir : DirectoryInfo) (pack : Pack) =
+        match pack.Type with
+        | PackManifestKind.Library -> library baseDir pack
+        | PackManifestKind.Template -> template baseDir pack
+        | PackManifestKind.Sdk -> sdk baseDir pack
+        | PackManifestKind.Framework -> framework baseDir pack

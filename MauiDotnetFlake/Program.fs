@@ -141,25 +141,15 @@ module Program =
                     package.Dispose ()
                     s.Seek (0, SeekOrigin.Begin) |> ignore
                     s
-                match manifest.Kind with
-                | PackManifestKind.Framework ->
-                    // e.g. "Microsoft.Maui.Controls.Ref.android"
-                    // TODO I think these can't have dependencies?
-                    return
-                        state
-                        |> State.addFramework
-                            {
-                                Name = packKey
-                                Data = package
-                                Version = manifest.Version
-                            }
-                | PackManifestKind.Library ->
-                    // Ignore nuget installs
-                    return state |> State.addLibrary { Name = packKey ; Data = package ; Version = manifest.Version }
-                | PackManifestKind.Template ->
-                    return state |> State.addTemplate { Name = packKey ; Data = package ; Version = manifest.Version }
-                | PackManifestKind.Sdk ->
-                    return state |> State.addSdk { Name = packKey ; Data = package ; Version = manifest.Version }
+                return
+                    state
+                    |> State.addPack
+                        {
+                            Name = packKey
+                            Data = package
+                            Version = manifest.Version
+                            Type = manifest.Kind
+                        }
             }
         )
 
@@ -199,10 +189,10 @@ module Program =
             | _ -> failwith $"bad args: {argv}"
 
         async {
-            // The first thing we do is refresh the manifests.
-            let installedWorkloadUpdates = printAvailableWorkloads ()
-
             use client = new HttpClient ()
+            // The first thing we do is refresh the manifests.
+            (*
+            let installedWorkloadUpdates = printAvailableWorkloads ()
 
             let! manifestUpdates =
                 installedWorkloadUpdates
@@ -221,6 +211,7 @@ module Program =
                     }
                 )
                 |> Async.Parallel
+            *)
 
             let! manifest, flattened =
                 async {
@@ -229,11 +220,14 @@ module Program =
                     return manifest, flattened
                 }
 
-            let baseDir = dotnet.Directory.Parent
+            State.toNix pathToManifestNupkg manifest flattened
+            |> printfn "%s"
 
-            State.write baseDir flattened
-            manifestUpdates
-            |> Seq.iter (fun (_, state) -> State.write baseDir state)
+            //let baseDir = dotnet.Directory.Parent
+
+            //State.write baseDir flattened
+            //manifestUpdates
+            //|> Seq.iter (fun (_, state) -> State.write baseDir state)
 
             return 0
         }
