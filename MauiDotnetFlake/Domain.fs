@@ -3,7 +3,6 @@ namespace MauiDotnetFlake
 open System
 open System.Collections.Immutable
 open System.ComponentModel
-open System.IO
 open Newtonsoft.Json
 
 type [<JsonConverter (typeof<PackKeyJsonConverter>) ; TypeConverter (typeof<PackKeyTypeConverter>)>] PackKey =
@@ -137,8 +136,7 @@ type Pack =
     {
         Name : PackKey
         Version : Version
-        /// The bytes of a zip file.
-        Data : Stream
+        Hash : HashString
         Type : PackManifestKind
     }
 
@@ -153,3 +151,9 @@ type WorkloadCollation =
         /// The rendered manifest of this workload.
         Manifest : Manifest
     }
+
+type Platform =
+    | Platform of string
+    override this.ToString () =
+        match this with
+        | Platform p -> p

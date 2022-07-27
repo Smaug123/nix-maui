@@ -9,19 +9,19 @@ android = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "android";
   workloadPacks = [
-    MicrosoftAndroidTemplates
-    MicrosoftAndroidSdkDarwin
-    MicrosoftAndroidRuntime33android-x86
-    MicrosoftAndroidRuntime33android-x64
-    MicrosoftAndroidRuntime33android-arm64
-    MicrosoftAndroidRuntime33android-arm
-    MicrosoftAndroidRuntime32android-x86
-    MicrosoftAndroidRuntime32android-x64
-    MicrosoftAndroidRuntime32android-arm64
-    MicrosoftAndroidRuntime32android-arm
-    MicrosoftAndroidRef33
-    MicrosoftAndroidRef32
     MicrosoftAndroidRef31
+    MicrosoftAndroidRef32
+    MicrosoftAndroidRef33
+    MicrosoftAndroidRuntime32android-arm
+    MicrosoftAndroidRuntime32android-arm64
+    MicrosoftAndroidRuntime32android-x64
+    MicrosoftAndroidRuntime32android-x86
+    MicrosoftAndroidRuntime33android-arm
+    MicrosoftAndroidRuntime33android-arm64
+    MicrosoftAndroidRuntime33android-x64
+    MicrosoftAndroidRuntime33android-x86
+    MicrosoftAndroidTemplates
+    MicrosoftAndroidSdk
   ];
 });
 ios = buildDotnetWorkload (sdkVersion: rec {
@@ -34,14 +34,15 @@ ios = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "ios";
   workloadPacks = [
-    MicrosoftiOSTemplates
-    MicrosoftiOSSdk
-    MicrosoftiOSRuntimeiossimulator-x86
-    MicrosoftiOSRuntimeiossimulator-x64
-    MicrosoftiOSRuntimeiossimulator-arm64
-    MicrosoftiOSRuntimeios-arm64
-    MicrosoftiOSRuntimeios-arm
     MicrosoftiOSRef
+    MicrosoftiOSRuntimeios-arm
+    MicrosoftiOSRuntimeios-arm64
+    MicrosoftiOSRuntimeiossimulator-arm64
+    MicrosoftiOSRuntimeiossimulator-x64
+    MicrosoftiOSRuntimeiossimulator-x86
+    MicrosoftiOSSdk
+    MicrosoftiOSTemplates
+    MicrosoftiOSWindowsSdkAliased
   ];
 });
 maccatalyst = buildDotnetWorkload (sdkVersion: rec {
@@ -54,11 +55,12 @@ maccatalyst = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "maccatalyst";
   workloadPacks = [
-    MicrosoftMacCatalystTemplates
-    MicrosoftMacCatalystSdk
-    MicrosoftMacCatalystRuntimemaccatalyst-x64
-    MicrosoftMacCatalystRuntimemaccatalyst-arm64
     MicrosoftMacCatalystRef
+    MicrosoftMacCatalystRuntimemaccatalyst-arm64
+    MicrosoftMacCatalystRuntimemaccatalyst-x64
+    MicrosoftMacCatalystSdk
+    MicrosoftMacCatalystTemplates
+    
   ];
 });
 maui = buildDotnetWorkload (sdkVersion: rec {
@@ -71,50 +73,51 @@ maui = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "maui";
   workloadPacks = [
-    MicrosoftMauiTemplates-60
-    MicrosoftMauiSdk
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiGraphics
-    MicrosoftMauiExtensions
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiDependencies
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefandroid
     MicrosoftAspNetCoreComponentsWebViewMaui
+    MicrosoftMauiControlsRefandroid
+    MicrosoftMauiControlsRefany
+    MicrosoftMauiControlsRefios
+    MicrosoftMauiControlsRefmaccatalyst
+    MicrosoftMauiControlsReftizen
+    MicrosoftMauiControlsRefwin
+    MicrosoftMauiControlsRuntimeandroid
+    MicrosoftMauiControlsRuntimeany
+    MicrosoftMauiControlsRuntimeios
+    MicrosoftMauiControlsRuntimemaccatalyst
+    MicrosoftMauiControlsRuntimetizen
+    MicrosoftMauiControlsRuntimewin
+    MicrosoftMauiCoreRefandroid
+    MicrosoftMauiCoreRefany
+    MicrosoftMauiCoreRefios
+    MicrosoftMauiCoreRefmaccatalyst
+    MicrosoftMauiCoreReftizen
+    MicrosoftMauiCoreRefwin
+    MicrosoftMauiCoreRuntimeandroid
+    MicrosoftMauiCoreRuntimeany
+    MicrosoftMauiCoreRuntimeios
+    MicrosoftMauiCoreRuntimemaccatalyst
+    MicrosoftMauiCoreRuntimetizen
+    MicrosoftMauiCoreRuntimewin
+    MicrosoftMauiDependencies
+    MicrosoftMauiEssentialsRefandroid
+    MicrosoftMauiEssentialsRefany
+    MicrosoftMauiEssentialsRefios
+    MicrosoftMauiEssentialsRefmaccatalyst
+    MicrosoftMauiEssentialsReftizen
+    MicrosoftMauiEssentialsRefwin
+    MicrosoftMauiEssentialsRuntimeandroid
+    MicrosoftMauiEssentialsRuntimeany
+    MicrosoftMauiEssentialsRuntimeios
+    MicrosoftMauiEssentialsRuntimemaccatalyst
+    MicrosoftMauiEssentialsRuntimetizen
+    MicrosoftMauiEssentialsRuntimewin
+    MicrosoftMauiExtensions
+    MicrosoftMauiGraphics
+    MicrosoftMauiGraphicsWin2DWinUIDesktop
+    MicrosoftMauiResizetizerSdk
+    MicrosoftMauiSdk
+    MicrosoftMauiTemplates-60
+    
   ];
 });
 microsoft-net-runtime-android = buildDotnetWorkload (sdkVersion: rec {
@@ -127,47 +130,47 @@ microsoft-net-runtime-android = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "microsoft-net-runtime-android";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
     MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x86
+    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
+    MicrosoftNETCoreAppRuntimeMonoios-arm
+    MicrosoftNETCoreAppRuntimeMonoios-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeMonoosx-arm64
+    MicrosoftNETCoreAppRuntimeMonoosx-x64
+    MicrosoftNETCoreAppRuntimeMonotvos-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
+    MicrosoftNETCoreAppRuntimeosx-arm64
+    MicrosoftNETCoreAppRuntimeosx-x64
+    MicrosoftNETCoreAppRuntimewin-arm
+    MicrosoftNETCoreAppRuntimewin-arm64
+    MicrosoftNETCoreAppRuntimewin-x64
+    MicrosoftNETCoreAppRuntimewin-x86
     MicrosoftNETRuntimeMonoAOTCompilerTask
+    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETRuntimeWebAssemblySdk
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
 });
 microsoft-net-runtime-android-aot = buildDotnetWorkload (sdkVersion: rec {
@@ -180,47 +183,47 @@ microsoft-net-runtime-android-aot = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "microsoft-net-runtime-android-aot";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
     MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x86
+    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
+    MicrosoftNETCoreAppRuntimeMonoios-arm
+    MicrosoftNETCoreAppRuntimeMonoios-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeMonoosx-arm64
+    MicrosoftNETCoreAppRuntimeMonoosx-x64
+    MicrosoftNETCoreAppRuntimeMonotvos-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
+    MicrosoftNETCoreAppRuntimeosx-arm64
+    MicrosoftNETCoreAppRuntimeosx-x64
+    MicrosoftNETCoreAppRuntimewin-arm
+    MicrosoftNETCoreAppRuntimewin-arm64
+    MicrosoftNETCoreAppRuntimewin-x64
+    MicrosoftNETCoreAppRuntimewin-x86
     MicrosoftNETRuntimeMonoAOTCompilerTask
+    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETRuntimeWebAssemblySdk
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
 });
 microsoft-net-runtime-ios = buildDotnetWorkload (sdkVersion: rec {
@@ -233,47 +236,47 @@ microsoft-net-runtime-ios = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "microsoft-net-runtime-ios";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
     MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x86
+    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
+    MicrosoftNETCoreAppRuntimeMonoios-arm
+    MicrosoftNETCoreAppRuntimeMonoios-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeMonoosx-arm64
+    MicrosoftNETCoreAppRuntimeMonoosx-x64
+    MicrosoftNETCoreAppRuntimeMonotvos-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
+    MicrosoftNETCoreAppRuntimeosx-arm64
+    MicrosoftNETCoreAppRuntimeosx-x64
+    MicrosoftNETCoreAppRuntimewin-arm
+    MicrosoftNETCoreAppRuntimewin-arm64
+    MicrosoftNETCoreAppRuntimewin-x64
+    MicrosoftNETCoreAppRuntimewin-x86
     MicrosoftNETRuntimeMonoAOTCompilerTask
+    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETRuntimeWebAssemblySdk
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
 });
 microsoft-net-runtime-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
@@ -286,47 +289,47 @@ microsoft-net-runtime-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
   };
   workloadName = "microsoft-net-runtime-maccatalyst";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
     MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x64
+    MicrosoftNETCoreAppRuntimeMonoandroid-x86
+    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
+    MicrosoftNETCoreAppRuntimeMonoios-arm
+    MicrosoftNETCoreAppRuntimeMonoios-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
+    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeMonoosx-arm64
+    MicrosoftNETCoreAppRuntimeMonoosx-x64
+    MicrosoftNETCoreAppRuntimeMonotvos-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
+    MicrosoftNETCoreAppRuntimeosx-arm64
+    MicrosoftNETCoreAppRuntimeosx-x64
+    MicrosoftNETCoreAppRuntimewin-arm
+    MicrosoftNETCoreAppRuntimewin-arm64
+    MicrosoftNETCoreAppRuntimewin-x64
+    MicrosoftNETCoreAppRuntimewin-x86
     MicrosoftNETRuntimeMonoAOTCompilerTask
+    MicrosoftNETRuntimeMonoTargetsSdk
+    MicrosoftNETRuntimeWebAssemblySdk
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
+    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
+    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
+    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
 });
 MicrosoftAndroidRef31 = buildDotnetPack rec {
@@ -344,7 +347,7 @@ MicrosoftAndroidRef32 = buildDotnetPack rec {
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-RLoIbdQdyBxG7cjj/0IvDZUNgzRJbM1dkONnbKUgDdI=";
+    hash = "sha256-HsWLIZCtoVEb/gew5JuSwcWB9++lo3y0e2gKjjrZcDI=";
   };
 };
 MicrosoftAndroidRef33 = buildDotnetPack rec {
@@ -434,7 +437,25 @@ MicrosoftAndroidSdkDarwin = buildDotnetPack rec {
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Gt/HMJLFC6lgE6gvORK4SQrBAna4ItJPLJdVCLFwU4o=";
+    hash = "sha256-+fMNyVTuUauZcQu7/oJbxnofM0vQzglPDboIhJZZYps=";
+  };
+};
+MicrosoftAndroidSdkLinux = buildDotnetPack rec {
+  pname = "Microsoft.Android.Sdk.Linux";
+  version = "32.0.440";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-gUuW9qJGqnQnuJFtKusA563BG1LQ5tGNnmcoSDpEI5Q=";
+  };
+};
+MicrosoftAndroidSdkWindows = buildDotnetPack rec {
+  pname = "Microsoft.Android.Sdk.Windows";
+  version = "32.0.440";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-J1K7rEHNtSt2uvaDdjR2QPn4U6ipv5qUFUTqp2uVLCg=";
   };
 };
 MicrosoftAndroidTemplates = buildDotnetPack rec {
@@ -470,7 +491,7 @@ MicrosoftMacCatalystRuntimemaccatalyst-arm64 = buildDotnetPack rec {
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-MScFXBKbEy32l/DqXASORwx+Oa7MSYJ3dHTIB+b5Ni4=";
+    hash = "sha256-QxwjkIIKjyeZa5iVxDcWtXeCYSZlrj63rYPc0H0Um4s=";
   };
 };
 MicrosoftMacCatalystRuntimemaccatalyst-x64 = buildDotnetPack rec {
@@ -887,13 +908,58 @@ MicrosoftMauiTemplates-60 = buildDotnetPack rec {
     hash = "sha256-feO/X1v/q9rszh9/foPush2fTQQh+w4tPx/h36RSPnE=";
   };
 };
+MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-+PL/owiGY8mx1nv9yfeSqDxZbRdbvvdGzltWEhqv6P8=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm64 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-kIgFJIFeg5pSrXcAu0Bqu8T2KlFVbyFfR3V6wwqODY8=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x64 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Q3l0b8H2ditlBgCPG3N7D4NBYLKNP3/kfT2TpW8GqI8=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x86 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-8Zqu2E3eoiiuSckmMx6Ta6K5fvfJjchtyiudpdzIliI=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossbrowser-wasm = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-IcFulyvjoG4NT+RijpE+uxme6yq8tmWSh696qWAHK/s=";
+  };
+};
 MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm";
   version = "6.0.7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-HkYei5HguEsNar1C6ibj4bEU2pX2b5w6HP4KQCCmh1w=";
+    hash = "sha256-iIcCjckUJHK8VU0w9qIvsphps9pxoLuB2qYu+kyXgPs=";
   };
 };
 MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64 = buildDotnetPack rec {
@@ -956,7 +1022,7 @@ MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64 = buildDotnetPack re
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-PrfsrBOUYEKrRaJADNjkcf7rkQKC6DHODS837YbV+Ag=";
+    hash = "sha256-vnRX/gl9/6Ko918fmOPfqxSW+xbXt0are9fwMXnbGAs=";
   };
 };
 MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64 = buildDotnetPack rec {
@@ -1020,6 +1086,51 @@ MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64 = buildDotnetPack rec
   src = fetchNuGet {
     inherit pname version;
     hash = "sha256-+raOwsJbfHG971+f6hfsGoPScNZJRIziBXzD5kuxqNg=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-MlDGDPhvtd7oNnY31PWhQ4tIzAP8lgAdIHXEfP6Qebo=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm64 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-oP6N7JiSzVjiaiF5Er+ZeZ/LlqX2MMqUSd1bGHTRzME=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x64 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-/5XWRtaKUVgCe3xTXYCsMM6ch5s8OFyqklcDZbKpeN4=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x86 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-FJPA41cEb5PJ+Dk2PDYueXmmIYOpddlsXzNKrSXhMQI=";
+  };
+};
+MicrosoftNETCoreAppRuntimeAOTwin-x64Crossbrowser-wasm = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm";
+  version = "6.0.7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-ZrQSc6g7p1fc9EN1/9H1gQq8l15dY/rO9Rl27aW79ls=";
   };
 };
 MicrosoftNETCoreAppRuntimeMonoandroid-arm = buildDotnetPack rec {
@@ -1208,7 +1319,7 @@ MicrosoftNETCoreAppRuntimewin-arm64 = buildDotnetPack rec {
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-DaWlgjoWUpnXB1Fvro0DamCGsy3ibgFkcbHztra7cOA=";
+    hash = "sha256-VEdcUwVjMs8Y3xC/DYPT44gW0uJReByHB4T1YQ6kKuQ=";
   };
 };
 MicrosoftNETCoreAppRuntimewin-x64 = buildDotnetPack rec {
@@ -1271,7 +1382,7 @@ MicrosoftiOSRuntimeios-arm = buildDotnetPack rec {
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-2okYJcRyNmxxGxqCUCaug3K7hGbSDOuOBRoOTNMNzYk=";
+    hash = "sha256-Z2Nrjk7y/SgzcB26bpmv8SoTd6AGSXOpVlKqkZOrTSA=";
   };
 };
 MicrosoftiOSRuntimeios-arm64 = buildDotnetPack rec {
@@ -1328,4 +1439,62 @@ MicrosoftiOSTemplates = buildDotnetPack rec {
     hash = "sha256-C3tGKPqmQmuqbPREAH0eKrgauhTC7fk8EMHNxajdgiI=";
   };
 };
+MicrosoftiOSWindowsSdk = buildDotnetPack rec {
+  pname = "Microsoft.iOS.Windows.Sdk";
+  version = "15.4.328";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-N3Sn/6GJXMkaESqR6OerkrFWTIjNDVcyU5M5rP5WUIs=";
+  };
+};
+MicrosoftAndroidSdk = {"linux-x64" = MicrosoftAndroidSdkLinux;
+"osx-arm64" = MicrosoftAndroidSdkDarwin;
+"osx-x64" = MicrosoftAndroidSdkDarwin;
+"win-arm64" = MicrosoftAndroidSdkWindows;
+"win-x64" = MicrosoftAndroidSdkWindows;
+"win-x86" = MicrosoftAndroidSdkWindows;};
+MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm;
+"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm;
+"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm;};
+MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm64;
+"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64;
+"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x64;
+"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64;
+"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x64;};
+MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x86;
+"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86;
+"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x86;};
+MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossbrowser-wasm;
+"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm;
+"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossbrowser-wasm;};
+MicrosoftNETCoreAppRuntimeAOTCrossios-arm = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm;};
+MicrosoftNETCoreAppRuntimeAOTCrossios-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64;};
+MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86;};
+MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64;};
+MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64;};
+MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64;
+"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64;};
+MicrosoftiOSWindowsSdkAliased = {"win-arm64" = MicrosoftiOSWindowsSdk;
+"win-x64" = MicrosoftiOSWindowsSdk;
+"win-x86" = MicrosoftiOSWindowsSdk;};
 }

@@ -1,17 +1,19 @@
 namespace MauiDotnetFlake
 
-open System.IO
-open FSharp.Collections.ParallelSeq
+open System
 
 type State =
     {
-        Packs : Pack list
+        Packs : Map<PackKey, Pack>
         WorkloadName : WorkloadKey option
+        /// A map of before-alias-resolution to the available resolutions.
+        Aliases : Map<PackKey, Map<Platform, Pack>>
     }
     static member Empty (workloadName : WorkloadKey option) : State =
         {
-            Packs = []
+            Packs = Map.empty
             WorkloadName = workloadName
+            Aliases = Map.empty
         }
 
 type NixName =
@@ -25,6 +27,10 @@ type NixName =
         s.Replace(".", "")
         |> NixName
 
+    static member Make (PackKey s) =
+        s.Replace(".", "")
+        |> NixName
+
 type NixExpression =
     | NixExpression of string
     override this.ToString () =
@@ -35,6 +41,7 @@ type NixInfo =
     {
         Workloads : Map<NixName, NixExpression>
         Packs : Map<NixName, NixExpression>
+        Aliases : Map<PackKey, Map<Platform, PackKey>>
     }
     override this.ToString () =
         let workloads =
@@ -47,14 +54,36 @@ type NixInfo =
             |> Map.toSeq
             |> Seq.map (fun (nixName, body) -> $"{nixName} = {body}")
             |> String.concat "\n"
-        $"{workloads}\n{packs}"
+        let aliases =
+            this.Aliases
+            |> Map.toSeq
+            |> Seq.map (fun (unAliased, resolutions) ->
+                let resolveMap =
+                    resolutions
+                    |> Map.toSeq
+                    |> Seq.map (fun (platform, resolved) ->
+                        $"\"{platform}\" = {NixName.Make resolved};"
+                    )
+                    |> String.concat "\n"
+                    |> sprintf "{%s}"
+                $"{NixName.Make unAliased} = {resolveMap};"
+            )
+            |> String.concat "\n"
+        $"{workloads}\n{packs}\n{aliases}"
 
 [<RequireQualifiedAccess>]
 module NixInfo =
+    let private assertEqual<'a when 'a : equality> (x : 'a) (y : 'a) : 'a =
+        if x = y then x else failwith $"duplicate found: {x}\n{y}\n-----\n"
+
     let merge (n1 : NixInfo) (n2 : NixInfo) : NixInfo =
+        let workloads = Map.union assertEqual n1.Workloads n2.Workloads
+        let packs = Map.union assertEqual n1.Packs n2.Packs
+        let aliases = Map.union (Map.union assertEqual) n1.Aliases n2.Aliases
         {
-            Workloads = Map.union (fun v1 v2 -> if v1 = v2 then v1 else failwith "duplicate found") n1.Workloads n2.Workloads
-            Packs = Map.union (fun v1 v2 -> if v1 = v2 then v1 else failwith "duplicate found") n1.Packs n2.Packs
+            Workloads = workloads
+            Packs = packs
+            Aliases = aliases
         }
 
     let toString (n : NixInfo) : string =
@@ -66,23 +95,19 @@ module NixInfo =
 module State =
     let addPack (f : Pack) (s : State) =
         { s with
-            Packs = f :: s.Packs
+            Packs = s.Packs |> Map.add f.Name f
         }
-
-    let write (baseDir : DirectoryInfo) (s : State) : unit =
-        s.Packs
-        |> PSeq.iter (Install.install baseDir)
-
-        let metadataDir = Path.Combine (baseDir.FullName, "metadata", "workloads")
-        // TODO fix this version number
-        match s.WorkloadName with
-        | None -> ()
-        | Some (WorkloadKey workloadName) ->
-            let workloadFile =
-                Path.Combine (metadataDir, "6.0.300", "InstalledWorkloads", workloadName)
-                |> FileInfo
-            workloadFile.Directory.Create ()
-            workloadFile.Create () |> ignore
+    let addAlias (platform : Platform) (beforeAliasResolution : PackKey) (resolved : Pack) (s : State) =
+        { s with
+            Aliases =
+                s.Aliases
+                |> Map.change
+                    beforeAliasResolution
+                    (function
+                        | None -> Map.ofList [platform, resolved] |> Some
+                        | Some existing -> existing |> Map.add platform resolved |> Some
+                    )
+        }
 
     let chopEnd (chop : string) (s : string) =
         if s.EndsWith chop then
@@ -102,9 +127,17 @@ module State =
             |> NixName.Make
         let spaces = "    "
         let workloadPacks =
-            state.Packs
+            state.Packs.Values
             |> Seq.map (fun f -> f.Name)
-            |> Seq.map (fun (PackKey p) -> NixName.Make p |> fun s -> s.ToString ())
+            |> Seq.map NixName.Make
+            |> Seq.map string<NixName>
+            |> Seq.sort
+            |> String.concat $"\n{spaces}"
+        let aliases =
+            state.Aliases.Keys
+            |> Seq.map NixName.Make
+            |> Seq.map string<NixName>
+            |> Seq.sort
             |> String.concat $"\n{spaces}"
 
         let primary =
@@ -119,12 +152,15 @@ module State =
   workloadName = "{workloadName}";
   workloadPacks = [
 {spaces}{workloadPacks}
+{spaces}{aliases}
   ];
 }});"""
         let primary = NixExpression primary
 
         let secondaries =
-            state.Packs
+            state.Packs.Values
+            |> Seq.append (state.Aliases.Values |> Seq.collect (fun p -> p.Values))
+            |> Seq.sortBy (fun p -> p.Name)
             |> Seq.map (fun l ->
                 let (PackKey name) = l.Name
                 let nixName = NixName.Make name
@@ -134,7 +170,7 @@ module State =
   kind = "{l.Type.ToString ()}";
   src = fetchNuGet {{
     inherit pname version;
-    hash = "sha256-{Hash.get l.Data}";
+    hash = "sha256-{l.Hash}";
   }};
 }};"""
                 nixName, NixExpression output
@@ -144,4 +180,7 @@ module State =
         {
             Workloads = Map.ofList [workloadName, primary]
             Packs = secondaries
+            Aliases =
+                state.Aliases
+                |> Map.map (fun _ -> Map.map (fun _ v -> v.Name))
         }

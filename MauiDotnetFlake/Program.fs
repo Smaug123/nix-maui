@@ -4,8 +4,6 @@ open System
 open System.IO
 open System.IO.Compression
 open System.Net.Http
-open System.Runtime.InteropServices
-open System.Security.Cryptography
 open Newtonsoft.Json
 
 module Program =
@@ -40,7 +38,7 @@ module Program =
                     return raise e
         }
 
-    let fetchPackage (client : HttpClient) (PackKey packKey) (version : Version) : Async<Stream> =
+    let fetchPackageStream (client : HttpClient) (PackKey packKey) (version : Version) : Async<Stream> =
         let download =
             lazy
                 let uri = Uri $"https://www.nuget.org/api/v2/package/{packKey}/{version}"
@@ -85,6 +83,12 @@ module Program =
         | false, _ ->
             download.Force ()
 
+    let fetchPackageHash (client : HttpClient) (packKey : PackKey) (version : Version) : Async<HashString> =
+        async {
+            use! stream = fetchPackageStream client packKey version
+            return! Hash.getAsync stream
+        }
+
     let fetchManifest' (contents : Stream) : Manifest Async =
         async {
             use arch = new ZipArchive (contents)
@@ -106,53 +110,51 @@ module Program =
         }
 
     let flatten (client : HttpClient) (workloadName : WorkloadKey option) (manifest : Manifest) : State Async =
-        (State.Empty workloadName, Map.toSeq manifest.Packs)
-        ||> Seq.foldAsync (fun state (packKey, manifest) ->
-            let packKey =
-                match manifest.AliasTo with
-                | null -> Some packKey
-                | map ->
-                    let rid =
-                        if RuntimeInformation.IsOSPlatform OSPlatform.Linux then
-                            $"linux-{RuntimeInformation.OSArchitecture.ToString().ToLowerInvariant()}"
-                        elif RuntimeInformation.IsOSPlatform OSPlatform.OSX then
-                            $"osx-{RuntimeInformation.OSArchitecture.ToString().ToLowerInvariant()}"
-                        else
-                            failwith "Unrecognised platform"
-                    match map.TryGetValue rid with
-                    | false, _ ->
-                        // Skip, it's not available for this platform
-                        //map.Keys
-                        //|> String.concat ","
-                        //|> failwithf "Unknown platform for %O, needed one of: %s" packKey
-                        None
-                    | true, alias ->
-                        PackKey alias
-                        |> Some
-
-            match packKey with
-            | None -> async.Return state
-            | Some packKey ->
-
-            async {
-                let! package = fetchPackage client packKey manifest.Version
-                let package =
-                    let s = new MemoryStream()
-                    package.CopyTo s
-                    package.Dispose ()
-                    s.Seek (0, SeekOrigin.Begin) |> ignore
-                    s
-                return
-                    state
-                    |> State.addPack
-                        {
-                            Name = packKey
-                            Data = package
-                            Version = manifest.Version
-                            Type = manifest.Kind
-                        }
-            }
+        manifest.Packs
+        |> Map.toSeq
+        |> Seq.collect (fun (packKey, packManifest) ->
+            match packManifest.AliasTo with
+            | null ->
+                Seq.singleton None
+            | map ->
+                map
+                |> Seq.map (fun (KeyValue(platform, pack)) -> Some (Platform platform, PackKey pack))
+            |> Seq.map (fun platform ->
+                match platform with
+                | None ->
+                    async {
+                        let! packageHash = fetchPackageHash client packKey packManifest.Version
+                        return
+                            None,
+                            {
+                                Name = packKey
+                                Hash = packageHash
+                                Version = packManifest.Version
+                                Type = packManifest.Kind
+                            }
+                    }
+                | Some (platform, resolvedPack) ->
+                    async {
+                        let! packageHash = fetchPackageHash client resolvedPack packManifest.Version
+                        return
+                            Some (platform, packKey),
+                            {
+                                Name = resolvedPack
+                                Hash = packageHash
+                                Version = packManifest.Version
+                                Type = packManifest.Kind
+                            }
+                    }
+            )
         )
+        |> Async.Parallel
+        |> Async.map (Array.fold (fun state (platform, pack)->
+            match platform with
+            | None ->
+                State.addPack pack state
+            | Some (platform, beforeResolution) ->
+                State.addAlias platform beforeResolution pack state
+            ) (State.Empty workloadName))
 
     let dotnet =
         Path.Combine (typeof<int>.Assembly.Location, "..", "..", "..", "..", "bin", "dotnet")
@@ -274,8 +276,8 @@ module Program =
                 |> Seq.map (fun (ident, uri) ->
                     async {
                         let! ct = Async.CancellationToken
-                        let! s = Async.AwaitTask (client.GetStreamAsync uri)
-                        let ms = new MemoryStream ()
+                        use! s = Async.AwaitTask (client.GetStreamAsync uri)
+                        use ms = new MemoryStream ()
                         do! Async.AwaitTask (s.CopyToAsync (ms, ct))
                         let! hash = Hash.getAsync ms
                         ms.Seek (0, SeekOrigin.Begin) |> ignore
