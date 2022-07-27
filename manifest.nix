@@ -5,7 +5,7 @@ android = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.sdk.android.manifest-6.0.300";
     inherit version;
-    hash = "sha256-INC54jXp35xDL5QUhNdqkZg9806fqdxodS+Ll8ptOKc=";
+    hash = "sha256-IBcXur/I4Su+2PiVLuheS0sIxOAHSsS9XMW2knhYCE8=";
   };
   workloadName = "android";
   workloadPacks = [
@@ -30,7 +30,7 @@ ios = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.sdk.ios.manifest-6.0.300";
     inherit version;
-    hash = "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
+    hash = "sha256-BMtCkuBydIlnH5yohg6yKc6lqQ4jcvz9rpP7jLtO5G0=";
   };
   workloadName = "ios";
   workloadPacks = [
@@ -67,7 +67,7 @@ maui = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.sdk.maui.manifest-6.0.300";
     inherit version;
-    hash = "sha256-IFAoqzQE3ezMKyvp2O3fFAW65ouG7D3sA0c3m2qL5N8=";
+    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
   };
   workloadName = "maui";
   workloadPacks = [
@@ -123,7 +123,7 @@ microsoft-net-runtime-android = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
     inherit version;
-    hash = "sha256-pPL2B6d5p0TDIu6Blhan19o2FG9W4fZxvoSeZLfzwhk=";
+    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
   };
   workloadName = "microsoft-net-runtime-android";
   workloadPacks = [
@@ -176,7 +176,7 @@ microsoft-net-runtime-android-aot = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
     inherit version;
-    hash = "sha256-pPL2B6d5p0TDIu6Blhan19o2FG9W4fZxvoSeZLfzwhk=";
+    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
   };
   workloadName = "microsoft-net-runtime-android-aot";
   workloadPacks = [
@@ -229,7 +229,7 @@ microsoft-net-runtime-ios = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
     inherit version;
-    hash = "sha256-pPL2B6d5p0TDIu6Blhan19o2FG9W4fZxvoSeZLfzwhk=";
+    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
   };
   workloadName = "microsoft-net-runtime-ios";
   workloadPacks = [
@@ -282,7 +282,7 @@ microsoft-net-runtime-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
   src = fetchNuGet {
     pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
     inherit version;
-    hash = "sha256-pPL2B6d5p0TDIu6Blhan19o2FG9W4fZxvoSeZLfzwhk=";
+    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
   };
   workloadName = "microsoft-net-runtime-maccatalyst";
   workloadPacks = [

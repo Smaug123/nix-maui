@@ -9,9 +9,9 @@ module Hash =
     let private c = SHA256.Create ()
 
     let getAsync (stream : Stream) =
-        stream.Seek (0, SeekOrigin.Begin) |> ignore
         async {
             let! ct = Async.CancellationToken
+            stream.Seek (0, SeekOrigin.Begin) |> ignore
             let! hash = c.ComputeHashAsync (stream, ct) |> Async.AwaitTask
             return
                 hash
