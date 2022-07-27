@@ -12,6 +12,8 @@
       outputsBuilder = channels:
         let
           inherit (channels.nixpkgs) lib buildEnv dotnetCorePackages;
+          # TODO: generalise this, it's as in the manifest.nix aliases
+          platform = "osx-arm64";
 
           withWorkload = dotnet: workloads:
             channels.nixpkgs.callPackage (import ./combine-packages.nix dotnet workloads) {};
@@ -55,7 +57,7 @@
             in
             buildEnv {
               name = "workload-${name}-combined";
-              paths = (input.workloadPacks or [ ]) ++ [ workload ];
+              paths = nixpkgs.lib.lists.map (pack: if nixpkgs.lib.isDerivation pack then pack else nixpkgs.lib.attrsets.attrByPath [platform] (abort "bad platform") pack) ((input.workloadPacks or [ ]) ++ [ workload ]);
               pathsToLink = [ "/metadata" "/library-packs" "/packs" "/template-packs" "/sdk-manifests" "/tool-packs" ];
             };
 
@@ -129,7 +131,7 @@
               inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages;
 
               manifest = import ./manifest.nix { inherit buildDotnetPack buildDotnetWorkload fetchNuGet; };
-              workload = manifest.maui;
+              workload = manifest.android;
 
               dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old:
                 let
