@@ -150,6 +150,7 @@
                   nativeBuildInputs = old.nativeBuildInputs or [ ] ++ [ channels.nixpkgs.makeBinaryWrapper ];
                   postFixup = old.postFixup + ''
                     rm "$out/bin/dotnet"
+                    rm -r "$out/sdk-manifests"
                     cp -r "${workload}/metadata" "$out/metadata"
                     cp -r "${workload}/template-packs" "$out/template-packs"
                     cp -r "${workload}/tool-packs" "$out/tool-packs"

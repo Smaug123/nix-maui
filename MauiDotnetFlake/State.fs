@@ -1,8 +1,6 @@
 namespace MauiDotnetFlake
 
-open System
 open System.IO
-open System.Security.Cryptography
 open FSharp.Collections.ParallelSeq
 
 type State =
@@ -27,10 +25,16 @@ type NixName =
         s.Replace(".", "")
         |> NixName
 
+type NixExpression =
+    | NixExpression of string
+    override this.ToString () =
+        match this with
+        | NixExpression s -> s
+
 type NixInfo =
     {
-        Workloads : Map<NixName, string>
-        Packs : Map<NixName, string>
+        Workloads : Map<NixName, NixExpression>
+        Packs : Map<NixName, NixExpression>
     }
     override this.ToString () =
         let workloads =
@@ -86,16 +90,8 @@ module State =
         else
             failwith "chop failed to chop"
 
-    let getHash =
-        let c = SHA256.Create ()
-        fun (stream : Stream) ->
-            c.ComputeHash stream
-            |> Convert.ToBase64String
-
     let toNix
-        (manifestPackage : {| Package : string ; Version : string |})
-        (hashBase64 : string)
-        (manifest : Manifest)
+        (collation : WorkloadCollation)
         (state : State)
         : NixInfo
         =
@@ -114,17 +110,18 @@ module State =
         let primary =
             $"""buildDotnetWorkload (sdkVersion: rec {{
   pname = "{workloadName}";
-  version = "{manifest.Version}";
+  version = "{collation.Manifest.Version}";
   src = fetchNuGet {{
-    pname = "{manifestPackage.Package}";
+    pname = "{collation.Package}";
     inherit version;
-    hash = "sha256-{hashBase64}";
+    hash = "sha256-{collation.Hash}";
   }};
   workloadName = "{workloadName}";
   workloadPacks = [
 {spaces}{workloadPacks}
   ];
 }});"""
+        let primary = NixExpression primary
 
         let secondaries =
             state.Packs
@@ -137,10 +134,10 @@ module State =
   kind = "{l.Type.ToString ()}";
   src = fetchNuGet {{
     inherit pname version;
-    hash = "sha256-{getHash l.Data}";
+    hash = "sha256-{Hash.get l.Data}";
   }};
 }};"""
-                nixName, output
+                nixName, NixExpression output
             )
             |> Map.ofSeq
 

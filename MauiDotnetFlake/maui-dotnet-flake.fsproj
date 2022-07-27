@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="Domain.fs" />
+    <Compile Include="Hash.fs" />
     <Compile Include="Install.fs" />
     <Compile Include="Map.fs" />
     <Compile Include="State.fs" />

@@ -126,6 +126,12 @@ type Registration =
         IsStillPacked : bool
     }
 
+type HashString =
+    | HashString of string
+    override this.ToString () =
+        match this with
+        | HashString s -> s
+
 /// A NuGet package such as "Microsoft.Maui.Controls.Ref.android".
 type Pack =
     {
@@ -134,4 +140,16 @@ type Pack =
         /// The bytes of a zip file.
         Data : Stream
         Type : PackManifestKind
+    }
+
+type WorkloadCollation =
+    {
+        /// The NuGet package that defines the manifest for this workload.
+        Package : string
+        /// The version of the NuGet package that defines the manifest for this workload.
+        Version : string
+        /// The SHA256 of the NuGet package that defines the manifest for this workload.
+        Hash : HashString
+        /// The rendered manifest of this workload.
+        Manifest : Manifest
     }

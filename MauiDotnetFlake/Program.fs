@@ -197,17 +197,18 @@ module Program =
                         go (found.Extends @ toAcc) results
         go [w] Set.empty
 
+
     /// Find the manifests which define a given WorkloadKey.
     let collate
-        (manifests : seq<{| Package : string ; Version : string |} * string * Manifest>)
-        : Map<WorkloadKey, {| Package : string ; Version : string |} * string * Manifest>
+        (manifests : seq<WorkloadCollation>)
+        : Map<WorkloadKey, WorkloadCollation>
         =
         manifests
-        |> Seq.collect (fun (package, hashStr, manifest) ->
-            manifest.Workloads
+        |> Seq.collect (fun collation ->
+            collation.Manifest.Workloads
             |> Map.toSeq
             |> Seq.map (fun (workload, _manifest) ->
-                workload, (package, hashStr, manifest)
+                workload, collation
             )
         )
         |> Seq.groupBy fst
@@ -220,24 +221,24 @@ module Program =
     /// Render this workload as Nix, and also return our dependency workloads
     let renderWorkload
         (client : HttpClient)
-        allAvailableWorkloads
+        (allAvailableWorkloads : Map<WorkloadKey, WorkloadCollation>)
         (desiredWorkload : WorkloadKey)
         : Async<NixInfo * WorkloadKey Set>
         =
-        let ourManifestPackage, ourHash, ourManifest =
+        let collation =
             match Map.tryFind desiredWorkload allAvailableWorkloads with
             | None -> failwith $"You gave us {desiredWorkload} but there's no workload with that name"
-            | Some (package, hashStr, manifest) -> package, hashStr, manifest
+            | Some collation -> collation
 
-        let requiredWorkloads = requiredWorkloads desiredWorkload ourManifest
+        let requiredWorkloads = requiredWorkloads desiredWorkload collation.Manifest
         async {
-            let! flattened = flatten client (Some desiredWorkload) ourManifest
-            return State.toNix ourManifestPackage ourHash ourManifest flattened, requiredWorkloads
+            let! flattened = flatten client (Some desiredWorkload) collation.Manifest
+            return State.toNix collation flattened, requiredWorkloads
         }
 
     let collectAllRequiredWorkloads
         (client : HttpClient)
-        allAvailableWorkloads
+        (allAvailableWorkloads : Map<WorkloadKey, WorkloadCollation>)
         (desiredWorkload : WorkloadKey)
         : Async<NixInfo>
         =
@@ -265,7 +266,6 @@ module Program =
             | _ -> failwith $"bad args: {argv}"
 
         use client = new HttpClient ()
-        let sha256 = SHA256.Create ()
 
         async {
             let! allAvailableWorkloads =
@@ -277,11 +277,16 @@ module Program =
                         let! s = Async.AwaitTask (client.GetStreamAsync uri)
                         let ms = new MemoryStream ()
                         do! Async.AwaitTask (s.CopyToAsync (ms, ct))
-                        ms.Seek (0, SeekOrigin.Begin) |> ignore
-                        let! hash = sha256.ComputeHashAsync (ms, ct) |> Async.AwaitTask
+                        let! hash = Hash.getAsync ms
                         ms.Seek (0, SeekOrigin.Begin) |> ignore
                         let! manifest = fetchManifest' ms
-                        return ident, Convert.ToBase64String hash, manifest
+                        return
+                            {
+                                Package = ident.Package
+                                Version = ident.Version
+                                Hash = hash
+                                Manifest = manifest
+                            }
                     }
                 )
                 |> Async.Parallel
