@@ -8,9 +8,9 @@ open FSharp.Collections.ParallelSeq
 type State =
     {
         Packs : Pack list
-        WorkloadName : string option
+        WorkloadName : WorkloadKey option
     }
-    static member Empty (workloadName : string option) : State =
+    static member Empty (workloadName : WorkloadKey option) : State =
         {
             Packs = []
             WorkloadName = workloadName
@@ -31,7 +31,7 @@ module State =
         // TODO fix this version number
         match s.WorkloadName with
         | None -> ()
-        | Some workloadName ->
+        | Some (WorkloadKey workloadName) ->
             let workloadFile =
                 Path.Combine (metadataDir, "6.0.300", "InstalledWorkloads", workloadName)
                 |> FileInfo
@@ -54,7 +54,13 @@ module State =
     let private nixName (s : string) : string =
         s.Replace(".", "")
 
-    let toNix (manifestNupkg : FileInfo) (manifest : Manifest) (state : State) : string =
+    let toNix
+        (manifestPackage : {| Package : string ; Version : string |})
+        (hashBase64 : string)
+        (manifest : Manifest)
+        (state : State)
+        : string
+        =
         // TODO fix domain
         let workloadName = Option.get state.WorkloadName
         let spaces = "    "
@@ -64,19 +70,12 @@ module State =
             |> Seq.map (fun (PackKey p) -> nixName p)
             |> String.concat $"\n{spaces}"
 
-        let nupkgName =
-            chopEnd $".{manifest.Version}.nupkg" manifestNupkg.Name
-
-        let hash =
-            use s = manifestNupkg.OpenRead ()
-            getHash s
-
         let primary =
             $"""{workloadName} = buildDotnetWorkload (sdkVersion: rec {{
   pname = "{workloadName}";
   version = "{manifest.Version}";
   src = fetchNuGet {{
-    pname = "{nupkgName}";
+    pname = "{manifestPackage.Package}";
     inherit version;
     hash = "sha256-{hash}";
   }};

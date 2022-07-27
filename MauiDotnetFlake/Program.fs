@@ -5,6 +5,7 @@ open System.IO
 open System.IO.Compression
 open System.Net.Http
 open System.Runtime.InteropServices
+open System.Security.Cryptography
 open Newtonsoft.Json
 
 module Program =
@@ -104,7 +105,7 @@ module Program =
             return! fetchManifest' s
         }
 
-    let flatten (client : HttpClient) (workloadName : string option) (manifest : Manifest) : State Async =
+    let flatten (client : HttpClient) (workloadName : WorkloadKey option) (manifest : Manifest) : State Async =
         (State.Empty workloadName, Map.toSeq manifest.Packs)
         ||> Seq.foldAsync (fun state (packKey, manifest) ->
             let packKey =
@@ -157,7 +158,7 @@ module Program =
         Path.Combine (typeof<int>.Assembly.Location, "..", "..", "..", "..", "bin", "dotnet")
         |> FileInfo
 
-    let printAvailableWorkloads () =
+    let allAvailableWorkloads () =
         let psi = System.Diagnostics.ProcessStartInfo (dotnet.FullName, Arguments = "workload update --print-download-link-only --sdk-version 6.0.301")
         psi.RedirectStandardError <- true
         psi.RedirectStandardOutput <- true
@@ -196,25 +197,68 @@ module Program =
                         go (found.Extends @ toAcc) results
         go [w] Set.empty
 
+    /// Find the manifests which define a given WorkloadKey.
+    let collate
+        (manifests : seq<{| Package : string ; Version : string |} * string * Manifest>)
+        : Map<WorkloadKey, {| Package : string ; Version : string |} * string * Manifest>
+        =
+        manifests
+        |> Seq.collect (fun (package, hashStr, manifest) ->
+            manifest.Workloads
+            |> Map.toSeq
+            |> Seq.map (fun (workload, _manifest) ->
+                workload, (package, hashStr, manifest)
+            )
+        )
+        |> Seq.groupBy fst
+        |> Seq.map (fun (key, values) ->
+            // Here is the assertion that each WorkloadKey is defined in exactly one workload
+            key, Seq.map snd values |> Seq.exactlyOne
+        )
+        |> Map.ofSeq
+
     [<EntryPoint>]
     let main argv =
-        let pathToManifestNupkg, workloadName =
+        // e.g. "maui"
+        let desiredWorkload =
             match argv with
-            | [| arg ; workloadName |] -> FileInfo arg, workloadName
+            | [| w |] -> WorkloadKey w
             | _ -> failwith $"bad args: {argv}"
 
+        use client = new HttpClient ()
+        let sha256 = SHA256.Create ()
+
         async {
-            use client = new HttpClient ()
+            let! allAvailableWorkloads =
+                allAvailableWorkloads ()
+                |> Map.toSeq
+                |> Seq.map (fun (ident, uri) ->
+                    async {
+                        let! ct = Async.CancellationToken
+                        let! s = Async.AwaitTask (client.GetStreamAsync uri)
+                        let ms = new MemoryStream ()
+                        do! Async.AwaitTask (s.CopyToAsync (ms, ct))
+                        let! hash = sha256.ComputeHashAsync (ms, ct) |> Async.AwaitTask
+                        ms.Seek (0, SeekOrigin.Begin) |> ignore
+                        let! manifest = fetchManifest' ms
+                        return ident, Convert.ToBase64String hash, manifest
+                    }
+                )
+                |> Async.Parallel
+            let allAvailableWorkloads = collate allAvailableWorkloads
+            let ourManifestPackage, ourHash, ourManifest =
+                match Map.tryFind desiredWorkload allAvailableWorkloads with
+                | None -> failwith $"You gave us {desiredWorkload} but there's no workload with that name"
+                | Some (package, hashStr, manifest) -> package, hashStr, manifest
 
-            let! manifest, flattened =
-                async {
-                    let! manifest = fetchManifest pathToManifestNupkg
-                    let requiredWorkloads = requiredWorkloads (WorkloadKey workloadName) manifest
-                    let! flattened = flatten client (Some workloadName) manifest
-                    return manifest, flattened
-                }
+            let requiredWorkloads = requiredWorkloads desiredWorkload ourManifest
+            let preRequisiteWorkloads =
+                ([], requiredWorkloads)
+                ||> Set.fold (fun required workload -> Map.find workload allAvailableWorkloads :: required)
 
-            State.toNix pathToManifestNupkg manifest flattened
+            let! flattened = flatten client (Some desiredWorkload) ourManifest
+
+            State.toNix ourManifestPackage ourHash ourManifest flattened
             |> printfn "%s"
 
             return 0
