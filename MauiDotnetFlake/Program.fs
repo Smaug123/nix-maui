@@ -217,6 +217,45 @@ module Program =
         )
         |> Map.ofSeq
 
+    /// Render this workload as Nix, and also return our dependency workloads
+    let renderWorkload
+        (client : HttpClient)
+        allAvailableWorkloads
+        (desiredWorkload : WorkloadKey)
+        : Async<NixInfo * WorkloadKey Set>
+        =
+        let ourManifestPackage, ourHash, ourManifest =
+            match Map.tryFind desiredWorkload allAvailableWorkloads with
+            | None -> failwith $"You gave us {desiredWorkload} but there's no workload with that name"
+            | Some (package, hashStr, manifest) -> package, hashStr, manifest
+
+        let requiredWorkloads = requiredWorkloads desiredWorkload ourManifest
+        async {
+            let! flattened = flatten client (Some desiredWorkload) ourManifest
+            return State.toNix ourManifestPackage ourHash ourManifest flattened, requiredWorkloads
+        }
+
+    let collectAllRequiredWorkloads
+        (client : HttpClient)
+        allAvailableWorkloads
+        (desiredWorkload : WorkloadKey)
+        : Async<NixInfo>
+        =
+        let rec go (required : Set<WorkloadKey>) (state : _) =
+            async {
+                if required.IsEmpty then
+                    return state
+                else
+                    let desiredWorkload, rest = required.MaximumElement, Set.remove required.MaximumElement required
+                    let! thisTop, required = renderWorkload client allAvailableWorkloads desiredWorkload
+                    return! go (Set.union required rest) (NixInfo.merge state thisTop)
+            }
+
+        async {
+            let! topLevel, required = renderWorkload client allAvailableWorkloads desiredWorkload
+            return! go required topLevel
+        }
+
     [<EntryPoint>]
     let main argv =
         // e.g. "maui"
@@ -246,20 +285,10 @@ module Program =
                 )
                 |> Async.Parallel
             let allAvailableWorkloads = collate allAvailableWorkloads
-            let ourManifestPackage, ourHash, ourManifest =
-                match Map.tryFind desiredWorkload allAvailableWorkloads with
-                | None -> failwith $"You gave us {desiredWorkload} but there's no workload with that name"
-                | Some (package, hashStr, manifest) -> package, hashStr, manifest
 
-            let requiredWorkloads = requiredWorkloads desiredWorkload ourManifest
-            let preRequisiteWorkloads =
-                ([], requiredWorkloads)
-                ||> Set.fold (fun required workload -> Map.find workload allAvailableWorkloads :: required)
+            let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads desiredWorkload
 
-            let! flattened = flatten client (Some desiredWorkload) ourManifest
-
-            State.toNix ourManifestPackage ourHash ourManifest flattened
-            |> printfn "%s"
+            printfn $"%s{nixInfo |> NixInfo.toString}"
 
             return 0
         }

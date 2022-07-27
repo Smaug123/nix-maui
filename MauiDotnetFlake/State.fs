@@ -16,6 +16,45 @@ type State =
             WorkloadName = workloadName
         }
 
+type NixName =
+    private
+    | NixName of string
+    override this.ToString () =
+        match this with
+        | NixName s -> s
+
+    static member Make (s : string) =
+        s.Replace(".", "")
+        |> NixName
+
+type NixInfo =
+    {
+        Workloads : Map<NixName, string>
+        Packs : Map<NixName, string>
+    }
+    override this.ToString () =
+        let workloads =
+            this.Workloads
+            |> Map.toSeq
+            |> Seq.map (fun (nixName, body) -> $"{nixName} = {body}")
+            |> String.concat "\n"
+        let packs =
+            this.Packs
+            |> Map.toSeq
+            |> Seq.map (fun (nixName, body) -> $"{nixName} = {body}")
+            |> String.concat "\n"
+        $"{workloads}\n{packs}"
+
+[<RequireQualifiedAccess>]
+module NixInfo =
+    let merge (n1 : NixInfo) (n2 : NixInfo) : NixInfo =
+        {
+            Workloads = Map.union (fun v1 v2 -> if v1 = v2 then v1 else failwith "duplicate found") n1.Workloads n2.Workloads
+            Packs = Map.union (fun v1 v2 -> if v1 = v2 then v1 else failwith "duplicate found") n1.Packs n2.Packs
+        }
+
+    let toString (n : NixInfo) : string = n.ToString ()
+
 [<RequireQualifiedAccess>]
 module State =
     let addPack (f : Pack) (s : State) =
@@ -50,34 +89,33 @@ module State =
             c.ComputeHash stream
             |> Convert.ToBase64String
 
-    /// Convert a string into a form suitable for use as a Nix identifier.
-    let private nixName (s : string) : string =
-        s.Replace(".", "")
-
     let toNix
         (manifestPackage : {| Package : string ; Version : string |})
         (hashBase64 : string)
         (manifest : Manifest)
         (state : State)
-        : string
+        : NixInfo
         =
         // TODO fix domain
-        let workloadName = Option.get state.WorkloadName
+        let workloadName =
+            Option.get state.WorkloadName
+            |> fun (WorkloadKey s) -> s
+            |> NixName.Make
         let spaces = "    "
         let workloadPacks =
             state.Packs
             |> Seq.map (fun f -> f.Name)
-            |> Seq.map (fun (PackKey p) -> nixName p)
+            |> Seq.map (fun (PackKey p) -> NixName.Make p |> fun s -> s.ToString ())
             |> String.concat $"\n{spaces}"
 
         let primary =
-            $"""{workloadName} = buildDotnetWorkload (sdkVersion: rec {{
+            $"""buildDotnetWorkload (sdkVersion: rec {{
   pname = "{workloadName}";
   version = "{manifest.Version}";
   src = fetchNuGet {{
     pname = "{manifestPackage.Package}";
     inherit version;
-    hash = "sha256-{hash}";
+    hash = "sha256-{hashBase64}";
   }};
   workloadName = "{workloadName}";
   workloadPacks = [
@@ -87,9 +125,10 @@ module State =
 
         let secondaries =
             state.Packs
-            |> List.map (fun l ->
+            |> Seq.map (fun l ->
                 let (PackKey name) = l.Name
-                $"""{nixName name} = buildDotnetPack rec {{
+                let nixName = NixName.Make name
+                let output = $"""buildDotnetPack rec {{
   pname = "{name}";
   version = "{l.Version}";
   kind = "{l.Type.ToString ()}";
@@ -98,10 +137,11 @@ module State =
     hash = "sha256-{getHash l.Data}";
   }};
 }};"""
+                nixName, output
             )
+            |> Map.ofSeq
 
-        let allSecondaries =
-            secondaries
-            |> String.concat "\n"
-
-        $"{primary}\n{allSecondaries}"
+        {
+            Workloads = Map.ofList [workloadName, primary]
+            Packs = secondaries
+        }
