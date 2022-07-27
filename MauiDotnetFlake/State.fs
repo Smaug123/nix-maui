@@ -53,7 +53,10 @@ module NixInfo =
             Packs = Map.union (fun v1 v2 -> if v1 = v2 then v1 else failwith "duplicate found") n1.Packs n2.Packs
         }
 
-    let toString (n : NixInfo) : string = n.ToString ()
+    let toString (n : NixInfo) : string =
+        $"""{{ buildDotnetWorkload, fetchNuGet, buildDotnetPack }}: rec {{
+{n}
+}}"""
 
 [<RequireQualifiedAccess>]
 module State =

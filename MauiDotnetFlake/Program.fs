@@ -277,6 +277,7 @@ module Program =
                         let! s = Async.AwaitTask (client.GetStreamAsync uri)
                         let ms = new MemoryStream ()
                         do! Async.AwaitTask (s.CopyToAsync (ms, ct))
+                        ms.Seek (0, SeekOrigin.Begin) |> ignore
                         let! hash = sha256.ComputeHashAsync (ms, ct) |> Async.AwaitTask
                         ms.Seek (0, SeekOrigin.Begin) |> ignore
                         let! manifest = fetchManifest' ms
@@ -288,7 +289,9 @@ module Program =
 
             let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads desiredWorkload
 
-            printfn $"%s{nixInfo |> NixInfo.toString}"
+            do!
+                File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/manifest.nix", nixInfo |> NixInfo.toString)
+                |> Async.AwaitTask
 
             return 0
         }
