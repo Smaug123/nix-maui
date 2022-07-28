@@ -8,7 +8,8 @@
   outputs = inputs@{ self, nixpkgs, utils, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
-      channelsConfig.allowBroken = true;
+      # for Android:
+      # channelsConfig.android_sdk.accept_license = true;
       outputsBuilder = channels:
         let
           inherit (channels.nixpkgs) lib buildEnv dotnetCorePackages stdenvNoCC;
@@ -146,7 +147,7 @@
         {
           devShell =
             let
-              inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages;
+              inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages jdk11 androidenv;
 
               manifest = import ./workload-manifest-contents.nix { inherit buildDotnetPack buildDotnetWorkload fetchNuGet; };
               workload = composeDotnetWorkload [ manifest.maui manifest.android manifest.microsoft-net-runtime-android manifest.ios manifest.maccatalyst ];
@@ -182,6 +183,30 @@
                   '';
                   sandboxProfile = ''(allow file-read* (literal "/usr/share/icu/icudt70l.dat"))'';
                 });
+
+            # for Android:
+            # android = androidenv.composeAndroidPackages {
+            #               toolsVersion = "26.1.1";
+            #               platformToolsVersion = "30.0.5";
+            #               buildToolsVersions = [ "30.0.3" ];
+            #               includeEmulator = false;
+            #               emulatorVersion = "30.3.4";
+            #               platformVersions = [ "28" "29" "30" ];
+            #               includeSources = false;
+            #               includeSystemImages = false;
+            #               systemImageTypes = [ "google_apis_playstore" ];
+            #               abiVersions = [ "armeabi-v7a" "arm64-v8a" ];
+            #               cmakeVersions = [ "3.10.2" ];
+            #               includeNDK = true;
+            #               ndkVersions = ["22.0.7026061"];
+            #               useGoogleAPIs = false;
+            #               useGoogleTVAddOns = false;
+            #               includeExtras = [
+            #                 "extras;google;gcm"
+            #               ];
+            #             };
+            # then use jdk11 and android.androidsdk in the packages
+
             in
             mkShell {
               packages = [ dotnet_sdk ];
