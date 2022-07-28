@@ -56,8 +56,16 @@
             in
             buildEnv {
               name = "workload-${name}-combined";
-              paths = nixpkgs.lib.lists.map (pack: if nixpkgs.lib.isDerivation pack then pack else nixpkgs.lib.attrsets.attrByPath [platform] (abort "bad platform") pack) ((input.workloadPacks or [ ]) ++ [ workload ]);
+              paths = nixpkgs.lib.lists.map (pack: if nixpkgs.lib.isDerivation pack then pack else nixpkgs.lib.attrsets.attrByPath [platform] (abort ("bad platform, had " + nixpkgs.lib.strings.concatStrings (nixpkgs.lib.attrsets.attrNames pack))) pack) ((input.workloadPacks or [ ]) ++ [ workload ]);
               pathsToLink = [ "/metadata" "/library-packs" "/packs" "/template-packs" "/sdk-manifests" "/tool-packs" ];
+            };
+
+          composeDotnetWorkload = workloads:
+            let name = nixpkgs.lib.concatStrings workloads;
+            in
+            buildEnv {
+              name = "workload-${name}-combined";
+              paths = workloads;
             };
 
           buildDotnetPack = { name ? "${pname}-${version}", pname, version, src, kind, dotnet_sdk ? dotnetCorePackages.sdk_6_0 }:
@@ -130,7 +138,7 @@
               inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages;
 
               manifest = import ./manifest.nix { inherit buildDotnetPack buildDotnetWorkload fetchNuGet; };
-              workload = manifest.android;
+              workload = composeDotnetWorkload [ manifest.maccatalyst manifest.microsoft-net-runtime-maccatalyst ];
 
               dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old:
                 let
