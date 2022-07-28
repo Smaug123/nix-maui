@@ -11,9 +11,8 @@
       channelsConfig.allowBroken = true;
       outputsBuilder = channels:
         let
-          inherit (channels.nixpkgs) lib buildEnv dotnetCorePackages;
-          # TODO: generalise this, it's as in the manifest.nix aliases
-          platform = "osx-arm64";
+          inherit (channels.nixpkgs) lib buildEnv dotnetCorePackages stdenvNoCC;
+          platform = (if stdenvNoCC.isLinux then "linux" else if stdenvNoCC.isDarwin then "osx" else abort "unknown platform") + "-" + (if stdenvNoCC.hostPlatform.parsed.cpu.family == "x86" then "x" else stdenvNoCC.hostPlatform.parsed.cpu.family) + builtins.toString stdenvNoCC.hostPlatform.parsed.cpu.bits;
 
           withWorkload = dotnet: workloads:
             channels.nixpkgs.callPackage (import ./combine-packages.nix dotnet workloads) {};

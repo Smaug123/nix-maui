@@ -1,7 +1,5 @@
 namespace MauiDotnetFlake
 
-open System
-
 type State =
     {
         Packs : Map<PackKey, Pack>
