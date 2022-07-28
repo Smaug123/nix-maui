@@ -1,18 +1,26 @@
 ﻿namespace MauiDotnetFlake
 
 open System
+open System.Collections.Generic
 open System.IO
 open System.IO.Compression
 open System.Net.Http
 open Newtonsoft.Json
 
 module Program =
+    [<Literal>]
+    let LOCAL_CACHE = true
+
     let source =
-        let dir = DirectoryInfo "/tmp/pkgs/"
-        if not dir.Exists then dir.Create ()
-        dir.EnumerateFiles ("*.nupkg", SearchOption.AllDirectories)
-        |> Seq.map (fun fi -> fi.Name.Substring(0, fi.Name.Length - ".nupkg".Length).ToLowerInvariant(), fi)
-        |> readOnlyDict
+        if LOCAL_CACHE then
+            let dir = DirectoryInfo "/tmp/pkgs/"
+            if not dir.Exists then dir.Create ()
+            dir.EnumerateFiles ("*.nupkg", SearchOption.AllDirectories)
+            |> Seq.map (fun fi -> fi.Name.Substring(0, fi.Name.Length - ".nupkg".Length).ToLowerInvariant(), fi)
+            |> readOnlyDict
+        else
+            Dictionary ()
+            :> IReadOnlyDictionary<_, _>
 
     let fetchZip (client : HttpClient) (uri : Uri) : Stream Async =
         async {
@@ -83,11 +91,19 @@ module Program =
         | false, _ ->
             download.Force ()
 
-    let fetchPackageHash (client : HttpClient) (packKey : PackKey) (version : Version) : Async<HashString> =
-        async {
-            use! stream = fetchPackageStream client packKey version
-            return! Hash.getAsync stream
-        }
+    let fetchPackageHash (client : HttpClient) =
+        // Not necessary, but speeds it up a fair bit
+        let memo = System.Collections.Concurrent.ConcurrentDictionary<PackKey * Version, HashString> ()
+        fun (packKey : PackKey) (version : Version) ->
+            async {
+                match memo.TryGetValue ((packKey, version)) with
+                | true, v -> return v
+                | false, _ ->
+                use! stream = fetchPackageStream client packKey version
+                let! answer = Hash.getAsync stream
+                memo.TryAdd ((packKey, version), answer) |> ignore
+                return answer
+            }
 
     let fetchManifest' (contents : Stream) : Manifest Async =
         async {
@@ -100,7 +116,6 @@ module Program =
                 }
             return JsonConvert.DeserializeObject<Manifest> entry
         }
-
 
     /// Download the specified nupkg and parse out the dependencies it implies.
     let fetchManifest (manifest : FileInfo) : Manifest Async =
@@ -160,29 +175,33 @@ module Program =
         Path.Combine (typeof<int>.Assembly.Location, "..", "..", "..", "..", "bin", "dotnet")
         |> FileInfo
 
-    let allAvailableWorkloads () =
-        let psi = System.Diagnostics.ProcessStartInfo (dotnet.FullName, Arguments = "workload update --print-download-link-only --sdk-version 6.0.301")
-        psi.RedirectStandardError <- true
-        psi.RedirectStandardOutput <- true
-        use pr = new System.Diagnostics.Process()
-        pr.StartInfo <- psi
-        if not (pr.Start ()) then
-            failwith $"failed to start {dotnet}"
-        pr.WaitForExit ()
-        let output = pr.StandardOutput.ReadToEnd ()
+    let allAvailableWorkloads (sdkVersion : string) : Async<_> =
+        async {
+            let psi = System.Diagnostics.ProcessStartInfo (dotnet.FullName, Arguments = $"workload update --print-download-link-only --sdk-version {sdkVersion}")
+            psi.RedirectStandardError <- true
+            psi.RedirectStandardOutput <- true
+            use pr = new System.Diagnostics.Process()
+            pr.StartInfo <- psi
+            if not (pr.Start ()) then
+                failwith $"failed to start {dotnet}"
+            let! ct = Async.CancellationToken
+            do! Async.AwaitTask (pr.WaitForExitAsync ct)
+            let output = pr.StandardOutput.ReadToEnd ()
 
-        match output.Split("==") with
-        | [| _ ; "allPackageLinksJsonOutputStart" ; desired ; "allPackageLinksJsonOutputEnd" ; "\n" |] ->
-            System.Text.Json.JsonSerializer.Deserialize<string list> desired
-            |> List.map (fun uri ->
-                match uri.Split "/" with
-                | [| "https:" ; "" ; "api.nuget.org" ; "v3-flatcontainer" ; package ; version ; _path |] ->
-                    {| Package = package ; Version = version |}, Uri uri
-                | _ -> failwith $"Unrecognised URL format: {uri}"
-            )
-            |> Map.ofList
-        | _ ->
-            failwith $"Unexpected formatting: {output}"
+            match output.Split("==") with
+            | [| _ ; "allPackageLinksJsonOutputStart" ; desired ; "allPackageLinksJsonOutputEnd" ; "\n" |] ->
+                return
+                    System.Text.Json.JsonSerializer.Deserialize<string list> desired
+                    |> List.map (fun uri ->
+                        match uri.Split "/" with
+                        | [| "https:" ; "" ; "api.nuget.org" ; "v3-flatcontainer" ; package ; version ; _path |] ->
+                            {| Package = package ; Version = version |}, Uri uri
+                        | _ -> failwith $"Unrecognised URL format: {uri}"
+                    )
+                    |> Map.ofList
+            | _ ->
+                return failwith $"Unexpected formatting: {output}"
+        }
 
     let requiredWorkloads (w : WorkloadKey) (m : Manifest) : WorkloadKey Set =
         let rec go (toAcc : WorkloadKey list) (results : WorkloadKey Set) =
@@ -241,7 +260,6 @@ module Program =
     let collectAllRequiredWorkloads
         (client : HttpClient)
         (allAvailableWorkloads : Map<WorkloadKey, WorkloadCollation>)
-        (desiredWorkload : WorkloadKey)
         : Async<NixInfo>
         =
         let rec go (required : Set<WorkloadKey>) (state : _) =
@@ -250,28 +268,31 @@ module Program =
                     return state
                 else
                     let desiredWorkload, rest = required.MaximumElement, Set.remove required.MaximumElement required
-                    let! thisTop, required = renderWorkload client allAvailableWorkloads desiredWorkload
-                    return! go (Set.union required rest) (NixInfo.merge state thisTop)
+                    // TODO - record the _required dependencies between workloads somehow, so that we can
+                    // consume them in Nix space
+                    let! thisTop, _required = renderWorkload client allAvailableWorkloads desiredWorkload
+                    return! go rest (NixInfo.merge state thisTop)
             }
 
-        async {
-            let! topLevel, required = renderWorkload client allAvailableWorkloads desiredWorkload
-            return! go required topLevel
-        }
+        go (Map.keys allAvailableWorkloads |> Set.ofSeq) NixInfo.empty
 
     [<EntryPoint>]
     let main argv =
-        // e.g. "maui"
-        let desiredWorkload =
+        // e.g. "6.0.301", "/Users/patrick/Documents/GitHub/maui-dotnet-flake"
+        let sdkVersion, outputDir =
             match argv with
-            | [| w |] -> WorkloadKey w
-            | _ -> failwith $"bad args: {argv}"
+            | [| ver; outputDir |] -> ver, DirectoryInfo outputDir
+            | _ ->
+                argv
+                |> String.concat " "
+                |> failwithf "bad args: %s"
 
         use client = new HttpClient ()
 
         async {
+            let! allAvailableWorkloads = allAvailableWorkloads sdkVersion
             let! allAvailableWorkloads =
-                allAvailableWorkloads ()
+                allAvailableWorkloads
                 |> Map.toSeq
                 |> Seq.map (fun (ident, uri) ->
                     async {
@@ -294,8 +315,8 @@ module Program =
                 |> Async.Parallel
             let allAvailableWorkloads = collate allAvailableWorkloads
 
-            let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads desiredWorkload
-            let writeContents = File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/workload-manifest-contents.nix", nixInfo |> NixInfo.toString)
+            let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads
+            let writeContents = File.WriteAllTextAsync (Path.Combine (outputDir.FullName, "workload-manifest-contents.nix"), nixInfo |> NixInfo.toString)
 
             let stripVersion (s : string) =
                 s.Substring (0, s.LastIndexOf '-')
@@ -324,7 +345,7 @@ module Program =
                 )
                 |> String.concat "\n"
                 |> sprintf "fetchNuGet: [\n%s\n]"
-            let writeManifestList = File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/workload-manifest-list.nix", allManifests)
+            let writeManifestList = File.WriteAllTextAsync (Path.Combine (outputDir.FullName, "workload-manifest-list.nix"), allManifests)
 
             do! Async.AwaitTask writeContents
             do! Async.AwaitTask writeManifestList

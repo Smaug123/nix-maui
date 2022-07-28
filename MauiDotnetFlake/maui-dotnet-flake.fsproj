@@ -12,7 +12,6 @@
     <Compile Include="Hash.fs" />
     <Compile Include="Map.fs" />
     <Compile Include="State.fs" />
-    <Compile Include="Seq.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

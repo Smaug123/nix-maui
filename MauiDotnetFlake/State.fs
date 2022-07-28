@@ -71,6 +71,13 @@ type NixInfo =
 
 [<RequireQualifiedAccess>]
 module NixInfo =
+    let empty =
+        {
+            Aliases = Map.empty
+            Workloads = Map.empty
+            Packs = Map.empty
+        }
+
     let private assertEqual<'a when 'a : equality> (x : 'a) (y : 'a) : 'a =
         if x = y then x else failwith $"duplicate found: {x}\n{y}\n-----\n"
 
