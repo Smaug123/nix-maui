@@ -295,10 +295,29 @@ module Program =
             let allAvailableWorkloads = collate allAvailableWorkloads
 
             let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads desiredWorkload
+            let writeContents = File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/workload-manifest-contents.nix", nixInfo |> NixInfo.toString)
 
-            do!
-                File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/manifest.nix", nixInfo |> NixInfo.toString)
-                |> Async.AwaitTask
+            let allManifests =
+                allAvailableWorkloads
+                |> Map.values
+                |> Seq.map (fun collation ->
+                    $"""{{
+  pname = "{collation.Package |> NixName.Make}";
+  version = "{collation.Version}";
+  src = fetchNuGet {{
+    version = "{collation.Version}";
+    hash = "sha256-{collation.Hash}";
+    pname = "{collation.Package}";
+  }};
+  workloadPacks = [];
+}}"""
+                )
+                |> String.concat "\n"
+                |> sprintf "fetchNuGet: [\n%s\n]"
+            let writeManifestList = File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/workload-manifest-list.nix", allManifests)
+
+            do! Async.AwaitTask writeContents
+            do! Async.AwaitTask writeManifestList
 
             return 0
         }

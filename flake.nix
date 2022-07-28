@@ -60,12 +60,14 @@
               pathsToLink = [ "/metadata" "/library-packs" "/packs" "/template-packs" "/sdk-manifests" "/tool-packs" ];
             };
 
+          allManifests = nixpkgs.lib.lists.map buildDotnetWorkload ((import ./workload-manifest-list.nix) fetchNuGet);
+
           composeDotnetWorkload = workloads:
             let name = nixpkgs.lib.concatStrings workloads;
             in
             buildEnv {
               name = "workload-${name}-combined";
-              paths = workloads;
+              paths = workloads ++ [ allManifests ];
             };
 
           buildDotnetPack = { name ? "${pname}-${version}", pname, version, src, kind, dotnet_sdk ? dotnetCorePackages.sdk_6_0 }:
@@ -108,6 +110,9 @@
                 mkdir -p "$workload_out"
                 # Install workload files
                 for f in $(ls -1 | grep -vE '\[Content_Types\].xml|_rels|package'); do
+                  # Some package contents have no read access?!
+                  chmod a+r -R "$f"
+                  ls -la "$f"
                   cp -R "$f" "$workload_out"
                 done
                 # Set file permissions (e.g., for shell scripts)
@@ -137,8 +142,8 @@
             let
               inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages;
 
-              manifest = import ./manifest.nix { inherit buildDotnetPack buildDotnetWorkload fetchNuGet; };
-              workload = composeDotnetWorkload [ manifest.maccatalyst manifest.microsoft-net-runtime-maccatalyst ];
+              manifest = import ./workload-manifest-contents.nix { inherit buildDotnetPack buildDotnetWorkload fetchNuGet; };
+              workload = composeDotnetWorkload [ manifest.maui manifest.android manifest.microsoft-net-runtime-android ];
 
               dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old:
                 let
