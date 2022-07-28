@@ -297,12 +297,22 @@ module Program =
             let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads desiredWorkload
             let writeContents = File.WriteAllTextAsync ("/Users/patrick/Documents/GitHub/maui-dotnet-flake/workload-manifest-contents.nix", nixInfo |> NixInfo.toString)
 
+            let stripVersion (s : string) =
+                s.Substring (0, s.LastIndexOf '-')
+
+            let stripManifest (s : string) =
+                if s.EndsWith (".Manifest", StringComparison.InvariantCultureIgnoreCase) then
+                    s.Substring (0, s.Length - ".Manifest".Length)
+                else
+                    failwith $"{s} didn't end with .Manifest"
+
             let allManifests =
                 allAvailableWorkloads
                 |> Map.values
+                |> Seq.distinctBy (fun collation -> collation.Package, collation.Version)
                 |> Seq.map (fun collation ->
                     $"""{{
-  pname = "{collation.Package |> NixName.Make}";
+  pname = "{collation.Package |> stripVersion |> stripManifest}";
   version = "{collation.Version}";
   src = fetchNuGet {{
     version = "{collation.Version}";

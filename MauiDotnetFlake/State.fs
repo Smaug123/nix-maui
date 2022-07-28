@@ -139,7 +139,8 @@ module State =
             |> String.concat $"\n{spaces}"
 
         let primary =
-            $"""buildDotnetWorkload (sdkVersion: rec {{
+            //$"""buildDotnetWorkload (sdkVersion: rec {{
+            $"""rec {{
   pname = "{workloadName}";
   version = "{collation.Manifest.Version}";
   src = fetchNuGet {{
@@ -152,7 +153,7 @@ module State =
 {spaces}{workloadPacks}
 {spaces}{aliases}
   ];
-}});"""
+}};"""
         let primary = NixExpression primary
 
         let secondaries =

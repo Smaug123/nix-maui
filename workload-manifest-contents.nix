@@ -1,5 +1,5 @@
 { buildDotnetWorkload, fetchNuGet, buildDotnetPack }: rec {
-android = buildDotnetWorkload (sdkVersion: rec {
+android = rec {
   pname = "android";
   version = "32.0.440";
   src = fetchNuGet {
@@ -23,8 +23,8 @@ android = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftAndroidTemplates
     MicrosoftAndroidSdk
   ];
-});
-ios = buildDotnetWorkload (sdkVersion: rec {
+};
+ios = rec {
   pname = "ios";
   version = "15.4.328";
   src = fetchNuGet {
@@ -44,8 +44,8 @@ ios = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftiOSTemplates
     MicrosoftiOSWindowsSdkAliased
   ];
-});
-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
+};
+maccatalyst = rec {
   pname = "maccatalyst";
   version = "15.4.328";
   src = fetchNuGet {
@@ -62,8 +62,8 @@ maccatalyst = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftMacCatalystTemplates
     
   ];
-});
-maui = buildDotnetWorkload (sdkVersion: rec {
+};
+maui = rec {
   pname = "maui";
   version = "6.0.419";
   src = fetchNuGet {
@@ -119,8 +119,8 @@ maui = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftMauiTemplates-60
     
   ];
-});
-microsoft-net-runtime-android = buildDotnetWorkload (sdkVersion: rec {
+};
+microsoft-net-runtime-android = rec {
   pname = "microsoft-net-runtime-android";
   version = "6.0.7";
   src = fetchNuGet {
@@ -172,8 +172,8 @@ microsoft-net-runtime-android = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
-});
-microsoft-net-runtime-android-aot = buildDotnetWorkload (sdkVersion: rec {
+};
+microsoft-net-runtime-android-aot = rec {
   pname = "microsoft-net-runtime-android-aot";
   version = "6.0.7";
   src = fetchNuGet {
@@ -225,8 +225,8 @@ microsoft-net-runtime-android-aot = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
-});
-microsoft-net-runtime-ios = buildDotnetWorkload (sdkVersion: rec {
+};
+microsoft-net-runtime-ios = rec {
   pname = "microsoft-net-runtime-ios";
   version = "6.0.7";
   src = fetchNuGet {
@@ -278,8 +278,8 @@ microsoft-net-runtime-ios = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
-});
-microsoft-net-runtime-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
+};
+microsoft-net-runtime-maccatalyst = rec {
   pname = "microsoft-net-runtime-maccatalyst";
   version = "6.0.7";
   src = fetchNuGet {
@@ -331,7 +331,7 @@ microsoft-net-runtime-maccatalyst = buildDotnetWorkload (sdkVersion: rec {
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
     MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
   ];
-});
+};
 MicrosoftAndroidRef31 = buildDotnetPack rec {
   pname = "Microsoft.Android.Ref.31";
   version = "32.0.440";

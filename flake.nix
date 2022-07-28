@@ -60,14 +60,19 @@
               pathsToLink = [ "/metadata" "/library-packs" "/packs" "/template-packs" "/sdk-manifests" "/tool-packs" ];
             };
 
-          allManifests = nixpkgs.lib.lists.map buildDotnetWorkload ((import ./workload-manifest-list.nix) fetchNuGet);
+          allManifests = import ./workload-manifest-list.nix fetchNuGet;
 
           composeDotnetWorkload = workloads:
-            let name = nixpkgs.lib.concatStrings workloads;
+            let
+              builtWorkloads = nixpkgs.lib.lists.map (x: buildDotnetWorkload (sdkVersion: x)) workloads;
+              name = nixpkgs.lib.concatStrings builtWorkloads;
+              fallbackWorkloads =
+                builtins.filter (fallback: nixpkgs.lib.lists.all (desired: desired.src != fallback.src) workloads) allManifests;
             in
             buildEnv {
               name = "workload-${name}-combined";
-              paths = workloads ++ [ allManifests ];
+              paths =
+                  builtWorkloads ++ nixpkgs.lib.lists.map (x: buildDotnetWorkload (sdkVersion: x)) fallbackWorkloads;
             };
 
           buildDotnetPack = { name ? "${pname}-${version}", pname, version, src, kind, dotnet_sdk ? dotnetCorePackages.sdk_6_0 }:
