@@ -24,9 +24,8 @@
             inherit hash;
           };
 
-          buildDotnetWorkload = f:
+          buildDotnetWorkload = input:
             let
-              input = f sdkVersion;
               name = "f${input.pname}-${input.version}";
               workloadName = input.workloadName or null;
               sdkVersion = dotnetCorePackages.sdk_6_0.version;
@@ -58,7 +57,7 @@
             buildEnv {
               name = "workload-${name}-combined";
               paths =
-                  nixpkgs.lib.lists.filter (x: !(builtins.isNull x)) (nixpkgs.lib.lists.map (pack: if nixpkgs.lib.isDerivation pack then pack else nixpkgs.lib.attrsets.attrByPath [platform] null pack) ((input.workloadPacks or [ ]) ++ [ workload ]));
+                  nixpkgs.lib.lists.filter (x: !(builtins.isNull x)) (nixpkgs.lib.lists.map (pack: if nixpkgs.lib.hasAttr "pname" pack then pack else nixpkgs.lib.attrsets.attrByPath [platform] null pack) (input.workloadPacks or [ ]) ++ [ workload ]);
               pathsToLink = [ "/metadata" "/library-packs" "/packs" "/template-packs" "/sdk-manifests" "/tool-packs" ];
             };
 
@@ -66,7 +65,8 @@
 
           composeDotnetWorkload = workloads:
             let
-              builtWorkloads = nixpkgs.lib.lists.map (x: buildDotnetWorkload (sdkVersion: x)) workloads;
+              builtWorkloads =
+                  nixpkgs.lib.lists.map buildDotnetWorkload workloads;
               name = nixpkgs.lib.concatStrings builtWorkloads;
               fallbackWorkloads =
                 builtins.filter (fallback: nixpkgs.lib.lists.all (desired: desired.src != fallback.src) workloads) allManifests;
@@ -74,7 +74,7 @@
             buildEnv {
               name = "workload-${name}-combined";
               paths =
-                  builtWorkloads ++ nixpkgs.lib.lists.map (x: buildDotnetWorkload (sdkVersion: x)) fallbackWorkloads;
+                  builtWorkloads ++ nixpkgs.lib.lists.map buildDotnetWorkload fallbackWorkloads;
             };
 
           buildDotnetPack = { name ? "${pname}-${version}", pname, version, src, kind, dotnet_sdk ? dotnetCorePackages.sdk_6_0 }:
