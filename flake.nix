@@ -197,7 +197,7 @@
           inherit (channels.nixpkgs) lib mkShell stdenv dotnetCorePackages jdk11 androidenv;
 
           manifest = import ./workload-manifest-contents.nix {inherit buildDotnetPack buildDotnetWorkload fetchNuGet;};
-          workload = composeDotnetWorkload [manifest.maui manifest.android manifest.microsoft-net-runtime-android manifest.ios manifest.maccatalyst];
+          workload = composeDotnetWorkload [manifest.maui manifest.microsoft-net-runtime-android manifest.ios manifest.maccatalyst];
 
           dotnet_sdk = dotnetCorePackages.sdk_6_0.overrideAttrs (old: let
             major = lib.versions.major old.version;
