@@ -30,7 +30,7 @@ This is a complete listing of each .NET workload you can install, the dependent 
 ### `workload-manifest-list.nix`
 
 This is a complete listing of each NuGet package that defines an SDK manifest, but with no dependencies.
-This is required because if .NET somehow knows which manifests are *meant* to be there, even if you're never going to use them, and it complains unless all these packages are present in its `sdk-manifests` folder (which they are by default, except that we're upgrading them from the default in the course of installing a workload).
+This is required because .NET somehow knows which manifests are *meant* to be there, even if you're never going to use them, and it complains unless all these packages are present in its `sdk-manifests` folder (which they are by default, except that we're upgrading them from the default in the course of installing a workload).
 
 ## Known bugs
 
