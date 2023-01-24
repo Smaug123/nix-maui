@@ -1,17 +1,21 @@
 namespace MauiDotnetFlake
 
+open System
+
 type State =
     {
         Packs : Map<PackKey, Pack>
         WorkloadName : WorkloadKey option
         /// A map of before-alias-resolution to the available resolutions.
         Aliases : Map<PackKey, Map<Platform, Pack>>
+        Dependencies : Map<WorkloadKey, WorkloadKey Set>
     }
     static member Empty (workloadName : WorkloadKey option) : State =
         {
             Packs = Map.empty
             WorkloadName = workloadName
             Aliases = Map.empty
+            Dependencies = Map.empty
         }
 
 type NixName =
@@ -22,11 +26,11 @@ type NixName =
         | NixName s -> s
 
     static member Make (s : string) =
-        s.Replace(".", "")
+        s.Replace('.', '_')
         |> NixName
 
     static member Make (PackKey s) =
-        s.Replace(".", "")
+        s.Replace('.', '_')
         |> NixName
 
 type NixExpression =
@@ -39,7 +43,8 @@ type NixInfo =
     {
         Workloads : Map<NixName, NixExpression>
         Packs : Map<NixName, NixExpression>
-        Aliases : Map<PackKey, Map<Platform, PackKey>>
+        Aliases : Map<PackKey, Map<Platform, PackKey * Version>>
+        Dependencies : Map<WorkloadKey, WorkloadKey Set>
     }
     override this.ToString () =
         let workloads =
@@ -59,8 +64,11 @@ type NixInfo =
                 let resolveMap =
                     resolutions
                     |> Map.toSeq
-                    |> Seq.map (fun (platform, resolved) ->
-                        $"\"{platform}\" = {NixName.Make resolved};"
+                    |> Seq.map (fun (platform, (resolved, version)) ->
+                        let name =
+                            $"{resolved}-{version}"
+                            |> NixName.Make
+                        $"\"{platform}\" = {name};"
                     )
                     |> String.concat "\n"
                     |> sprintf "{%s}"
@@ -76,6 +84,7 @@ module NixInfo =
             Aliases = Map.empty
             Workloads = Map.empty
             Packs = Map.empty
+            Dependencies = Map.empty
         }
 
     let private assertEqual<'a when 'a : equality> (x : 'a) (y : 'a) : 'a =
@@ -85,10 +94,19 @@ module NixInfo =
         let workloads = Map.union assertEqual n1.Workloads n2.Workloads
         let packs = Map.union assertEqual n1.Packs n2.Packs
         let aliases = Map.union (Map.union assertEqual) n1.Aliases n2.Aliases
+        let dependencies = Map.union assertEqual n1.Dependencies n2.Dependencies
         {
             Workloads = workloads
             Packs = packs
             Aliases = aliases
+            Dependencies = dependencies
+        }
+
+    let addDependency desired m (n : NixInfo) : NixInfo =
+        { n with
+            Dependencies =
+                n.Dependencies
+                |> Map.change desired (function | None -> Some m | Some s -> failwith "err")
         }
 
     let toString (n : NixInfo) : string =
@@ -126,14 +144,15 @@ module State =
         : NixInfo
         =
         // TODO fix domain
-        let workloadName =
+        let nixWorkloadName =
             Option.get state.WorkloadName
-            |> fun (WorkloadKey s) -> s
+            |> fun (WorkloadKey s) -> $"{s}-{collation.Manifest.Version}"
             |> NixName.Make
+        let workloadName = Option.get state.WorkloadName |> fun (WorkloadKey s) -> s
         let spaces = "    "
         let workloadPacks =
             state.Packs.Values
-            |> Seq.map (fun f -> f.Name)
+            |> Seq.map (fun f -> $"{f.Name}-{f.Version}")
             |> Seq.map NixName.Make
             |> Seq.map string<NixName>
             |> Seq.sort
@@ -146,9 +165,12 @@ module State =
             |> String.concat $"\n{spaces}"
 
         let primary =
+            let nugetName =
+                collation.Package.Substring(0, collation.Package.IndexOf '-')
+                |> chopEnd ".manifest"
             //$"""buildDotnetWorkload (sdkVersion: rec {{
             $"""rec {{
-  pname = "{workloadName}";
+  pname = "{nixWorkloadName}";
   version = "{collation.Manifest.Version}";
   src = fetchNuGet {{
     pname = "{collation.Package}";
@@ -156,6 +178,7 @@ module State =
     hash = "sha256-{collation.Hash}";
   }};
   workloadName = "{workloadName}";
+  nugetName = "{nugetName}";
   workloadPacks = [
 {spaces}{workloadPacks}
 {spaces}{aliases}
@@ -169,10 +192,15 @@ module State =
             |> Seq.sortBy (fun p -> p.Name)
             |> Seq.map (fun l ->
                 let (PackKey name) = l.Name
-                let nixName = NixName.Make name
+                let nixName = NixName.Make $"{name}-{l.Version}"
+                let originalName =
+                    match l.OriginalName with
+                    | None -> l.Name
+                    | Some n -> n
                 let output = $"""buildDotnetPack rec {{
   pname = "{name}";
   version = "{l.Version}";
+  originalKey = "{originalName}";
   kind = "{l.Type.ToString ()}";
   src = fetchNuGet {{
     inherit pname version;
@@ -184,9 +212,10 @@ module State =
             |> Map.ofSeq
 
         {
-            Workloads = Map.ofList [workloadName, primary]
+            Workloads = Map.ofList [nixWorkloadName, primary]
             Packs = secondaries
             Aliases =
                 state.Aliases
-                |> Map.map (fun _ -> Map.map (fun _ v -> v.Name))
+                |> Map.map (fun _ -> Map.map (fun _ v -> v.Name, v.Version))
+            Dependencies = state.Dependencies
         }

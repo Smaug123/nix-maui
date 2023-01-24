@@ -1,2697 +1,4404 @@
 { buildDotnetWorkload, fetchNuGet, buildDotnetPack }: rec {
-android = rec {
-  pname = "android";
-  version = "32.0.440";
+android-33_0_26 = rec {
+  pname = "android-33_0_26";
+  version = "33.0.26";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.android.manifest-6.0.300";
+    pname = "microsoft.net.sdk.android.manifest-7.0.100";
     inherit version;
-    hash = "sha256-IBcXur/I4Su+2PiVLuheS0sIxOAHSsS9XMW2knhYCE8=";
+    hash = "sha256-hUYzhN1PJW5brOL654C55MMwTca8FED+5YRba6gAUM8=";
   };
   workloadName = "android";
+  nugetName = "microsoft.net.sdk.android";
   workloadPacks = [
-    MicrosoftAndroidRef31
-    MicrosoftAndroidRef32
-    MicrosoftAndroidRef33
-    MicrosoftAndroidRuntime32android-arm
-    MicrosoftAndroidRuntime32android-arm64
-    MicrosoftAndroidRuntime32android-x64
-    MicrosoftAndroidRuntime32android-x86
-    MicrosoftAndroidRuntime33android-arm
-    MicrosoftAndroidRuntime33android-arm64
-    MicrosoftAndroidRuntime33android-x64
-    MicrosoftAndroidRuntime33android-x86
-    MicrosoftAndroidTemplates
-    MicrosoftAndroidSdk
+    Microsoft_Android_Ref_33-33_0_26
+    Microsoft_Android_Runtime_33_android-arm-33_0_26
+    Microsoft_Android_Runtime_33_android-arm64-33_0_26
+    Microsoft_Android_Runtime_33_android-x64-33_0_26
+    Microsoft_Android_Runtime_33_android-x86-33_0_26
+    Microsoft_Android_Templates-33_0_26
+    Microsoft_Android_Sdk_net6
+    Microsoft_Android_Sdk_net7
   ];
 };
-android-33 = rec {
-  pname = "android-33";
-  version = "32.0.440";
+ios-16_2_1007 = rec {
+  pname = "ios-16_2_1007";
+  version = "16.2.1007";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.android.manifest-6.0.300";
+    pname = "microsoft.net.sdk.ios.manifest-7.0.100";
     inherit version;
-    hash = "sha256-IBcXur/I4Su+2PiVLuheS0sIxOAHSsS9XMW2knhYCE8=";
-  };
-  workloadName = "android-33";
-  workloadPacks = [
-    MicrosoftAndroidRef31
-    MicrosoftAndroidRef32
-    MicrosoftAndroidRef33
-    MicrosoftAndroidRuntime32android-arm
-    MicrosoftAndroidRuntime32android-arm64
-    MicrosoftAndroidRuntime32android-x64
-    MicrosoftAndroidRuntime32android-x86
-    MicrosoftAndroidRuntime33android-arm
-    MicrosoftAndroidRuntime33android-arm64
-    MicrosoftAndroidRuntime33android-x64
-    MicrosoftAndroidRuntime33android-x86
-    MicrosoftAndroidTemplates
-    MicrosoftAndroidSdk
-  ];
-};
-ios = rec {
-  pname = "ios";
-  version = "15.4.328";
-  src = fetchNuGet {
-    pname = "microsoft.net.sdk.ios.manifest-6.0.300";
-    inherit version;
-    hash = "sha256-BMtCkuBydIlnH5yohg6yKc6lqQ4jcvz9rpP7jLtO5G0=";
+    hash = "sha256-5zP1OGmRYFh8aZN3+bdGfdjssqHIHTXk7h8DAaXrSuE=";
   };
   workloadName = "ios";
+  nugetName = "microsoft.net.sdk.ios";
   workloadPacks = [
-    MicrosoftiOSRef
-    MicrosoftiOSRuntimeios-arm
-    MicrosoftiOSRuntimeios-arm64
-    MicrosoftiOSRuntimeiossimulator-arm64
-    MicrosoftiOSRuntimeiossimulator-x64
-    MicrosoftiOSRuntimeiossimulator-x86
-    MicrosoftiOSSdk
-    MicrosoftiOSTemplates
-    MicrosoftiOSWindowsSdkAliased
+    Microsoft_iOS_Ref-16_2_1007
+    Microsoft_iOS_Runtime_ios-arm-16_2_1007
+    Microsoft_iOS_Runtime_ios-arm64-16_2_1007
+    Microsoft_iOS_Runtime_iossimulator-arm64-16_2_1007
+    Microsoft_iOS_Runtime_iossimulator-x64-16_2_1007
+    Microsoft_iOS_Runtime_iossimulator-x86-16_2_1007
+    Microsoft_iOS_Sdk_net6
+    Microsoft_iOS_Sdk_net7
+    Microsoft_iOS_Templates_net7
+    Microsoft_iOS_Windows_Sdk_Aliased_net6
+    Microsoft_iOS_Windows_Sdk_Aliased_net7
   ];
 };
-maccatalyst = rec {
-  pname = "maccatalyst";
-  version = "15.4.328";
+maccatalyst-16_2_1007 = rec {
+  pname = "maccatalyst-16_2_1007";
+  version = "16.2.1007";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maccatalyst.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maccatalyst.manifest-7.0.100";
     inherit version;
-    hash = "sha256-2G3fLcQKNq2v2aTN13ZNMWdhAfJ5Iv3m6dFzl4c0WqY=";
+    hash = "sha256-5/Y326x127b2n0ZDzJ/CZtXs0e+BTrfz3UnrYjxl3X8=";
   };
   workloadName = "maccatalyst";
+  nugetName = "microsoft.net.sdk.maccatalyst";
   workloadPacks = [
-    MicrosoftMacCatalystRef
-    MicrosoftMacCatalystRuntimemaccatalyst-arm64
-    MicrosoftMacCatalystRuntimemaccatalyst-x64
-    MicrosoftMacCatalystSdk
-    MicrosoftMacCatalystTemplates
-    
+    Microsoft_MacCatalyst_Ref-16_2_1007
+    Microsoft_MacCatalyst_Runtime_maccatalyst-arm64-16_2_1007
+    Microsoft_MacCatalyst_Runtime_maccatalyst-x64-16_2_1007
+    Microsoft_MacCatalyst_Sdk_net6
+    Microsoft_MacCatalyst_Sdk_net7
+    Microsoft_MacCatalyst_Templates_net7
   ];
 };
-macos = rec {
-  pname = "macos";
-  version = "12.3.328";
+macos-13_1_1007 = rec {
+  pname = "macos-13_1_1007";
+  version = "13.1.1007";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.macos.manifest-6.0.300";
+    pname = "microsoft.net.sdk.macos.manifest-7.0.100";
     inherit version;
-    hash = "sha256-5x4/JHFLKx8x2MniFEsM07GB5sR5nHj834YdYC2Wogc=";
+    hash = "sha256-+fQmJdjnvcrBAk0oMpe4ERB4A057J5PZGgwBlsl2tWc=";
   };
   workloadName = "macos";
+  nugetName = "microsoft.net.sdk.macos";
   workloadPacks = [
-    MicrosoftmacOSRef
-    MicrosoftmacOSRuntimeosx-arm64
-    MicrosoftmacOSRuntimeosx-x64
-    MicrosoftmacOSSdk
-    MicrosoftmacOSTemplates
-    
+    Microsoft_macOS_Ref-13_1_1007
+    Microsoft_macOS_Runtime_osx-arm64-13_1_1007
+    Microsoft_macOS_Runtime_osx-x64-13_1_1007
+    Microsoft_macOS_Sdk_net6
+    Microsoft_macOS_Sdk_net7
+    Microsoft_macOS_Templates_net7
   ];
 };
-maui = rec {
-  pname = "maui";
-  version = "6.0.419";
+maui-7_0_58 = rec {
+  pname = "maui-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-android = rec {
-  pname = "maui-android";
-  version = "6.0.419";
+maui-android-7_0_58 = rec {
+  pname = "maui-android-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-android";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-blazor = rec {
-  pname = "maui-blazor";
-  version = "6.0.419";
+maui-blazor-7_0_58 = rec {
+  pname = "maui-blazor-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-blazor";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-core = rec {
-  pname = "maui-core";
-  version = "6.0.419";
+maui-core-7_0_58 = rec {
+  pname = "maui-core-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-core";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-desktop = rec {
-  pname = "maui-desktop";
-  version = "6.0.419";
+maui-desktop-7_0_58 = rec {
+  pname = "maui-desktop-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-desktop";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-ios = rec {
-  pname = "maui-ios";
-  version = "6.0.419";
+maui-ios-7_0_58 = rec {
+  pname = "maui-ios-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-ios";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-maccatalyst = rec {
-  pname = "maui-maccatalyst";
-  version = "6.0.419";
+maui-maccatalyst-7_0_58 = rec {
+  pname = "maui-maccatalyst-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-maccatalyst";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-mobile = rec {
-  pname = "maui-mobile";
-  version = "6.0.419";
+maui-mobile-7_0_58 = rec {
+  pname = "maui-mobile-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-mobile";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-tizen = rec {
-  pname = "maui-tizen";
-  version = "6.0.419";
+maui-tizen-7_0_58 = rec {
+  pname = "maui-tizen-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-tizen";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-maui-windows = rec {
-  pname = "maui-windows";
-  version = "6.0.419";
+maui-windows-7_0_58 = rec {
+  pname = "maui-windows-7_0_58";
+  version = "7.0.58";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.maui.manifest-6.0.300";
+    pname = "microsoft.net.sdk.maui.manifest-7.0.100";
     inherit version;
-    hash = "sha256-x84cTUrys135LGizbGMlbe9lA0/MS7bmZ5Agz4T9ooU=";
+    hash = "sha256-XJWcuJ8aY7+t7Zb6WiPq8CFaJlAyBXD+uNeO0oHAd8A=";
   };
   workloadName = "maui-windows";
+  nugetName = "microsoft.net.sdk.maui";
   workloadPacks = [
-    MicrosoftAspNetCoreComponentsWebViewMaui
-    MicrosoftMauiControlsRefandroid
-    MicrosoftMauiControlsRefany
-    MicrosoftMauiControlsRefios
-    MicrosoftMauiControlsRefmaccatalyst
-    MicrosoftMauiControlsReftizen
-    MicrosoftMauiControlsRefwin
-    MicrosoftMauiControlsRuntimeandroid
-    MicrosoftMauiControlsRuntimeany
-    MicrosoftMauiControlsRuntimeios
-    MicrosoftMauiControlsRuntimemaccatalyst
-    MicrosoftMauiControlsRuntimetizen
-    MicrosoftMauiControlsRuntimewin
-    MicrosoftMauiCoreRefandroid
-    MicrosoftMauiCoreRefany
-    MicrosoftMauiCoreRefios
-    MicrosoftMauiCoreRefmaccatalyst
-    MicrosoftMauiCoreReftizen
-    MicrosoftMauiCoreRefwin
-    MicrosoftMauiCoreRuntimeandroid
-    MicrosoftMauiCoreRuntimeany
-    MicrosoftMauiCoreRuntimeios
-    MicrosoftMauiCoreRuntimemaccatalyst
-    MicrosoftMauiCoreRuntimetizen
-    MicrosoftMauiCoreRuntimewin
-    MicrosoftMauiDependencies
-    MicrosoftMauiEssentialsRefandroid
-    MicrosoftMauiEssentialsRefany
-    MicrosoftMauiEssentialsRefios
-    MicrosoftMauiEssentialsRefmaccatalyst
-    MicrosoftMauiEssentialsReftizen
-    MicrosoftMauiEssentialsRefwin
-    MicrosoftMauiEssentialsRuntimeandroid
-    MicrosoftMauiEssentialsRuntimeany
-    MicrosoftMauiEssentialsRuntimeios
-    MicrosoftMauiEssentialsRuntimemaccatalyst
-    MicrosoftMauiEssentialsRuntimetizen
-    MicrosoftMauiEssentialsRuntimewin
-    MicrosoftMauiExtensions
-    MicrosoftMauiGraphics
-    MicrosoftMauiGraphicsWin2DWinUIDesktop
-    MicrosoftMauiResizetizerSdk
-    MicrosoftMauiSdk
-    MicrosoftMauiTemplates-60
-    
+    Microsoft_AspNetCore_Components_WebView_Maui-7_0_58
+    Microsoft_Maui_Controls_Ref_android-7_0_58
+    Microsoft_Maui_Controls_Ref_any-7_0_58
+    Microsoft_Maui_Controls_Ref_ios-7_0_58
+    Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Ref_tizen-7_0_58
+    Microsoft_Maui_Controls_Ref_win-7_0_58
+    Microsoft_Maui_Controls_Runtime_android-7_0_58
+    Microsoft_Maui_Controls_Runtime_any-7_0_58
+    Microsoft_Maui_Controls_Runtime_ios-7_0_58
+    Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Controls_Runtime_tizen-7_0_58
+    Microsoft_Maui_Controls_Runtime_win-7_0_58
+    Microsoft_Maui_Core_Ref_android-7_0_58
+    Microsoft_Maui_Core_Ref_any-7_0_58
+    Microsoft_Maui_Core_Ref_ios-7_0_58
+    Microsoft_Maui_Core_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Ref_tizen-7_0_58
+    Microsoft_Maui_Core_Ref_win-7_0_58
+    Microsoft_Maui_Core_Runtime_android-7_0_58
+    Microsoft_Maui_Core_Runtime_any-7_0_58
+    Microsoft_Maui_Core_Runtime_ios-7_0_58
+    Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Core_Runtime_tizen-7_0_58
+    Microsoft_Maui_Core_Runtime_win-7_0_58
+    Microsoft_Maui_Essentials_Ref_android-7_0_58
+    Microsoft_Maui_Essentials_Ref_any-7_0_58
+    Microsoft_Maui_Essentials_Ref_ios-7_0_58
+    Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Ref_tizen-7_0_58
+    Microsoft_Maui_Essentials_Ref_win-7_0_58
+    Microsoft_Maui_Essentials_Runtime_android-7_0_58
+    Microsoft_Maui_Essentials_Runtime_any-7_0_58
+    Microsoft_Maui_Essentials_Runtime_ios-7_0_58
+    Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58
+    Microsoft_Maui_Essentials_Runtime_tizen-7_0_58
+    Microsoft_Maui_Essentials_Runtime_win-7_0_58
+    Microsoft_Maui_Graphics-7_0_58
+    Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58
+    Microsoft_Maui_Resizetizer_Sdk-7_0_58
+    Microsoft_Maui_Templates_net6-6_0_550
+    Microsoft_Maui_Templates_net7-7_0_58
+    Microsoft_Maui_Sdk_net6
+    Microsoft_Maui_Sdk_net7
   ];
 };
-microsoft-net-runtime-android = rec {
-  pname = "microsoft-net-runtime-android";
-  version = "6.0.7";
+microsoft-net-runtime-android-7_0_2 = rec {
+  pname = "microsoft-net-runtime-android-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-android";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-android-aot = rec {
-  pname = "microsoft-net-runtime-android-aot";
-  version = "6.0.7";
+microsoft-net-runtime-android-aot-7_0_2 = rec {
+  pname = "microsoft-net-runtime-android-aot-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-android-aot";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-ios = rec {
-  pname = "microsoft-net-runtime-ios";
-  version = "6.0.7";
+microsoft-net-runtime-android-aot-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-android-aot-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-android-aot-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-android-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-android-net6-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-android-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-ios-7_0_2 = rec {
+  pname = "microsoft-net-runtime-ios-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-ios";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-maccatalyst = rec {
-  pname = "microsoft-net-runtime-maccatalyst";
-  version = "6.0.7";
+microsoft-net-runtime-ios-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-ios-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-ios-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-maccatalyst-7_0_2 = rec {
+  pname = "microsoft-net-runtime-maccatalyst-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-maccatalyst";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-macos = rec {
-  pname = "microsoft-net-runtime-macos";
-  version = "6.0.7";
+microsoft-net-runtime-maccatalyst-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-maccatalyst-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-maccatalyst-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-macos-7_0_2 = rec {
+  pname = "microsoft-net-runtime-macos-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-macos";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-mono-tooling = rec {
-  pname = "microsoft-net-runtime-mono-tooling";
-  version = "6.0.7";
+microsoft-net-runtime-macos-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-macos-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-macos-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-mono-tooling-7_0_2 = rec {
+  pname = "microsoft-net-runtime-mono-tooling-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-mono-tooling";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-microsoft-net-runtime-tvos = rec {
-  pname = "microsoft-net-runtime-tvos";
-  version = "6.0.7";
+microsoft-net-runtime-mono-tooling-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-mono-tooling-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-mono-tooling-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-runtime-tvos-7_0_2 = rec {
+  pname = "microsoft-net-runtime-tvos-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "microsoft-net-runtime-tvos";
-  workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
-  ];
-};
-microsoft-net-sdk-emscripten = rec {
-  pname = "microsoft-net-sdk-emscripten";
-  version = "6.0.4";
-  src = fetchNuGet {
-    pname = "microsoft.net.workload.emscripten.manifest-6.0.300";
-    inherit version;
-    hash = "sha256-g5Qsrj3jt8QMysohYFlxy7O9tsN7PYilF8jxonpeORI=";
-  };
-  workloadName = "microsoft-net-sdk-emscripten";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
     
-    MicrosoftNETRuntimeEmscriptenNode
-    MicrosoftNETRuntimeEmscriptenPython
-    MicrosoftNETRuntimeEmscriptenSdk
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-runtimes-ios = rec {
-  pname = "runtimes-ios";
-  version = "6.0.7";
+microsoft-net-runtime-tvos-net6-7_0_2 = rec {
+  pname = "microsoft-net-runtime-tvos-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "microsoft-net-runtime-tvos-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+microsoft-net-sdk-emscripten-net6-7_0_2 = rec {
+  pname = "microsoft-net-sdk-emscripten-net6-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.emscripten.net6.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-0crjxWwqOXn+8ll3si1kj2gPXk5JNY/K2I1d3bDvLbg=";
+  };
+  workloadName = "microsoft-net-sdk-emscripten-net6";
+  nugetName = "microsoft.net.workload.emscripten.net6";
+  workloadPacks = [
+    
+    Microsoft_NET_Runtime_Emscripten_Node_net6
+    Microsoft_NET_Runtime_Emscripten_Python_net6
+    Microsoft_NET_Runtime_Emscripten_Sdk_net6
+  ];
+};
+microsoft-net-sdk-emscripten-net7-7_0_2 = rec {
+  pname = "microsoft-net-sdk-emscripten-net7-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.emscripten.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-HXWOzgi0Ci06dwp+ekWo8+mh8+Rgbe/dSViit3w4bM4=";
+  };
+  workloadName = "microsoft-net-sdk-emscripten-net7";
+  nugetName = "microsoft.net.workload.emscripten.net7";
+  workloadPacks = [
+    
+    Microsoft_NET_Runtime_Emscripten_Cache_net7
+    Microsoft_NET_Runtime_Emscripten_Node_net7
+    Microsoft_NET_Runtime_Emscripten_Python_net7
+    Microsoft_NET_Runtime_Emscripten_Sdk_net7
+  ];
+};
+runtimes-ios-7_0_2 = rec {
+  pname = "runtimes-ios-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "runtimes-ios";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-runtimes-maccatalyst = rec {
-  pname = "runtimes-maccatalyst";
-  version = "6.0.7";
+runtimes-ios-net6-7_0_2 = rec {
+  pname = "runtimes-ios-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "runtimes-ios-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+runtimes-maccatalyst-7_0_2 = rec {
+  pname = "runtimes-maccatalyst-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "runtimes-maccatalyst";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-runtimes-tvos = rec {
-  pname = "runtimes-tvos";
-  version = "6.0.7";
+runtimes-maccatalyst-net6-7_0_2 = rec {
+  pname = "runtimes-maccatalyst-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "runtimes-maccatalyst-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+runtimes-tvos-7_0_2 = rec {
+  pname = "runtimes-tvos-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "runtimes-tvos";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-runtimes-windows = rec {
-  pname = "runtimes-windows";
-  version = "6.0.7";
+runtimes-tvos-net6-7_0_2 = rec {
+  pname = "runtimes-tvos-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "runtimes-tvos-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+runtimes-windows-7_0_2 = rec {
+  pname = "runtimes-windows-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "runtimes-windows";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-tvos = rec {
-  pname = "tvos";
-  version = "15.4.328";
+runtimes-windows-net6-7_0_2 = rec {
+  pname = "runtimes-windows-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.sdk.tvos.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
     inherit version;
-    hash = "sha256-I9RXJVtLboTdGrrHfcKVPgyUh+4TcarjhCmay0S8/I8=";
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
+  };
+  workloadName = "runtimes-windows-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
+};
+tvos-16_1_1504 = rec {
+  pname = "tvos-16_1_1504";
+  version = "16.1.1504";
+  src = fetchNuGet {
+    pname = "microsoft.net.sdk.tvos.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-FMn/si9QHCCc7cabb/wJMXlluxS6eVpn4LLSghCcitg=";
   };
   workloadName = "tvos";
+  nugetName = "microsoft.net.sdk.tvos";
   workloadPacks = [
-    MicrosofttvOSRef
-    MicrosofttvOSRuntimetvos-arm64
-    MicrosofttvOSRuntimetvossimulator-arm64
-    MicrosofttvOSRuntimetvossimulator-x64
-    MicrosofttvOSSdk
-    MicrosofttvOSTemplates
-    
+    Microsoft_tvOS_Ref-16_1_1504
+    Microsoft_tvOS_Runtime_tvos-arm64-16_1_1504
+    Microsoft_tvOS_Runtime_tvossimulator-arm64-16_1_1504
+    Microsoft_tvOS_Runtime_tvossimulator-x64-16_1_1504
+    Microsoft_tvOS_Sdk_net6
+    Microsoft_tvOS_Sdk_net7
+    Microsoft_tvOS_Templates_net7
   ];
 };
-wasm-tools = rec {
-  pname = "wasm-tools";
-  version = "6.0.7";
+wasm-experimental-7_0_2 = rec {
+  pname = "wasm-experimental-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    pname = "microsoft.net.workload.mono.toolchain.manifest-6.0.300";
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
     inherit version;
-    hash = "sha256-m2W3IZkG04wqVTcq2rauXO3e8hWYh7eHaPc1T99kBjY=";
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
+  };
+  workloadName = "wasm-experimental";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
+  ];
+};
+wasm-tools-7_0_2 = rec {
+  pname = "wasm-tools-7_0_2";
+  version = "7.0.2";
+  src = fetchNuGet {
+    pname = "microsoft.net.workload.mono.toolchain.net7.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-lh9kePz6+p5ZpxQ8jugqd92IpL0gxatt8FHL5NDKiRE=";
   };
   workloadName = "wasm-tools";
+  nugetName = "microsoft.net.workload.mono.toolchain.net7";
   workloadPacks = [
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm
-    MicrosoftNETCoreAppRuntimeMonoandroid-arm64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x64
-    MicrosoftNETCoreAppRuntimeMonoandroid-x86
-    MicrosoftNETCoreAppRuntimeMonobrowser-wasm
-    MicrosoftNETCoreAppRuntimeMonoios-arm
-    MicrosoftNETCoreAppRuntimeMonoios-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x64
-    MicrosoftNETCoreAppRuntimeMonoiossimulator-x86
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeMonoosx-arm64
-    MicrosoftNETCoreAppRuntimeMonoosx-x64
-    MicrosoftNETCoreAppRuntimeMonotvos-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeMonotvossimulator-x64
-    MicrosoftNETCoreAppRuntimeosx-arm64
-    MicrosoftNETCoreAppRuntimeosx-x64
-    MicrosoftNETCoreAppRuntimewin-arm
-    MicrosoftNETCoreAppRuntimewin-arm64
-    MicrosoftNETCoreAppRuntimewin-x64
-    MicrosoftNETCoreAppRuntimewin-x86
-    MicrosoftNETRuntimeMonoAOTCompilerTask
-    MicrosoftNETRuntimeMonoTargetsSdk
-    MicrosoftNETRuntimeWebAssemblySdk
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm
-    MicrosoftNETCoreAppRuntimeAOTCrossios-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64
-    MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64
-    MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm
+    Microsoft_NETCore_App_Runtime_net7_osx-arm64
+    Microsoft_NETCore_App_Runtime_net7_osx-x64
+    Microsoft_NETCore_App_Runtime_net7_win-arm
+    Microsoft_NETCore_App_Runtime_net7_win-arm64
+    Microsoft_NETCore_App_Runtime_net7_win-x64
+    Microsoft_NETCore_App_Runtime_net7_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net7
+    Microsoft_NET_Runtime_WebAssembly_Templates_net7
   ];
 };
-MicrosoftAndroidRef31 = buildDotnetPack rec {
-  pname = "Microsoft.Android.Ref.31";
-  version = "32.0.440";
-  kind = "framework";
+wasm-tools-net6-7_0_2 = rec {
+  pname = "wasm-tools-net6-7_0_2";
+  version = "7.0.2";
   src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-FakjZ1zNXeNpwRACMVB60MkiCg+qXGiaS5uRLSyLSRw=";
+    pname = "microsoft.net.workload.mono.toolchain.net6.manifest-7.0.100";
+    inherit version;
+    hash = "sha256-j7e5/DOvCxUwrDO3VB7HHBV8nFq67llIKzUvwGPTs1I=";
   };
+  workloadName = "wasm-tools-net6";
+  nugetName = "microsoft.net.workload.mono.toolchain.net6";
+  workloadPacks = [
+    
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_android-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm
+    Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64
+    Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64
+    Microsoft_NETCore_App_Runtime_net6_osx-arm64
+    Microsoft_NETCore_App_Runtime_net6_osx-x64
+    Microsoft_NETCore_App_Runtime_net6_win-arm
+    Microsoft_NETCore_App_Runtime_net6_win-arm64
+    Microsoft_NETCore_App_Runtime_net6_win-x64
+    Microsoft_NETCore_App_Runtime_net6_win-x86
+    Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6
+    Microsoft_NET_Runtime_MonoTargets_Sdk_net6
+    Microsoft_NET_Runtime_WebAssembly_Sdk_net6
+  ];
 };
-MicrosoftAndroidRef32 = buildDotnetPack rec {
-  pname = "Microsoft.Android.Ref.32";
-  version = "32.0.440";
-  kind = "framework";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-HsWLIZCtoVEb/gew5JuSwcWB9++lo3y0e2gKjjrZcDI=";
-  };
-};
-MicrosoftAndroidRef33 = buildDotnetPack rec {
+Microsoft_Android_Ref_33-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Ref.33";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Ref.33";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-BviY7FVd+5zADaaSE/EzOl6m+NWDEU43I12xDSrRtgA=";
+    hash = "sha256-Uk42gnfF9jCdyKqVPIWPA0aWFpXLJFErgN+ITJE29G0=";
   };
 };
-MicrosoftAndroidRuntime32android-arm = buildDotnetPack rec {
-  pname = "Microsoft.Android.Runtime.32.android-arm";
-  version = "32.0.440";
-  kind = "framework";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-4hdDNzI4xDyhJGzwkn2Y3tkV3VrpBIJdOyYXkcAaBZM=";
-  };
-};
-MicrosoftAndroidRuntime32android-arm64 = buildDotnetPack rec {
-  pname = "Microsoft.Android.Runtime.32.android-arm64";
-  version = "32.0.440";
-  kind = "framework";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-NAuFGRfv+y17zVQIMFFPESCLYOTxCJy5jGbwNzh1aBc=";
-  };
-};
-MicrosoftAndroidRuntime32android-x64 = buildDotnetPack rec {
-  pname = "Microsoft.Android.Runtime.32.android-x64";
-  version = "32.0.440";
-  kind = "framework";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-Qo1wK/WJ1BIPliDhUrq0I3ixNhOMwTa6iK39rIAQk7A=";
-  };
-};
-MicrosoftAndroidRuntime32android-x86 = buildDotnetPack rec {
-  pname = "Microsoft.Android.Runtime.32.android-x86";
-  version = "32.0.440";
-  kind = "framework";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-mcXsApa7n+GDYH0yBjGNYLSLU5BucmDi7O5ZFPf9g9M=";
-  };
-};
-MicrosoftAndroidRuntime33android-arm = buildDotnetPack rec {
+Microsoft_Android_Runtime_33_android-arm-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Runtime.33.android-arm";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Runtime.33.android-arm";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-tJ0tlegoC3dZQEQ2304C8bXIq7+FbW328t2GFKget7I=";
+    hash = "sha256-+gcADz+jnJqJzHrCFktfAIHRmB23aeJgMKCxFrLpnb0=";
   };
 };
-MicrosoftAndroidRuntime33android-arm64 = buildDotnetPack rec {
+Microsoft_Android_Runtime_33_android-arm64-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Runtime.33.android-arm64";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Runtime.33.android-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-YwZaxrvne1BL+SwPuTw/V18oTMV1EouZrABghg/eFL8=";
+    hash = "sha256-/hvEDqUTWUSDxwisPnWL8525pHmnWImsTIUW8VD4+NI=";
   };
 };
-MicrosoftAndroidRuntime33android-x64 = buildDotnetPack rec {
+Microsoft_Android_Runtime_33_android-x64-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Runtime.33.android-x64";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Runtime.33.android-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-vVarDgeKLkimaGmPG1RT4pjvNGZa1BikhC8Aj5SuQiM=";
+    hash = "sha256-HVbfIq7RoBHkncNIxu3IC9iPAe/6DaB/zIZc8m5DYb0=";
   };
 };
-MicrosoftAndroidRuntime33android-x86 = buildDotnetPack rec {
+Microsoft_Android_Runtime_33_android-x86-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Runtime.33.android-x86";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Runtime.33.android-x86";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-mDYYnutqqTsGtLGXq7+C3X4PdFl2z/kzrjziM7eDNMY=";
+    hash = "sha256-Dmhc/vjKpfUS7I5r39fqC8lwC851StIS9annSNNJW5s=";
   };
 };
-MicrosoftAndroidSdkDarwin = buildDotnetPack rec {
+Microsoft_Android_Sdk_Darwin-32_0_485 = buildDotnetPack rec {
   pname = "Microsoft.Android.Sdk.Darwin";
-  version = "32.0.440";
+  version = "32.0.485";
+  originalKey = "Microsoft.Android.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-+fMNyVTuUauZcQu7/oJbxnofM0vQzglPDboIhJZZYps=";
+    hash = "sha256-iYAKFwMSkMlqlOpsyigoWPpMWM5kTC0R0ZA8B0fHpPM=";
   };
 };
-MicrosoftAndroidSdkLinux = buildDotnetPack rec {
+Microsoft_Android_Sdk_Darwin-33_0_26 = buildDotnetPack rec {
+  pname = "Microsoft.Android.Sdk.Darwin";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-T/fzQh80XtShPGvFHFKNWdW2HTq1DfFV8yRT13JpEAE=";
+  };
+};
+Microsoft_Android_Sdk_Linux-32_0_485 = buildDotnetPack rec {
   pname = "Microsoft.Android.Sdk.Linux";
-  version = "32.0.440";
+  version = "32.0.485";
+  originalKey = "Microsoft.Android.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-gUuW9qJGqnQnuJFtKusA563BG1LQ5tGNnmcoSDpEI5Q=";
+    hash = "sha256-I+VqSw7BSgLFf8EAjhHRujpye6VpqtX0hH78fC4qmak=";
   };
 };
-MicrosoftAndroidSdkWindows = buildDotnetPack rec {
+Microsoft_Android_Sdk_Linux-33_0_26 = buildDotnetPack rec {
+  pname = "Microsoft.Android.Sdk.Linux";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-RTQ3vTrydMV/daUa7pZ9IirHpoxW93RRn436S+EyaRE=";
+  };
+};
+Microsoft_Android_Sdk_Windows-32_0_485 = buildDotnetPack rec {
   pname = "Microsoft.Android.Sdk.Windows";
-  version = "32.0.440";
+  version = "32.0.485";
+  originalKey = "Microsoft.Android.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-J1K7rEHNtSt2uvaDdjR2QPn4U6ipv5qUFUTqp2uVLCg=";
+    hash = "sha256-V6Eegy4NUkM+T/9ZPtpd2AVtzIyu3HGgjmcjYqmAkTU=";
   };
 };
-MicrosoftAndroidTemplates = buildDotnetPack rec {
+Microsoft_Android_Sdk_Windows-33_0_26 = buildDotnetPack rec {
+  pname = "Microsoft.Android.Sdk.Windows";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Ol/+o/p2vDQ72vJUVEbIddc6kCf64Hza5nrnjFIzenk=";
+  };
+};
+Microsoft_Android_Templates-33_0_26 = buildDotnetPack rec {
   pname = "Microsoft.Android.Templates";
-  version = "32.0.440";
+  version = "33.0.26";
+  originalKey = "Microsoft.Android.Templates";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-XznpuA6IoIq3owBS90Noyas4wwAcREfzd2RJc7RsWcs=";
+    hash = "sha256-YuAgoq1aTnpkHu4ogOwsq7JSeWRhE6DoE0v+MVznhaI=";
   };
 };
-MicrosoftAspNetCoreComponentsWebViewMaui = buildDotnetPack rec {
+Microsoft_AspNetCore_Components_WebView_Maui-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.AspNetCore.Components.WebView.Maui";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.AspNetCore.Components.WebView.Maui";
   kind = "library";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-kUJk8jm722TV9f9MsJRQfTUyDeh/mwsszNiuaTPKk+w=";
+    hash = "sha256-EbMIwUYc+rSdHjvcFYlNalR9meSFW6G7X53YU+l/ZI0=";
   };
 };
-MicrosoftMacCatalystRef = buildDotnetPack rec {
+Microsoft_MacCatalyst_Ref-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.MacCatalyst.Ref";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.MacCatalyst.Ref";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-L0TiY9SNluq4dr4Nw2B2v/qagH4uLXXv+AqYbmQTXFI=";
+    hash = "sha256-R+ucCL0MFiAOxHRY7N0SxPqBIuJ3uSp9E+10rHV2oyg=";
   };
 };
-MicrosoftMacCatalystRuntimemaccatalyst-arm64 = buildDotnetPack rec {
+Microsoft_MacCatalyst_Runtime_maccatalyst-arm64-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.MacCatalyst.Runtime.maccatalyst-arm64";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.MacCatalyst.Runtime.maccatalyst-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-QxwjkIIKjyeZa5iVxDcWtXeCYSZlrj63rYPc0H0Um4s=";
+    hash = "sha256-W4dmZivGiLxSJc232vjRwD8eDnclBn6VofBebnV1p00=";
   };
 };
-MicrosoftMacCatalystRuntimemaccatalyst-x64 = buildDotnetPack rec {
+Microsoft_MacCatalyst_Runtime_maccatalyst-x64-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.MacCatalyst.Runtime.maccatalyst-x64";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.MacCatalyst.Runtime.maccatalyst-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-/l6gv80KQamR7k0IKbJ1Yn789OFsMu+4Tq6xrC6wEyc=";
+    hash = "sha256-imLMkoBOxh+XeXakrAUqoxS6TNkpiop4qgv9GTdvfgA=";
   };
 };
-MicrosoftMacCatalystSdk = buildDotnetPack rec {
+Microsoft_MacCatalyst_Sdk-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.MacCatalyst.Sdk";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.MacCatalyst.Sdk.net7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-cT1W8GKym6gYlYvskolSYnRVmmQgHNu8hTmlETqnXks=";
+    hash = "sha256-BXqhn1iirSXVRTJ9rwtrGkBBhfZrj5n8s1sDkmTyOf4=";
   };
 };
-MicrosoftMacCatalystTemplates = buildDotnetPack rec {
+Microsoft_MacCatalyst_Sdk-16_2_3 = buildDotnetPack rec {
+  pname = "Microsoft.MacCatalyst.Sdk";
+  version = "16.2.3";
+  originalKey = "Microsoft.MacCatalyst.Sdk.net6";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-fwZTqAvliFRa8jqzYZvQ7ur+1H/6ZCrlLfRPxNNEmhY=";
+  };
+};
+Microsoft_MacCatalyst_Templates-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.MacCatalyst.Templates";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.MacCatalyst.Templates.net7";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-X4W79o85ZAmCANi8N7slluJwZLQVizuFgDjWQbK6bCQ=";
+    hash = "sha256-juTU7c9X+umaa7jXy4r2zi0wal3QtI+IIpprMaX3cp4=";
   };
 };
-MicrosoftMauiControlsRefandroid = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-D9s+3rRUH1IBSqTuh32drI3kD1YlWkBG7f/4ouvi+gM=";
+    hash = "sha256-+NT54JNL13gDRqN6hz1sgQLCB4vjdvtSe/1qukk/kpA=";
   };
 };
-MicrosoftMauiControlsRefany = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-WtVYlKEUwOlzcKccrYbhfjbO10n5KsdzuaqVtc18oJk=";
+    hash = "sha256-mDAiWKtTUONEPwbCPCUPxAPmHuZFfDqfxGWcoI/JU4c=";
   };
 };
-MicrosoftMauiControlsRefios = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-5LD9hGhZxDYU/BKyKShGJ04j8x4Hdr76K3JkwnZVY7A=";
+    hash = "sha256-750OQswYClUpaaTbCdlzZJej+x5wGL8eFFHJd/i4lgc=";
   };
 };
-MicrosoftMauiControlsRefmaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-1LX50BxsShn9KlagaWxcmEleUfsiDDY8gN33P3OLJm0=";
+    hash = "sha256-BGh31szkc3q6C0tg3LV2kxKb/EwJs1ZKOYmACChsg9g=";
   };
 };
-MicrosoftMauiControlsReftizen = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Lnhc812OgiZOsodxlGfpek1CiwXbezCBgcOztdobn5E=";
+    hash = "sha256-k9lWKGTNidn2FfIkRPDcMqCO7RhWu/ZE1AOJaIowwrM=";
   };
 };
-MicrosoftMauiControlsRefwin = buildDotnetPack rec {
+Microsoft_Maui_Controls_Ref_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Ref.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Ref.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-FKkNs9RP/WRP+zKZrasnJWqAdEwuqJPumCWJ4ZdAVxQ=";
+    hash = "sha256-flDHkUF7muDeOrnNlxHY1jbpSyiWZzA0nLmOhmxfumY=";
   };
 };
-MicrosoftMauiControlsRuntimeandroid = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-2jVYI0McarnYDjQgtloeuCzQf++9c529NBrxRtYExSA=";
+    hash = "sha256-ChBYJipt2Pg4aWw5J2dMywetlu3vGCLyckbNrQCvOHQ=";
   };
 };
-MicrosoftMauiControlsRuntimeany = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-yA4rgGNuNvHBEwNaetToWgR4/2O4sUIh8EmsV24uup4=";
+    hash = "sha256-V6sonmoRSy8LcgZ+ZRSlI/iCnPz5S8wgWfHXzPk2LmE=";
   };
 };
-MicrosoftMauiControlsRuntimeios = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-QoaHjWjyfrWWcfOzjLXb+b2d9IyBm3/hfjgqaH/9rwo=";
+    hash = "sha256-8GJLB0u53Y2MY3W+NqXBhzb2OpQyRtDFsCPayF0j5Nc=";
   };
 };
-MicrosoftMauiControlsRuntimemaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-X3upqfxgxl/o9VyUlyBaWrkUVOR0dvOBzmocwowMSlw=";
+    hash = "sha256-oboCo3ELk4KSHGELc6lg7hD6v0ZBpm4sSfv1mFCxDdc=";
   };
 };
-MicrosoftMauiControlsRuntimetizen = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-M6EGHm+IvVi5PAJ7dLEpaYvMdViHfqc8FGM/Gcn/O+c=";
+    hash = "sha256-mqSaXLSwD7PEAzrdvssoIB+12djDK3s0lfOZ921/m2s=";
   };
 };
-MicrosoftMauiControlsRuntimewin = buildDotnetPack rec {
+Microsoft_Maui_Controls_Runtime_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Controls.Runtime.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Controls.Runtime.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-jh/CfuX3hSJT3gOjvC8rPx2tPjtHJP9cODjBBPM8ZZQ=";
+    hash = "sha256-nzEhsFExAxfgT7S3R35kUmQPLStO6IEBRAiF/p3Bkj8=";
   };
 };
-MicrosoftMauiCoreRefandroid = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-5kz+y3Yko5oATuzLwuBtDYMk+rg/Ng9ij1sIlYh2N08=";
+    hash = "sha256-/UmJuqhF1LGoZ4swWutR9mZ9nV7+oF9eQmdbVVNp4jM=";
   };
 };
-MicrosoftMauiCoreRefany = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-XdQsKI5/huB1vY50eMxe0BQrM0bqe52E/b8FqWp4WvY=";
+    hash = "sha256-qmBRTbvfQ9Zh83YmV/UY+7wcouq26zmy3mnKl1S3EJs=";
   };
 };
-MicrosoftMauiCoreRefios = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-qSEHbNyCV43bmv1ll6XpqdqL2kGpDx10BPX/Vx6OhJk=";
+    hash = "sha256-GmkT3xelsl3pK0YtvbBElZtdtRzzPWJp3YiHWmpRj+M=";
   };
 };
-MicrosoftMauiCoreRefmaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-//EOe7NsTCBW4gwI8gV/IWHGyHY4vYp04i34N3zJQmc=";
+    hash = "sha256-vr1+LSgHJs7uF4MHFkL3G9ffzi1cVmINa6G5Wt/3dIc=";
   };
 };
-MicrosoftMauiCoreReftizen = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-FWAs1sFfCCc/S5oKqRqyCkNB1/Qng2Km/UoYb6G3lj0=";
+    hash = "sha256-BYiajUWfbh5Z2Gj/sPjIOpGsoVUPo9MPIWqJ2I+3VI4=";
   };
 };
-MicrosoftMauiCoreRefwin = buildDotnetPack rec {
+Microsoft_Maui_Core_Ref_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Ref.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Ref.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Pj6zqzIxctjh0fcCJXPJuZuhC/I6oNnPl6Irnxwc9ew=";
+    hash = "sha256-HVOYXpQxUOtbOQPKwCZb0Hw+qOK/BZRQU/mT8u7Jd0I=";
   };
 };
-MicrosoftMauiCoreRuntimeandroid = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Q4fuX6VvTANANnaisGvBgPH8QqbWDqnzXHy7RpUe/pU=";
+    hash = "sha256-kyLEioc+4Zj3siJMTdLPFYgoCZSZcZHdn0v7WiUaMzw=";
   };
 };
-MicrosoftMauiCoreRuntimeany = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-oYMhaUVmyUbqTll3Z1ABKg3THak/vuosHZqfCs31dSQ=";
+    hash = "sha256-RixMLMy86ZNolAGg6yi7tHsBI8WStxqZUaC9aXPdLj0=";
   };
 };
-MicrosoftMauiCoreRuntimeios = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-b4lhznnMp1O8Ly/Dc39u6WpcOhjU+GKUUZfGE37BXgc=";
+    hash = "sha256-TdBKl21za4M1Mr6GvID28SmMAw5DhvvveFTGDhnKnBo=";
   };
 };
-MicrosoftMauiCoreRuntimemaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-7v7g0Sbzob8xQZb/Y2wJfotZzG9fB4n2bdJ/oK5Er+0=";
+    hash = "sha256-p2K6geTwDTSXeMlPBoeScgBjLPRotPN/pCkNTp2Ma9s=";
   };
 };
-MicrosoftMauiCoreRuntimetizen = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-nVNbUw/t7EuUNfCApB0/wdukVbTQlm1KEkf+yo0s5N4=";
+    hash = "sha256-A20PmpyQkXCmEGdO3c/dByNOQOt1c9nAln5+e3nI0KE=";
   };
 };
-MicrosoftMauiCoreRuntimewin = buildDotnetPack rec {
+Microsoft_Maui_Core_Runtime_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Core.Runtime.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Core.Runtime.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-xcOyrJ8+auEvR1CZUdGCu6v5evnIcBgrLnuXPSY7S30=";
+    hash = "sha256-CIz2xcR0S+BQ+JH8nhmmPCRDcHtRy58ME4LgA7+QQEU=";
   };
 };
-MicrosoftMauiDependencies = buildDotnetPack rec {
-  pname = "Microsoft.Maui.Dependencies";
-  version = "6.0.419";
-  kind = "library";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-ht9aNSImFiK5hfo4I+UPi9TPWVQ7Lmp/nUGcqsni2xk=";
-  };
-};
-MicrosoftMauiEssentialsRefandroid = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-2pDX2OYJoGyxQUcXkPTU1m7RiJtYm8CueaFzAQNXi2w=";
+    hash = "sha256-NEkuOW9Tfxm9Zl8S/uNIFnLlDnYFHIUVaOLDwHC60eM=";
   };
 };
-MicrosoftMauiEssentialsRefany = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-8VU1KK3V6L+iLOR2I4RE7RE90WyOD8Frsybv32iBRh4=";
+    hash = "sha256-8umfVDMC1UwsChdnlTk9WEjYjbycQ2PsbNrKnXdVPXk=";
   };
 };
-MicrosoftMauiEssentialsRefios = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-+SE4Etpw9MSNnhN6vVnNsRJnGr5QizyqpnwXVlnLk2c=";
+    hash = "sha256-A8ssr3KMgAjdhqFp46sgrVvqGrvJYA76XmxdJff8tuw=";
   };
 };
-MicrosoftMauiEssentialsRefmaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-EYSoF9Y5w3c3ID7t8IJa95f9SVL5pZTk+AVDhPl5Fsk=";
+    hash = "sha256-0uee0L7pG9DNI/o7PLwUi5sMdVHOCwTasxmWn6KNk0w=";
   };
 };
-MicrosoftMauiEssentialsReftizen = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-LUdauad4VsKLq3ucwmwunmTbuATFAjeZYbELy9oSMsk=";
+    hash = "sha256-tfwFFGnwl2KPRWYepwh3PG02IX2mTXI6C/sKfQ8ymjg=";
   };
 };
-MicrosoftMauiEssentialsRefwin = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Ref_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Ref.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Ref.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-T4HTdg8Y1c7PSaEdCE1dh55ulNeSlV3VzjO+xZvpmtg=";
+    hash = "sha256-oP6X4RkHmYEH58vWbEXlTxZ57WJndmU77pRt09NzkBU=";
   };
 };
-MicrosoftMauiEssentialsRuntimeandroid = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_android-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.android";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.android";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-z0BGue8EDLA/m5Lr0TjiM5RBM4Qht9RPgS+mXDZRd5o=";
+    hash = "sha256-jVlKzs8Ogwa1O6mVUyQ7N/96REWagwZ3QlMEOjNQgyU=";
   };
 };
-MicrosoftMauiEssentialsRuntimeany = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_any-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.any";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.any";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-fEbd/VnWFMsCWXEg8ryK4mRzb5Cs7xJCq3bAZCUkeXo=";
+    hash = "sha256-V3oad2y2A76JGhJmV5v8u8nSVL4iD4hs0pIvStnP9WE=";
   };
 };
-MicrosoftMauiEssentialsRuntimeios = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_ios-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.ios";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.ios";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-XIiDpRpAgEfPHFjYoZTprx3Sr1CCN0FwSVs9MkvIFLY=";
+    hash = "sha256-tuGBOZ1JsVtyXjTSWxQO/CtM/t4TxcFpljxWFOwgaJ0=";
   };
 };
-MicrosoftMauiEssentialsRuntimemaccatalyst = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_maccatalyst-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.maccatalyst";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.maccatalyst";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-/G/2c3A4sBT1RPFcMqoiw5D3VoFYsXD7Cs8C5VHdOfQ=";
+    hash = "sha256-JbOUVqgtGVYBBKMdd2sA7BAgQb+dk2S8B6Heq+rvr+I=";
   };
 };
-MicrosoftMauiEssentialsRuntimetizen = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_tizen-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.tizen";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.tizen";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-xloZcGAmqFnVDQlSbw6IHB5fJktR0Xj5kcbNpA1Rmls=";
+    hash = "sha256-nIvLt4YPiGAUlPkjJYAMkKd2/ak0DHyTBOVKYAyQqXY=";
   };
 };
-MicrosoftMauiEssentialsRuntimewin = buildDotnetPack rec {
+Microsoft_Maui_Essentials_Runtime_win-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Essentials.Runtime.win";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Essentials.Runtime.win";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-5Su9xaVDO8138f5aLcnPrr5riaY5FwDH/RJ3Yoa6G2c=";
+    hash = "sha256-GuJ6Njl0VCmdzpVi9d2r8lFyJ7WxjjqsBmG6dcjhrqU=";
   };
 };
-MicrosoftMauiExtensions = buildDotnetPack rec {
-  pname = "Microsoft.Maui.Extensions";
-  version = "6.0.419";
-  kind = "library";
-  src = fetchNuGet {
-    inherit pname version;
-    hash = "sha256-fPn1SVxxUPAGBEe1e7XAsehQRcv/u3K8uTpHMh0fcHY=";
-  };
-};
-MicrosoftMauiGraphics = buildDotnetPack rec {
+Microsoft_Maui_Graphics-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Graphics";
-  version = "6.0.403";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Graphics";
   kind = "library";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-0mNUTjmN/sq0kEBDVVTDn6sjELqfLkym6X5wMim2uqk=";
+    hash = "sha256-UVX3JIxqOuG8vcTrOBO2/L8GM8Kpmw5UNzVwXWAeYjY=";
   };
 };
-MicrosoftMauiGraphicsWin2DWinUIDesktop = buildDotnetPack rec {
+Microsoft_Maui_Graphics_Win2D_WinUI_Desktop-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop";
-  version = "6.0.403";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop";
   kind = "library";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-l5PY3nyW63W+0Ye+mawLB7TOZURiybI6wApCglBP4fg=";
+    hash = "sha256-rnXPyUTwhbi2bDzRGQx1eVW4hjCyALTHa9ONcvBE7hk=";
   };
 };
-MicrosoftMauiResizetizerSdk = buildDotnetPack rec {
+Microsoft_Maui_Resizetizer_Sdk-7_0_58 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Resizetizer.Sdk";
-  version = "6.0.419";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Resizetizer.Sdk";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-lZymNE00MlOETFmduMigzsFAmZnTTzrXQlxpAjhY+7g=";
+    hash = "sha256-mmyiUxekdneOUNqtcRkM4SuRCfn8IQpmECJDV9XbjQU=";
   };
 };
-MicrosoftMauiSdk = buildDotnetPack rec {
+Microsoft_Maui_Sdk-6_0_550 = buildDotnetPack rec {
   pname = "Microsoft.Maui.Sdk";
-  version = "6.0.419";
+  version = "6.0.550";
+  originalKey = "Microsoft.Maui.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-zhkKx3FSL9tZBDeSu4drXZH1IV4OM2iMONv6Fk7dRBg=";
+    hash = "sha256-Tik0A57Z8YB8A+jw2/GBjtw1ql7MYz9nicEnCE5HIgU=";
   };
 };
-MicrosoftMauiTemplates-60 = buildDotnetPack rec {
-  pname = "Microsoft.Maui.Templates-6.0";
-  version = "6.0.419";
+Microsoft_Maui_Sdk-7_0_58 = buildDotnetPack rec {
+  pname = "Microsoft.Maui.Sdk";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-ilCQsrMUV/7dX5KfH5PivzwpV6pPco727ZPXhfUlIQQ=";
+  };
+};
+Microsoft_Maui_Templates_net6-6_0_550 = buildDotnetPack rec {
+  pname = "Microsoft.Maui.Templates.net6";
+  version = "6.0.550";
+  originalKey = "Microsoft.Maui.Templates.net6";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-feO/X1v/q9rszh9/foPush2fTQQh+w4tPx/h36RSPnE=";
+    hash = "sha256-tDV4I9x5v68zq4j5sHacbfSMeVfNQWb4xwbbOYUdi9s=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm = buildDotnetPack rec {
+Microsoft_Maui_Templates_net7-7_0_58 = buildDotnetPack rec {
+  pname = "Microsoft.Maui.Templates.net7";
+  version = "7.0.58";
+  originalKey = "Microsoft.Maui.Templates.net7";
+  kind = "template";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-wTxu5MHKkvde2BLA42XUUlWPziIN2QKPnHKSAOJDKng=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-+PL/owiGY8mx1nv9yfeSqDxZbRdbvvdGzltWEhqv6P8=";
+    hash = "sha256-rizCBkV8oGzCJ4b7R04g0JQYm7JDpUlma+XdM8gJ2pw=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-BPfmD4lv8KfT+3japNu0SocW9mLtVj1e+l6zDplonZg=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-kIgFJIFeg5pSrXcAu0Bqu8T2KlFVbyFfR3V6wwqODY8=";
+    hash = "sha256-sb+zCxomgoHU08SqgGltVQ8xpT5AXYC7cgARywklP64=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-su7oIiDf+HIHX5+PxPxToBrHKzBJoErvTFgCb1ldzRQ=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Q3l0b8H2ditlBgCPG3N7D4NBYLKNP3/kfT2TpW8GqI8=";
+    hash = "sha256-61UXq8Wb1dqC70LQWTRAzhpnJNGAUDyZw43cp/31tLI=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-0kssg1noOPGzM2QBjwpwIE/OziqMNdVNi8z4TATqjxI=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x86";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-8Zqu2E3eoiiuSckmMx6Ta6K5fvfJjchtyiudpdzIliI=";
+    hash = "sha256-vMdvBuTC9GkFEwpHrXERuNufWLG0n+UkyFXe4Y+gaOs=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossbrowser-wasm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x86";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-IRKxpcEfrac9i3Km3csJaq+qWKozuN1UqsK07aoAVo8=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_browser-wasm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.browser-wasm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-IcFulyvjoG4NT+RijpE+uxme6yq8tmWSh696qWAHK/s=";
+    hash = "sha256-LIzQnLAQp7OmMb9FPe78LBn7ifeqE6HpOLAg39GfbBM=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.browser-wasm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-H6jqB1E+ARH91JUcfkcZJ/y3UClc5+wR4UxHlWuN/Nw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-iIcCjckUJHK8VU0w9qIvsphps9pxoLuB2qYu+kyXgPs=";
+    hash = "sha256-+3uXMLGEPyCDfm2YUzv97NqgrSSv/t2s1fZfZAhpe0s=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-CgG2Z1l//WSVP+Lvx5i1f+dEqy/XVvE6fqmHO0IyQr4=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-3PXGVwgxgqj523dLLKEl+116pd/DLBoQ9iI7Fm3uXBI=";
+    hash = "sha256-t9y6ZVZwcyEU8s6o1+ezKYTomxbfRo5e17+6Z8ZJSFE=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-560fRdntwtQo4VOrXsxDkR6Wnh7Qk+x3hSngKykfgGw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-wSnpwxjgNu9/zpivNmdEoiZMbuiaj5UVYGdh+NYV5KQ=";
+    hash = "sha256-eykR//ygYeKkplclv5EcV/5zeRg7XJFH/LOQ+eaZWko=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-RLtEBh71/xFKFGH8H+IhQEQNJUL0PYmgwlOh47y1/C8=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x86";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-JX2+USgf7IFIj6lHsr/1rgbE6uEl7B1F21DCpdE0D5U=";
+    hash = "sha256-QBlr+yQIyIkZNNcf2yTngCBXhww2FuvaDCKmo4mxGh4=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x86";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-gPCk57wZ8uh557qbfgIqgAOZqEd+AmbHtIiAFKKdOtM=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.browser-wasm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-N+unPaHq6YIBR3CUmvZ0frFU2T9eBylCs6jnIbq4mRk=";
+    hash = "sha256-YDAEdfpShO4DkYFhKc4Yca9Ekqxf8JY5VBVAH364vHU=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.browser-wasm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-U8DNEt/mBlS1uHEfAbdfn956KYdtsTMAwZvDR1wLD5s=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.ios-arm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-qk9J6q4WHLDSQDFhdLYIMpfHl69jWh37JFo85UJmO0A=";
+    hash = "sha256-0CoAz5pLzOIndzuCPaYOmebZgd05qUVU8SrSpSWIekw=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.ios-arm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-lJ3QLndQX7GkDQ0hcMY62zH0cPgK0w6g1Ao6b89TYvk=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.ios-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-NLagEE6utgoSROgzlj364heK+M9H6SwGTFsIts3komc=";
+    hash = "sha256-WE4c0pF0awnvddTRN58bSzH+79S+K4NLaaktjmYFn4c=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.ios-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-xDbvYE2qX34dvXVx491YKOxlsaYg5WyfpvaVONzdeY0=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.iossimulator-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-vnRX/gl9/6Ko918fmOPfqxSW+xbXt0are9fwMXnbGAs=";
+    hash = "sha256-5tr2jgsBcY8BP8mrfcacLFMfM9nVT67NEF1feYN4VZ0=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.iossimulator-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-r1xD8QGXhZpRN/MFNGJxKfv3gmXu/yFdPl4xicGUYuc=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.iossimulator-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Od0cOug7pxm/4quu+PikETGIqHKep4WkKRzu54U2ef8=";
+    hash = "sha256-5WSeRtRne3x+l4oXyTzccve5/dxkxzKiu03hRdDWjRI=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.iossimulator-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-mXTZet43P+IY4OOmAdnw1oMJf3d0dKA87PmDFbQf5Y4=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.iossimulator-x86";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-K3gY26Q5tzr4cxm067uX93FfG3fVP02AO7rz1NVt4eM=";
+    hash = "sha256-aIsn0b2HJbk3ufInLaB1amhILR7/FDfaBuNWVEUkz90=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.iossimulator-x86";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-9fK++BPoG1UMQFCVLQpX4bmgef/6s2TVkJtYqa+ULTw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.maccatalyst-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-r7jAsdVgzng9v1FcADkXvvY+ah95ohWlTTmxU/A2j4E=";
+    hash = "sha256-Lf7uNYkbh7KCWFfy7uUv1mZlS8quQEZ5uI34EU9wDNc=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.maccatalyst-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-3hRNN7DtBK87RgIoqrmKWvMRXYHoG64SslGurOnx9w4=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.maccatalyst-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-1b/ss9sU9T4z+pn/4jc+CtJk/iAMnuKFnnLfjyI7vr4=";
+    hash = "sha256-M/bbosgdTaeE/MgYs35Trv5qZWFYjMhMNjx9XDXw+7w=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.maccatalyst-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-TSWGc2jsQfL2jowKNUV+qPHel8/qDxv2WKBCNr/YLLM=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvos-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.tvos-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-emBYagZbF1lC9QKU7/qTjEyQ1KY8Bc4/tyhTNJGhn0w=";
+    hash = "sha256-qrwFUO5EThJibx0m3c/YN23kaTvWiaLdWlRCXFEgVBg=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvos-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.tvos-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-xpQFixWd33i/JmVj5ZH5GPE+HCXcfO06edJJwxLGGaY=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.tvossimulator-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-u/hQovpPiXBg8PMk/QhwdgLn928/BNOIARn0L8zkxIY=";
+    hash = "sha256-hOxYqK3YXwe2ZsV6cWoYkvMbQ5bmQ9Ddz1R/Xh6kVAY=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.tvossimulator-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-EvcheYtUszK+5gQ42+YuOrrCj7Juh2MyQFF7TTRDLLQ=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.tvossimulator-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-+raOwsJbfHG971+f6hfsGoPScNZJRIziBXzD5kuxqNg=";
+    hash = "sha256-HkZDGIuf5FG67MfQZ+38MU27U2Jovvg2uK5WoQKxR1o=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.tvossimulator-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-0ASjQppZeMzPhaqrV4jHWrBWrS+AUcVOtmNwlAP1700=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-MlDGDPhvtd7oNnY31PWhQ4tIzAP8lgAdIHXEfP6Qebo=";
+    hash = "sha256-c+++1mgIO+XBaMR9z435Dik/ISWqqQMrwB857VObkVc=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-4MpEv2Ywe4Ve3hhg73ymqrr567TGSqv+enXcYHHXa3c=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-arm64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-oP6N7JiSzVjiaiF5Er+ZeZ/LlqX2MMqUSd1bGHTRzME=";
+    hash = "sha256-7zupGAlWxkGBMX50Nme8gMBzn+zpAyHu3eqOv2wzlS8=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-arm64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-NSRkxa7+N0PXmOUV+RJ5nNyyq7x1VRErplw/palOl78=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x64";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-/5XWRtaKUVgCe3xTXYCsMM6ch5s8OFyqklcDZbKpeN4=";
+    hash = "sha256-upZ3o0ZTFHCAM+8jNzYwm0MSkcJsDNuWtp2EhzLZzcc=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x64";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-ZSOfsVxpChRrwR/VyKb/UoWsCCwDTyrjC6TVdjV/1wI=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.android-x86";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-FJPA41cEb5PJ+Dk2PDYueXmmIYOpddlsXzNKrSXhMQI=";
+    hash = "sha256-/Q9oRry8U1crwjzbW20GgC+29/w1Km3/4mXtl2Gi3mA=";
   };
 };
-MicrosoftNETCoreAppRuntimeAOTwin-x64Crossbrowser-wasm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.android-x86";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-RmWUZGgFNRhURBvQJ1PczF3RgJTF9JCPM62UYo222EU=";
+  };
+};
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net6.browser-wasm";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-ZrQSc6g7p1fc9EN1/9H1gQq8l15dY/rO9Rl27aW79ls=";
+    hash = "sha256-pkqn3YTgW64ICb5Ak28nDLJ0PJ/pHFu494E0Asz4e9o=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoandroid-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.AOT.Cross.net7.browser-wasm";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-i0Yl2sc/KOI1eFkst3widU7HrmeAKsHNr1o4YFrdhig=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_android-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.android-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.android-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-6xaNIFOJ/clTna3klQ0ecZQ6dIBf45g6m7eRZa6kdAU=";
+    hash = "sha256-vctTdd9jo8LDKaHCcGvLofWXLbqYmR4mTaugiyx017g=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoandroid-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_android-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.android-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.android-arm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-L4SX8s9tITXcNBY1ND51y7FrNZ1wYmqbC1ETG7bnNo4=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_android-arm64-7_0_2 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.android-arm64";
-  version = "6.0.7";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.android-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-BZpCo3GypyAaHWJ/i6OSqJlpX+0hxGduxEXSde7vumA=";
+    hash = "sha256-UlqEkLb2om+eSv83WxhdYs88Zxc0q8L0GKjGLuQvlrA=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoandroid-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_android-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.android-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.android-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-aUS9rxjrOYJ42VArH9tqWW1oh0svr96nty6Xh1Crshg=";
+    hash = "sha256-jvoPT0M5uh1WClr/z5xT8h3NXuSCs4dM4PSA/ppnrNg=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoandroid-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_android-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.android-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.android-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-loxw91SmqK2PTTM8tuZx04mrf+fmNdVZplCsVXigiJo=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_android-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.android-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.android-x86";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-lybfluH743ZlCVgWvxaxy+ruJGhBdLfplfXgFHmmQYk=";
+    hash = "sha256-Yad29l5r72TGSfWTvlQsAbyb3aZdhcaUf2Y0VKSQXIQ=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonobrowser-wasm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_android-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.android-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.android-x86";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-4GVITd02R1EVnPzdtp/xGFZRXZ+OjQdblIcyzPBHPFo=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_browser-wasm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.browser-wasm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.browser-wasm";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-LBJcf68p0BXpw+l3hf+MKOQZHKEgJAbiik8J5+i9+ko=";
+    hash = "sha256-ZWY0kK/i3Q/hPV9Pn9rJ3tzOg60KzRK0mVg9NraKLK8=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoios-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.browser-wasm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-OcyXkhBz54NvUpJ9eBe/IvBksuEkpX8bGXRd9EL4+HE=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_ios-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.ios-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.ios-arm";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-6e49fmlmhqZGn02hjvq6iL+RRbOBmsFLCYJjlk9Huvc=";
+    hash = "sha256-yWjK0ZCUyoRvTqErhFoLwd5cldxHIWKP0yguxY2y06s=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoios-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_ios-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.ios-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.ios-arm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-EC9QS5eQ3ioJ2cKG6v4mtrHv/3A4D72tXQmRG9qDagc=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_ios-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.ios-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.ios-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-v2WAtgeO4N6Z9tuqsoRFX1gxCR255M3akKgbMgucxiY=";
+    hash = "sha256-Yu0BBfyFjgjX8nsS0U+BOIU1t3oTfVkmBCiBBpdTi8I=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoiossimulator-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_ios-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.ios-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.ios-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-dr8Rh9vlMoL4AgQCKUujUNbDmZ0EUC1axDPVSeLVh7E=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.iossimulator-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-YwpBTm7sQnxKtoK//KkbFxI20XQT0mvQpPm7nf3azYw=";
+    hash = "sha256-0UWE8yJTjasGXk20L/om9TCmRl75uy+6XCtgq5Qg9L0=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoiossimulator-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.iossimulator-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-fm4+zp6E7pfQ1dztfSgPCIX9RjAuLoXvJYk9+3eORyw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.iossimulator-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-kN6OmG7b4LxmPaRObMv/dsXDlPccoYr93uJUUNOMX6s=";
+    hash = "sha256-Bxs7g/eNN/1+iiyVuTBlQjchXHV7fQz9OnfuCbyE7/0=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoiossimulator-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.iossimulator-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-WoFsVTYo6iz/sdgPk4SHVSWblO3UV85l3RqlSCfjimE=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.iossimulator-x86";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-y94oH8E7jIDwiAgVxZll2ubHBcWC1vetJqy+mo/bOcw=";
+    hash = "sha256-B4/4+ghz7Klj7wptbMyvUKooDgaqxO0JyOVu/BkGKHA=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonomaccatalyst-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_iossimulator-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.iossimulator-x86";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Yr3a/Z79Upst84LVgWlZzZpsBTEZpp+Vce/LlDoYbN8=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_maccatalyst-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.maccatalyst-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-ZMnBvoEnBz+xrq6bbcrHnwIryMCUksdWhsjF0qJPlGY=";
+    hash = "sha256-KXwGl0G0DSsYQcf3oNa6YbFQiBrad0ah1fmlMtrRIKM=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonomaccatalyst-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_maccatalyst-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.maccatalyst-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-7i3IziwFs6jiyGX2F9goJTVMbsDTvae5jzoJSVimEes=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_maccatalyst-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.maccatalyst-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-yJmk3xojNb0TzWwk5ckU8zYnbeGdLrja2nEQozYoe6c=";
+    hash = "sha256-fCW0nF3/XQFkI7+SnIDzpiLs7L6NKVLbvY31wlaFXLY=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoosx-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_maccatalyst-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.maccatalyst-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-FBvyBr1asOIsQT5oLSGS7Eg6lSDxOEzQcSStZE7wlmw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_multithread_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.multithread.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.multithread.net7.browser-wasm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-RW0Mc26+7BjMtulZO7SwbI2nTeVN2YCJL/WRwV6HAuQ=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_osx-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.osx-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.osx-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-RllN9/5CzpQl2TnYYMNhJ+naGU3vtpRpq38onhSYZmQ=";
+    hash = "sha256-moerkhwMjxLFdp+AC2aMoHERBHzNM53GeHXeulXn+EY=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonoosx-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_osx-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.osx-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.osx-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-caKZWJv1yhpaGwccTRuZcT9oCRMAIT8BBqAZpARnSmU=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_osx-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.osx-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.osx-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-cShA+eMwSqKuk7M4QwSOaHc/wgl4mFAlvdKSECDi3Lo=";
+    hash = "sha256-yXnhTh2Au+YY8ML5n9nORws04xmlxJk9SH4E+GBzkP0=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonotvos-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.osx-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-CcGpVOnRcW+Oo7Yr8zUPu+Ffmc0miTdzQsa33g5lp5M=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_perftrace_browser-wasm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.perftrace.browser-wasm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.perftrace.net7.browser-wasm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-C6vueFh34qD83MyRwYVh1VP63KTCJJ8nC8kEYuqwmoo=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_tvos-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.tvos-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.tvos-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-igEPcLAMaUGGJ1uR7XxEyOCRpSyETQBbIZz+10LmFTk=";
+    hash = "sha256-794N31HPAuE78NVLETiFeOsom70oGK/YAKu+rDKSf1M=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonotvossimulator-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_tvos-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.tvos-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.tvos-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-kknvT3vs4/koRPjsRqBe2cdiqBNi8UXihDCt6T7W6kI=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_tvossimulator-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.tvossimulator-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-w7rrEA8ENAbCIPN2DmvOpo5pMJH/ZJhHhBM7ddIfjtE=";
+    hash = "sha256-sq7glsZzRKi2GuzW7qBYv4hpKyG9Qx5B+PRb90r9kPc=";
   };
 };
-MicrosoftNETCoreAppRuntimeMonotvossimulator-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_Mono_tvossimulator-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.tvossimulator-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-WGIkfNRZ64cAVS7ITuyg86tydIpHlt3YSqMwBDi5HPA=";
+  };
+};
+Microsoft_NETCore_App_Runtime_Mono_tvossimulator-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net6.tvossimulator-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-jH+XfodjeYRyJcOm8l55PGROBx25UkDFt98Qtuki3T8=";
+    hash = "sha256-HJAokASeKLsdeTSgAfkJPaF5ju1U78vpTmXbKv9lyY8=";
   };
 };
-MicrosoftNETCoreAppRuntimeosx-arm64 = buildDotnetPack rec {
-  pname = "Microsoft.NETCore.App.Runtime.osx-arm64";
-  version = "6.0.7";
+Microsoft_NETCore_App_Runtime_Mono_tvossimulator-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.Mono.net7.tvossimulator-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-I0koSVoqcTWrS3Md8tyECK4+Jf4R5u6R6rz6s3rcSEY=";
+    hash = "sha256-MmesesC3l6q9BjaAYoPwfpcp6J1lutPkYTboeclWYnM=";
   };
 };
-MicrosoftNETCoreAppRuntimeosx-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_osx-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.osx-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.osx-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-O8f64cALZHt47AoGzwvVkMmsIpatnWuQYy6QrfLconU=";
+    hash = "sha256-Ljj1/AI4ybr4FYGQFiNxPkfy4EAdjEcCVXoEsV4ZAus=";
   };
 };
-MicrosoftNETCoreAppRuntimewin-arm = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.osx-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-oaMo4rjnyhYDQ18GGIQ+DdI6iTK+5NwYOKFZFdFa2kA=";
+  };
+};
+Microsoft_NETCore_App_Runtime_win-arm-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.win-arm";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.win-arm";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-2XtuintqEbVK54O7kqU2AZNEkGjs9DIH5DkIkKmuQk8=";
+    hash = "sha256-RSeB76MM2avwvvyPHtHyGKTpNxIQLprL1wRI866OzyY=";
   };
 };
-MicrosoftNETCoreAppRuntimewin-arm64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_win-arm-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.win-arm";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.win-arm";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-QT+iyANie7/s28LMGnbqTNHfAh8HmPAdNOGiKlZwrYE=";
+  };
+};
+Microsoft_NETCore_App_Runtime_win-arm64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.win-arm64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.win-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-VEdcUwVjMs8Y3xC/DYPT44gW0uJReByHB4T1YQ6kKuQ=";
+    hash = "sha256-74fMv3LRrxjGozfq1hTIeCINEzyelBF8BC+eOkLYDgo=";
   };
 };
-MicrosoftNETCoreAppRuntimewin-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_win-arm64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.win-arm64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.win-arm64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Yw/GQTwUpAZUxeE1hYVadhIPIq/HER8pE6WmoE+XPnw=";
+  };
+};
+Microsoft_NETCore_App_Runtime_win-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.win-x64";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.win-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-gHZjZ5K63kjOiMqdBzNPOYP4L08Oz80b9dMleBjaMAI=";
+    hash = "sha256-i82VE4j3eOXxOk/SgtGlFc04EnLllHyOzlraMeMLi/E=";
   };
 };
-MicrosoftNETCoreAppRuntimewin-x86 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_win-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.win-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.win-x64";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-YoIGTrxESiPJqM9Ctl+D3UnvV7J+oPC/o7GXYezcxNE=";
+  };
+};
+Microsoft_NETCore_App_Runtime_win-x86-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NETCore.App.Runtime.win-x86";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NETCore.App.Runtime.net6.win-x86";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-x7aiFCZMCRPgGWH214460e5Fxh2pC6/wWTAcfXsL58s=";
+    hash = "sha256-1sfT4vNth1DeOYGFhP6sk7PJaSJ3eqvuSnkglyEepEw=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Nodelinux-x64 = buildDotnetPack rec {
+Microsoft_NETCore_App_Runtime_win-x86-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NETCore.App.Runtime.win-x86";
+  version = "7.0.2";
+  originalKey = "Microsoft.NETCore.App.Runtime.net7.win-x86";
+  kind = "framework";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-hPV18/SGtJmrntpI89F0g0Em2jJO0Zl+f3Z+q7qtvMg=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_2_0_23_Node_linux-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Node.linux-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-PD784lnXpU7rItZpt/HPxR9wW/Qe0JzFsBc4TmYyFg4=";
+    hash = "sha256-u4A7w176C8uz/pTFYbYsfqQtkBhGjUcSeWU5OV5IGhc=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Nodeosx-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Node_osx-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Node.osx-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-apP5vjuLTIJN4igu0II2jDzps3U4EXJGgfgtr+FPX0s=";
+    hash = "sha256-IMiX3upt8akBaqZybUjHPTNaTZTs8yDsuINCRmdYibQ=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Nodewin-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Node_win-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Node.win-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-80wdgOR0J6NmRyYfJdfVG1KXJkJ5MdZjzNvMAo5khRE=";
+    hash = "sha256-YJD2ienAv4wLa0R86QYzvOY793m3ETuhmV9RE1r61tk=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Pythonosx-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Python_osx-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Python.osx-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Python.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-1runKz4lwDd8c2V9P7ABhyapmj6HHguZlH7v7ppgwOk=";
+    hash = "sha256-UVfw9CjhTFBR72VZdaGYontepmI9U62dqWvt0tHmqYg=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Pythonwin-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Python_win-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Python.win-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Python.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-E8krKxoJB7gd5NYSLHGdWPYp+HxCORLmK/kKEzSDzBc=";
+    hash = "sha256-kT9ILdKO/uq2TBC9B38hqDgSMrXSkV16StJXYrpi3fo=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Sdklinux-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_linux-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.linux-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-JdOV9zLczEV+JIztAY884k+3VjbjOu+w3qnS0msgOk8=";
+    hash = "sha256-WTFJWnVys2hHdurp3uJVNUUVn+iIcqo3EBLBgcmBMI4=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Sdkosx-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_osx-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.osx-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-w8MO0UWE7gAVNYYrPBkxML2fmxOi3ToAMwI4UEqkx+c=";
+    hash = "sha256-iFKX3lY+Sz72hoNOG14QGR7qHGzqyADww+Jrs18gFGs=";
   };
 };
-MicrosoftNETRuntimeEmscripten2023Sdkwin-x64 = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_win-x64-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64";
-  version = "6.0.4";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-bkZzj4/k9PTrnRZHo75uWr5PNjSDAtgEGYpZXszaNds=";
+    hash = "sha256-q8/QZqBX23bHKw2gHxzgLEEOv9/Nhn5hHvGxUyHYD5k=";
   };
 };
-MicrosoftNETRuntimeMonoAOTCompilerTask = buildDotnetPack rec {
+Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_linux-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Cache.linux-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Cache.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-3VksxGQ1DWE37DZrHoawNA253dHh/xUEQqq8lFr/XB8=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Cache.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Cache.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Dvx/bfNHpo7zpZBBcFcgGCrIZAVeEkBYbrLuFWDDTVs=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_win-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Cache.win-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Cache.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-qlTrp5mTivJEJAksj3PpjKHzeZ+ZoBn4AwwHRD8abPc=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Node_linux-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Node.linux-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-zmOOgyoz2gDbosKPWgipvvwYdSjhr2xQflLFx/xl0MI=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Node_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Node.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-NYwE05iafNHk58tdk/8aOa2asX9Jvg/MDEysgbs9eUs=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Node_win-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Node.win-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Node.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-dwqr7zfwsf8R6GlXnWz6rAYZPYZHijQwdqu/67H0D0M=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Python_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Python.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Python.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-M8EjFR8REmgI3p1H6cqrah9zypl2ekfYk7uISUZu0aY=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Python_win-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Python.win-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Python.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-i9TO04hXIi8u1UmFXX5JTEVRqC04XyDew8C4o9X6l0k=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_linux-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Sdk.linux-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-Q2eFObosFNuz0WVPmG9FPtt2rJhhEd8X22Tty7YlzIY=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_osx-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Sdk.osx-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-qtHA0PZpaM05qY4jZ/rKh+ylOCm59HvCUXLtAP+SMdg=";
+  };
+};
+Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_win-x64-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.Emscripten.3.1.12.Sdk.win-x64";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.Emscripten.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-cfCTP/tJQGpif8MHA+Zjzj33PtLikS5vd4KGf9SuNko=";
+  };
+};
+Microsoft_NET_Runtime_MonoAOTCompiler_Task-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.MonoAOTCompiler.Task";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.MonoAOTCompiler.Task.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-OHzj63VbJxmxu1F4xem9FJVINHYhbuF5dUfCGwicy2U=";
+    hash = "sha256-fQuFENyb8ae3xh2Xpl7f9hsVrhlHfdtbWRWzTqErG50=";
   };
 };
-MicrosoftNETRuntimeMonoTargetsSdk = buildDotnetPack rec {
+Microsoft_NET_Runtime_MonoAOTCompiler_Task-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.MonoAOTCompiler.Task";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.MonoAOTCompiler.Task.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-qVnHO3Y72KEHdNIzvfY/h3abwobAz/j7pOw+EOD25dE=";
+  };
+};
+Microsoft_NET_Runtime_MonoTargets_Sdk-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.MonoTargets.Sdk";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.MonoTargets.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-yFcz0MLSwpLUMzS5vMRGCKtWmdDb6t6L0B2OckdMSNg=";
+    hash = "sha256-IuR4oz4T7XXezrh9Q7A7yIbEDtXyQhZZRC2/ksb2TJA=";
   };
 };
-MicrosoftNETRuntimeWebAssemblySdk = buildDotnetPack rec {
+Microsoft_NET_Runtime_MonoTargets_Sdk-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.MonoTargets.Sdk";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.MonoTargets.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-5X35WSxi7HwFzuvWKTzGCTyjqEyyvZZm5fdRPjX3AEM=";
+  };
+};
+Microsoft_NET_Runtime_WebAssembly_Sdk-6_0_13 = buildDotnetPack rec {
   pname = "Microsoft.NET.Runtime.WebAssembly.Sdk";
-  version = "6.0.7";
+  version = "6.0.13";
+  originalKey = "Microsoft.NET.Runtime.WebAssembly.Sdk.net6";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-PW+XtIheBVcsHHGfH2narDy/NpiUZcLIJczdcAQgO0M=";
+    hash = "sha256-aW0yLn59xLPLxydLsVCqIPp2nt8OUL30zpMnz2X9QX4=";
   };
 };
-MicrosoftiOSRef = buildDotnetPack rec {
+Microsoft_NET_Runtime_WebAssembly_Sdk-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.WebAssembly.Sdk";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.WebAssembly.Sdk.net7";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-uDxkCl9KBuKOaoqG8wgg0Ww7WnjpToOE6AEG/p9VJc0=";
+  };
+};
+Microsoft_NET_Runtime_WebAssembly_Templates-7_0_2 = buildDotnetPack rec {
+  pname = "Microsoft.NET.Runtime.WebAssembly.Templates";
+  version = "7.0.2";
+  originalKey = "Microsoft.NET.Runtime.WebAssembly.Templates.net7";
+  kind = "template";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-zrqe6wGvlgS4qLuZh7y/PMn92du42AqxP0t2v0w2m/A=";
+  };
+};
+Microsoft_iOS_Ref-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Ref";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Ref";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-lHl+fblNAiKZsootcTBOxcA8AZUcNTwGgrJN8TL2PX4=";
+    hash = "sha256-OUyM8A0vigaUfUx4vL4Ik5DbH2mpfqlW7dTOg76kDp8=";
   };
 };
-MicrosoftiOSRuntimeios-arm = buildDotnetPack rec {
+Microsoft_iOS_Runtime_ios-arm-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Runtime.ios-arm";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Runtime.ios-arm";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Z2Nrjk7y/SgzcB26bpmv8SoTd6AGSXOpVlKqkZOrTSA=";
+    hash = "sha256-/rNuHuaqTz8ajv/8rjToXKLuS9dwhSMtXl5O6LWTKac=";
   };
 };
-MicrosoftiOSRuntimeios-arm64 = buildDotnetPack rec {
+Microsoft_iOS_Runtime_ios-arm64-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Runtime.ios-arm64";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Runtime.ios-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-xL983SOQKdPAM3/9usGGZcb73SjDVIi6oak+b2JxsPY=";
+    hash = "sha256-tP6mheHoisBn3huSQg9+DdJu6VPOeqmNHLTWHJF8T30=";
   };
 };
-MicrosoftiOSRuntimeiossimulator-arm64 = buildDotnetPack rec {
+Microsoft_iOS_Runtime_iossimulator-arm64-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Runtime.iossimulator-arm64";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Runtime.iossimulator-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-eL/kfS9fW29smmI1lb9UNb8j5RJTg3mfMe2H10mHAiQ=";
+    hash = "sha256-YvHZQzpWWuCKoLRXKfw92g6vHKfALnSEIfPOtDMTwYw=";
   };
 };
-MicrosoftiOSRuntimeiossimulator-x64 = buildDotnetPack rec {
+Microsoft_iOS_Runtime_iossimulator-x64-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Runtime.iossimulator-x64";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Runtime.iossimulator-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-g5lwKqqmT2CHTeuuVDhiRe4Gqyl32dFPBBAGvzPdQAw=";
+    hash = "sha256-/omuCoItCCMm4Iy2pvxT3VxYQ6MFvgmciNzHiCgPkgQ=";
   };
 };
-MicrosoftiOSRuntimeiossimulator-x86 = buildDotnetPack rec {
+Microsoft_iOS_Runtime_iossimulator-x86-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Runtime.iossimulator-x86";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Runtime.iossimulator-x86";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-tjstpG13bCys9ItlunriGZDxTAbhHAzTnHQ1JKf46b8=";
+    hash = "sha256-eWjtj2XmuWP82JkDhleTpcSoNlrfTYWOwvkU1R4F5wc=";
   };
 };
-MicrosoftiOSSdk = buildDotnetPack rec {
+Microsoft_iOS_Sdk-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Sdk";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Sdk.net7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-GyXpzzKULrO+aqog4OCBgROSSHqX/g0t8du+BV598o0=";
+    hash = "sha256-d0gMgrywsHJ3LnShMmrilmzdeFElof6S9PI9IaiHinI=";
   };
 };
-MicrosoftiOSTemplates = buildDotnetPack rec {
+Microsoft_iOS_Sdk-16_2_3 = buildDotnetPack rec {
+  pname = "Microsoft.iOS.Sdk";
+  version = "16.2.3";
+  originalKey = "Microsoft.iOS.Sdk.net6";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-3zaSQnmzXd7cSflWGdhxu+s3qtL0S3uKoSXTClCK+JM=";
+  };
+};
+Microsoft_iOS_Templates-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Templates";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Templates.net7";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-C3tGKPqmQmuqbPREAH0eKrgauhTC7fk8EMHNxajdgiI=";
+    hash = "sha256-REcxYUNj/46abm65hi99jPF4OsHNaryId/57mNM7UbM=";
   };
 };
-MicrosoftiOSWindowsSdk = buildDotnetPack rec {
+Microsoft_iOS_Windows_Sdk-16_2_1007 = buildDotnetPack rec {
   pname = "Microsoft.iOS.Windows.Sdk";
-  version = "15.4.328";
+  version = "16.2.1007";
+  originalKey = "Microsoft.iOS.Windows.Sdk.Aliased.net7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-N3Sn/6GJXMkaESqR6OerkrFWTIjNDVcyU5M5rP5WUIs=";
+    hash = "sha256-1BgZk+p9tYI6YfKFkdhQdabyoSlaLGlnGh1Zo5hd3xo=";
   };
 };
-MicrosoftmacOSRef = buildDotnetPack rec {
+Microsoft_iOS_Windows_Sdk-16_2_3 = buildDotnetPack rec {
+  pname = "Microsoft.iOS.Windows.Sdk";
+  version = "16.2.3";
+  originalKey = "Microsoft.iOS.Windows.Sdk.Aliased.net6";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-DFcVIwVAvMTGP7C7NxvPXlyAZXvMeY9kVHgIluiHo5I=";
+  };
+};
+Microsoft_macOS_Ref-13_1_1007 = buildDotnetPack rec {
   pname = "Microsoft.macOS.Ref";
-  version = "12.3.328";
+  version = "13.1.1007";
+  originalKey = "Microsoft.macOS.Ref";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-Ptlal/XnDYrkw0m6fJP6WUFWnxS3aBokO6MGl+b0CA0=";
+    hash = "sha256-DJAvmdhl1vhBlHcr8LXyS/TTFv1RBvsp+F+XwYlw/j0=";
   };
 };
-MicrosoftmacOSRuntimeosx-arm64 = buildDotnetPack rec {
+Microsoft_macOS_Runtime_osx-arm64-13_1_1007 = buildDotnetPack rec {
   pname = "Microsoft.macOS.Runtime.osx-arm64";
-  version = "12.3.328";
+  version = "13.1.1007";
+  originalKey = "Microsoft.macOS.Runtime.osx-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-ZtHtdOdZ+UkKr1gsyW0vpjcM53ou0iZE8yk9WZN7iw8=";
+    hash = "sha256-optXWpXu9iIXPKqVbN1gUNQx5yzne0WDCEzNtZLbhTo=";
   };
 };
-MicrosoftmacOSRuntimeosx-x64 = buildDotnetPack rec {
+Microsoft_macOS_Runtime_osx-x64-13_1_1007 = buildDotnetPack rec {
   pname = "Microsoft.macOS.Runtime.osx-x64";
-  version = "12.3.328";
+  version = "13.1.1007";
+  originalKey = "Microsoft.macOS.Runtime.osx-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-yneDxhBLqulaQ2JerVKM/CDxBARN4cpzcVVErrLKLnk=";
+    hash = "sha256-oXUlv/ceZnmMFEuRnYU02PY8IANqb4Y+VFskedXTw0A=";
   };
 };
-MicrosoftmacOSSdk = buildDotnetPack rec {
+Microsoft_macOS_Sdk-13_1_1007 = buildDotnetPack rec {
   pname = "Microsoft.macOS.Sdk";
-  version = "12.3.328";
+  version = "13.1.1007";
+  originalKey = "Microsoft.macOS.Sdk.net7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-zIu4fR4GLr+0WU98vwLAcGvH+6MsajGx1MkPN0yaHJ8=";
+    hash = "sha256-Zphr3DGRYVWcNMHUSQx2XcJjsnMeWH0awY4IVPpcn9M=";
   };
 };
-MicrosoftmacOSTemplates = buildDotnetPack rec {
+Microsoft_macOS_Sdk-13_1_3 = buildDotnetPack rec {
+  pname = "Microsoft.macOS.Sdk";
+  version = "13.1.3";
+  originalKey = "Microsoft.macOS.Sdk.net6";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-h+ZKd4ne559HRTVDHcHy4VOxbve3lA3xnZnyR8efQZE=";
+  };
+};
+Microsoft_macOS_Templates-13_1_1007 = buildDotnetPack rec {
   pname = "Microsoft.macOS.Templates";
-  version = "12.3.328";
+  version = "13.1.1007";
+  originalKey = "Microsoft.macOS.Templates.net7";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-CD7PNBVtkBnldLmmzaYLOahwMByqDvPHabax0olM4Dw=";
+    hash = "sha256-FExrWIMujQowLriohVRhTFQh6KDRlC18yeamGexCm0E=";
   };
 };
-MicrosofttvOSRef = buildDotnetPack rec {
+Microsoft_tvOS_Ref-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Ref";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Ref";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-ja8OI8kvTCtXVPmekWi5iXXDEUrWIN4HQV2wdRu5zbQ=";
+    hash = "sha256-6G9surb7Wbj+eGmqAY4jBZSOJdE+N8mLfJ6922BkVJk=";
   };
 };
-MicrosofttvOSRuntimetvos-arm64 = buildDotnetPack rec {
+Microsoft_tvOS_Runtime_tvos-arm64-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Runtime.tvos-arm64";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Runtime.tvos-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-+wOEtXZVlRNgaqeeBpiu/BWm59eWz/Cx+0wy2ePKZRU=";
+    hash = "sha256-p3alKeC3BLqHkhDyeYZs+1dT5thNEVGxV4sw3q51lSI=";
   };
 };
-MicrosofttvOSRuntimetvossimulator-arm64 = buildDotnetPack rec {
+Microsoft_tvOS_Runtime_tvossimulator-arm64-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Runtime.tvossimulator-arm64";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Runtime.tvossimulator-arm64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-F9gVVHvb8pkwlITamBtFx0AGEQLljionhC77jGDRO2U=";
+    hash = "sha256-wtrzk2bJ5pq46p992jgyyzDX9jV4mVxbZ5n/QMAtT08=";
   };
 };
-MicrosofttvOSRuntimetvossimulator-x64 = buildDotnetPack rec {
+Microsoft_tvOS_Runtime_tvossimulator-x64-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Runtime.tvossimulator-x64";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Runtime.tvossimulator-x64";
   kind = "framework";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-SBDmS8PXu5NzHltaC9jJnDbMrl0fWDo9lIh/6m/dJNs=";
+    hash = "sha256-oYmixVqT+I9Fm7sHxtOG9Z4mzUV9MTdo2qYuwuBwQL0=";
   };
 };
-MicrosofttvOSSdk = buildDotnetPack rec {
+Microsoft_tvOS_Sdk-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Sdk";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Sdk.net7";
   kind = "sdk";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-/tpDaDZRkUzfV+0owqATOWpGEi7+BAm1wG7kSL26wwc=";
+    hash = "sha256-hEus9F5nWGoT7xFU37D3uipnx57LIgDgTOBCNTDGNm0=";
   };
 };
-MicrosofttvOSTemplates = buildDotnetPack rec {
+Microsoft_tvOS_Sdk-16_1_241 = buildDotnetPack rec {
+  pname = "Microsoft.tvOS.Sdk";
+  version = "16.1.241";
+  originalKey = "Microsoft.tvOS.Sdk.net6";
+  kind = "sdk";
+  src = fetchNuGet {
+    inherit pname version;
+    hash = "sha256-9/A0krbTL5d2PHvBjtjsoEBcgIEEOoMOTZoMB3UGRsE=";
+  };
+};
+Microsoft_tvOS_Templates-16_1_1504 = buildDotnetPack rec {
   pname = "Microsoft.tvOS.Templates";
-  version = "15.4.328";
+  version = "16.1.1504";
+  originalKey = "Microsoft.tvOS.Templates.net7";
   kind = "template";
   src = fetchNuGet {
     inherit pname version;
-    hash = "sha256-MTTat0l4uIJexCjDgkMfNUusIVewHpATMlWSe+CNXWE=";
+    hash = "sha256-f0WUwRx87F9pzuFgkHWqQR6mZOEgYOJVlw8f2tPauvE=";
   };
 };
-MicrosoftAndroidSdk = {"linux-x64" = MicrosoftAndroidSdkLinux;
-"osx-arm64" = MicrosoftAndroidSdkDarwin;
-"osx-x64" = MicrosoftAndroidSdkDarwin;
-"win-arm64" = MicrosoftAndroidSdkWindows;
-"win-x64" = MicrosoftAndroidSdkWindows;
-"win-x86" = MicrosoftAndroidSdkWindows;};
-MicrosoftNETRuntimeEmscriptenNode = {"linux-x64" = MicrosoftNETRuntimeEmscripten2023Nodelinux-x64;
-"osx-arm64" = MicrosoftNETRuntimeEmscripten2023Nodeosx-x64;
-"osx-x64" = MicrosoftNETRuntimeEmscripten2023Nodeosx-x64;
-"win-x64" = MicrosoftNETRuntimeEmscripten2023Nodewin-x64;};
-MicrosoftNETRuntimeEmscriptenPython = {"osx-arm64" = MicrosoftNETRuntimeEmscripten2023Pythonosx-x64;
-"osx-x64" = MicrosoftNETRuntimeEmscripten2023Pythonosx-x64;
-"win-x64" = MicrosoftNETRuntimeEmscripten2023Pythonwin-x64;};
-MicrosoftNETRuntimeEmscriptenSdk = {"linux-x64" = MicrosoftNETRuntimeEmscripten2023Sdklinux-x64;
-"osx-arm64" = MicrosoftNETRuntimeEmscripten2023Sdkosx-x64;
-"osx-x64" = MicrosoftNETRuntimeEmscripten2023Sdkosx-x64;
-"win-x64" = MicrosoftNETRuntimeEmscripten2023Sdkwin-x64;};
-MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm;
-"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm;
-"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm;};
-MicrosoftNETCoreAppRuntimeAOTCrossandroid-arm64 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-arm64;
-"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-arm64;
-"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrossandroid-x64 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x64;
-"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x64;
-"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x64;};
-MicrosoftNETCoreAppRuntimeAOTCrossandroid-x86 = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossandroid-x86;
-"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossandroid-x86;
-"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossandroid-x86;};
-MicrosoftNETCoreAppRuntimeAOTCrossbrowser-wasm = {"linux-x64" = MicrosoftNETCoreAppRuntimeAOTlinux-x64Crossbrowser-wasm;
-"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossbrowser-wasm;
-"win-x64" = MicrosoftNETCoreAppRuntimeAOTwin-x64Crossbrowser-wasm;};
-MicrosoftNETCoreAppRuntimeAOTCrossios-arm = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm;};
-MicrosoftNETCoreAppRuntimeAOTCrossios-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossios-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x64;};
-MicrosoftNETCoreAppRuntimeAOTCrossiossimulator-x86 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossiossimulator-x86;};
-MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrossmaccatalyst-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crossmaccatalyst-x64;};
-MicrosoftNETCoreAppRuntimeAOTCrosstvos-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvos-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-arm64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-arm64;};
-MicrosoftNETCoreAppRuntimeAOTCrosstvossimulator-x64 = {"osx-arm64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64;
-"osx-x64" = MicrosoftNETCoreAppRuntimeAOTosx-x64Crosstvossimulator-x64;};
-MicrosoftiOSWindowsSdkAliased = {"win-arm64" = MicrosoftiOSWindowsSdk;
-"win-x64" = MicrosoftiOSWindowsSdk;
-"win-x86" = MicrosoftiOSWindowsSdk;};
+Microsoft_Android_Sdk_net6 = {"linux-x64" = Microsoft_Android_Sdk_Linux-32_0_485;
+"osx-arm64" = Microsoft_Android_Sdk_Darwin-32_0_485;
+"osx-x64" = Microsoft_Android_Sdk_Darwin-32_0_485;
+"win-arm64" = Microsoft_Android_Sdk_Windows-32_0_485;
+"win-x64" = Microsoft_Android_Sdk_Windows-32_0_485;
+"win-x86" = Microsoft_Android_Sdk_Windows-32_0_485;};
+Microsoft_Android_Sdk_net7 = {"linux-x64" = Microsoft_Android_Sdk_Linux-33_0_26;
+"osx-arm64" = Microsoft_Android_Sdk_Darwin-33_0_26;
+"osx-x64" = Microsoft_Android_Sdk_Darwin-33_0_26;
+"win-arm64" = Microsoft_Android_Sdk_Windows-33_0_26;
+"win-x64" = Microsoft_Android_Sdk_Windows-33_0_26;
+"win-x86" = Microsoft_Android_Sdk_Windows-33_0_26;};
+Microsoft_MacCatalyst_Sdk_net6 = {"any" = Microsoft_MacCatalyst_Sdk-16_2_3;};
+Microsoft_MacCatalyst_Sdk_net7 = {"any" = Microsoft_MacCatalyst_Sdk-16_2_1007;};
+Microsoft_MacCatalyst_Templates_net7 = {"any" = Microsoft_MacCatalyst_Templates-16_2_1007;};
+Microsoft_Maui_Sdk_net6 = {"any" = Microsoft_Maui_Sdk-6_0_550;};
+Microsoft_Maui_Sdk_net7 = {"any" = Microsoft_Maui_Sdk-7_0_58;};
+Microsoft_NET_Runtime_Emscripten_Cache_net7 = {"linux-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_linux-x64-7_0_2;
+"osx-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_osx-x64-7_0_2;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_osx-x64-7_0_2;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_win-x64-7_0_2;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Cache_win-x64-7_0_2;};
+Microsoft_NET_Runtime_Emscripten_Node_net6 = {"linux-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Node_linux-x64-6_0_13;
+"osx-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Node_osx-x64-6_0_13;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Node_osx-x64-6_0_13;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Node_win-x64-6_0_13;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Node_win-x64-6_0_13;};
+Microsoft_NET_Runtime_Emscripten_Node_net7 = {"linux-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Node_linux-x64-7_0_2;
+"osx-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Node_osx-x64-7_0_2;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Node_osx-x64-7_0_2;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Node_win-x64-7_0_2;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Node_win-x64-7_0_2;};
+Microsoft_NET_Runtime_Emscripten_Python_net6 = {"osx-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Python_osx-x64-6_0_13;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Python_osx-x64-6_0_13;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Python_win-x64-6_0_13;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Python_win-x64-6_0_13;};
+Microsoft_NET_Runtime_Emscripten_Python_net7 = {"osx-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Python_osx-x64-7_0_2;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Python_osx-x64-7_0_2;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Python_win-x64-7_0_2;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Python_win-x64-7_0_2;};
+Microsoft_NET_Runtime_Emscripten_Sdk_net6 = {"linux-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_linux-x64-6_0_13;
+"osx-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_osx-x64-6_0_13;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_osx-x64-6_0_13;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_win-x64-6_0_13;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_2_0_23_Sdk_win-x64-6_0_13;};
+Microsoft_NET_Runtime_Emscripten_Sdk_net7 = {"linux-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_linux-x64-7_0_2;
+"osx-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_osx-x64-7_0_2;
+"osx-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_osx-x64-7_0_2;
+"win-arm64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_win-x64-7_0_2;
+"win-x64" = Microsoft_NET_Runtime_Emscripten_3_1_12_Sdk_win-x64-7_0_2;};
+Microsoft_NET_Runtime_MonoAOTCompiler_Task_net6 = {"any" = Microsoft_NET_Runtime_MonoAOTCompiler_Task-6_0_13;};
+Microsoft_NET_Runtime_MonoAOTCompiler_Task_net7 = {"any" = Microsoft_NET_Runtime_MonoAOTCompiler_Task-7_0_2;};
+Microsoft_NET_Runtime_MonoTargets_Sdk_net6 = {"any" = Microsoft_NET_Runtime_MonoTargets_Sdk-6_0_13;};
+Microsoft_NET_Runtime_MonoTargets_Sdk_net7 = {"any" = Microsoft_NET_Runtime_MonoTargets_Sdk-7_0_2;};
+Microsoft_NET_Runtime_WebAssembly_Sdk_net6 = {"any" = Microsoft_NET_Runtime_WebAssembly_Sdk-6_0_13;};
+Microsoft_NET_Runtime_WebAssembly_Sdk_net7 = {"any" = Microsoft_NET_Runtime_WebAssembly_Sdk-7_0_2;};
+Microsoft_NET_Runtime_WebAssembly_Templates_net7 = {"any" = Microsoft_NET_Runtime_WebAssembly_Templates-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm-6_0_13;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-6_0_13;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-6_0_13;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-arm64 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm64-6_0_13;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-6_0_13;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-6_0_13;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x64 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x64-6_0_13;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-6_0_13;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-6_0_13;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_android-x86 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x86-6_0_13;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-6_0_13;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-6_0_13;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_browser-wasm = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_browser-wasm-6_0_13;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-6_0_13;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-6_0_13;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_ios-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_iossimulator-x86 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_maccatalyst-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvos-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net6_tvossimulator-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-6_0_13;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm-7_0_2;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm-7_0_2;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-7_0_2;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-arm64 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-arm64-7_0_2;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-arm64-7_0_2;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-7_0_2;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x64 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x64-7_0_2;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x64-7_0_2;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-7_0_2;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_android-x86 = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_android-x86-7_0_2;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_android-x86-7_0_2;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-7_0_2;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_android-x86-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_browser-wasm = {"linux-x64" = Microsoft_NETCore_App_Runtime_AOT_linux-x64_Cross_browser-wasm-7_0_2;
+"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_browser-wasm-7_0_2;
+"win-arm64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-7_0_2;
+"win-x64" = Microsoft_NETCore_App_Runtime_AOT_win-x64_Cross_browser-wasm-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_ios-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_ios-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_iossimulator-x86 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_iossimulator-x86-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_maccatalyst-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_maccatalyst-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvos-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvos-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-arm64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_AOT_Cross_net7_tvossimulator-x64 = {"osx-arm64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-7_0_2;
+"osx-x64" = Microsoft_NETCore_App_Runtime_AOT_osx-x64_Cross_tvossimulator-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_multithread_net7_browser-wasm = {"any" = Microsoft_NETCore_App_Runtime_Mono_multithread_browser-wasm-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net6_android-arm = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_android-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_android-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_android-x86 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-x86-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_browser-wasm = {"any" = Microsoft_NETCore_App_Runtime_Mono_browser-wasm-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm = {"any" = Microsoft_NETCore_App_Runtime_Mono_ios-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_ios-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_ios-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_iossimulator-x86 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-x86-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_maccatalyst-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_maccatalyst-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_maccatalyst-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_osx-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_osx-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_tvos-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvos-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvossimulator-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net6_tvossimulator-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvossimulator-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_Mono_net7_android-arm = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-arm-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_android-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_android-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_android-x86 = {"any" = Microsoft_NETCore_App_Runtime_Mono_android-x86-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_browser-wasm = {"any" = Microsoft_NETCore_App_Runtime_Mono_browser-wasm-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm = {"any" = Microsoft_NETCore_App_Runtime_Mono_ios-arm-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_ios-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_ios-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_iossimulator-x86 = {"any" = Microsoft_NETCore_App_Runtime_Mono_iossimulator-x86-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_maccatalyst-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_maccatalyst-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_maccatalyst-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_osx-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_osx-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_tvos-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvos-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvossimulator-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_net7_tvossimulator-x64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_tvossimulator-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_Mono_perftrace_net7_browser-wasm = {"any" = Microsoft_NETCore_App_Runtime_Mono_perftrace_browser-wasm-7_0_2;};
+Microsoft_NETCore_App_Runtime_net6_osx-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_net6_osx-x64 = {"any" = Microsoft_NETCore_App_Runtime_osx-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_net6_win-arm = {"any" = Microsoft_NETCore_App_Runtime_win-arm-6_0_13;};
+Microsoft_NETCore_App_Runtime_net6_win-arm64 = {"any" = Microsoft_NETCore_App_Runtime_win-arm64-6_0_13;};
+Microsoft_NETCore_App_Runtime_net6_win-x64 = {"any" = Microsoft_NETCore_App_Runtime_win-x64-6_0_13;};
+Microsoft_NETCore_App_Runtime_net6_win-x86 = {"any" = Microsoft_NETCore_App_Runtime_win-x86-6_0_13;};
+Microsoft_NETCore_App_Runtime_net7_osx-arm64 = {"any" = Microsoft_NETCore_App_Runtime_Mono_osx-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_net7_osx-x64 = {"any" = Microsoft_NETCore_App_Runtime_osx-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_net7_win-arm = {"any" = Microsoft_NETCore_App_Runtime_win-arm-7_0_2;};
+Microsoft_NETCore_App_Runtime_net7_win-arm64 = {"any" = Microsoft_NETCore_App_Runtime_win-arm64-7_0_2;};
+Microsoft_NETCore_App_Runtime_net7_win-x64 = {"any" = Microsoft_NETCore_App_Runtime_win-x64-7_0_2;};
+Microsoft_NETCore_App_Runtime_net7_win-x86 = {"any" = Microsoft_NETCore_App_Runtime_win-x86-7_0_2;};
+Microsoft_iOS_Sdk_net6 = {"any" = Microsoft_iOS_Sdk-16_2_3;};
+Microsoft_iOS_Sdk_net7 = {"any" = Microsoft_iOS_Sdk-16_2_1007;};
+Microsoft_iOS_Templates_net7 = {"any" = Microsoft_iOS_Templates-16_2_1007;};
+Microsoft_iOS_Windows_Sdk_Aliased_net6 = {"win-arm64" = Microsoft_iOS_Windows_Sdk-16_2_3;
+"win-x64" = Microsoft_iOS_Windows_Sdk-16_2_3;
+"win-x86" = Microsoft_iOS_Windows_Sdk-16_2_3;};
+Microsoft_iOS_Windows_Sdk_Aliased_net7 = {"win-arm64" = Microsoft_iOS_Windows_Sdk-16_2_1007;
+"win-x64" = Microsoft_iOS_Windows_Sdk-16_2_1007;
+"win-x86" = Microsoft_iOS_Windows_Sdk-16_2_1007;};
+Microsoft_macOS_Sdk_net6 = {"any" = Microsoft_macOS_Sdk-13_1_3;};
+Microsoft_macOS_Sdk_net7 = {"any" = Microsoft_macOS_Sdk-13_1_1007;};
+Microsoft_macOS_Templates_net7 = {"any" = Microsoft_macOS_Templates-13_1_1007;};
+Microsoft_tvOS_Sdk_net6 = {"any" = Microsoft_tvOS_Sdk-16_1_241;};
+Microsoft_tvOS_Sdk_net7 = {"any" = Microsoft_tvOS_Sdk-16_1_1504;};
+Microsoft_tvOS_Templates_net7 = {"any" = Microsoft_tvOS_Templates-16_1_1504;};
 }

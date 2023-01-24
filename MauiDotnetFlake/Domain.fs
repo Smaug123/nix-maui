@@ -135,6 +135,9 @@ type HashString =
 type Pack =
     {
         Name : PackKey
+        /// If this was an alias, record the original name it had in the manifest that
+        /// demanded it as a dependency.
+        OriginalName : PackKey option
         Version : Version
         Hash : HashString
         Type : PackManifestKind
