@@ -33,15 +33,16 @@ module Program =
                 return raise (AggregateException(uri.ToString (), e))
         }
 
-    let rec waitForReady (file : FileInfo) : Async<Stream> =
+    let rec waitForReady (count : int) (file : FileInfo) : Async<Stream> =
         async {
+            if count <= 0 then failwith "ran out of retries"
             try
                 return file.OpenRead () :> Stream
             with
             | e ->
-                if e.Message.Contains "is being used by another process" then
+                if e.Message.Contains "is being used by another process" || e.Message.Contains "ould not find file" then
                     do! Async.Sleep (TimeSpan.FromSeconds 5.0)
-                    return! waitForReady file
+                    return! waitForReady (count - 1) file
                 else
                     return raise e
         }
@@ -54,15 +55,21 @@ module Program =
                     try
                         use! zip = fetchZip client uri
                         let destFile = $"/tmp/pkgs/{packKey.ToLowerInvariant()}.{version}.nupkg"
+                        if File.Exists destFile then
+                            return File.OpenRead destFile :> Stream
+                        else
                         try
                             do
-                                use dest = File.OpenWrite destFile
+                                use dest = File.OpenWrite (destFile + "-tmp")
                                 zip.CopyTo dest
+                            File.Move (destFile + "-tmp", destFile)
                             return File.OpenRead destFile :> Stream
                         with
                         | e ->
                             if e.Message.Contains "is being used by another process" then
-                                return! waitForReady (FileInfo destFile)
+                                return! waitForReady 5 (FileInfo destFile)
+                            elif e.Message.Contains "Could not find file" then
+                                return File.OpenRead destFile :> Stream
                             else
                                 return raise e
                     with
@@ -143,6 +150,7 @@ module Program =
                             None,
                             {
                                 Name = packKey
+                                OriginalName = None
                                 Hash = packageHash
                                 Version = packManifest.Version
                                 Type = packManifest.Kind
@@ -155,6 +163,7 @@ module Program =
                             Some (platform, packKey),
                             {
                                 Name = resolvedPack
+                                OriginalName = Some packKey
                                 Hash = packageHash
                                 Version = packManifest.Version
                                 Type = packManifest.Kind
@@ -265,13 +274,15 @@ module Program =
         let rec go (required : Set<WorkloadKey>) (state : _) =
             async {
                 if required.IsEmpty then
+                    printfn "Done collecting"
                     return state
                 else
                     let desiredWorkload, rest = required.MaximumElement, Set.remove required.MaximumElement required
+                    printfn "Processing workload: %s (%i remaining)" (let (WorkloadKey k) = desiredWorkload in k) rest.Count
                     // TODO - record the _required dependencies between workloads somehow, so that we can
                     // consume them in Nix space
-                    let! thisTop, _required = renderWorkload client allAvailableWorkloads desiredWorkload
-                    return! go rest (NixInfo.merge state thisTop)
+                    let! thisTop, required = renderWorkload client allAvailableWorkloads desiredWorkload
+                    return! go rest (NixInfo.merge state thisTop |> NixInfo.addDependency desiredWorkload required)
             }
 
         go (Map.keys allAvailableWorkloads |> Set.ofSeq) NixInfo.empty
@@ -289,8 +300,9 @@ module Program =
 
         use client = new HttpClient ()
 
-        async {
+        task {
             let! allAvailableWorkloads = allAvailableWorkloads sdkVersion
+            printfn "%i workloads" allAvailableWorkloads.Count
             let! allAvailableWorkloads =
                 allAvailableWorkloads
                 |> Map.toSeq
@@ -314,6 +326,7 @@ module Program =
                 )
                 |> Async.Parallel
             let allAvailableWorkloads = collate allAvailableWorkloads
+            printfn "Collated workloads"
 
             let! nixInfo = collectAllRequiredWorkloads client allAvailableWorkloads
             let writeContents = File.WriteAllTextAsync (Path.Combine (outputDir.FullName, "workload-manifest-contents.nix"), nixInfo |> NixInfo.toString)
@@ -347,9 +360,9 @@ module Program =
                 |> sprintf "fetchNuGet: [\n%s\n]"
             let writeManifestList = File.WriteAllTextAsync (Path.Combine (outputDir.FullName, "workload-manifest-list.nix"), allManifests)
 
-            do! Async.AwaitTask writeContents
-            do! Async.AwaitTask writeManifestList
+            do! writeContents
+            do! writeManifestList
 
             return 0
         }
-        |> Async.RunSynchronously
+        |> fun t -> t.Result

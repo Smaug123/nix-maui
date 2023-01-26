@@ -17,32 +17,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1658777571,
-        "narHash": "sha256-gJMDUeaRhi47NxtrfFMIejlV5N3Ra2669w16Ndz2Jo0=",
+        "lastModified": 1674407282,
+        "narHash": "sha256-2qwc8mrPINSFdWffPK+ji6nQ9aGnnZyHSItVcYDZDlk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f0fa012b649a47e408291e96a15672a4fe925d65",
+        "rev": "ab1254087f4cdf4af74b552d7fc95175d9bdbb49",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-21_11": {
-      "locked": {
-        "lastModified": 1658346836,
-        "narHash": "sha256-c9BZZbi0tqCQ4j6CMVDlsut3Q3ET1Fezf+qIslCfkhs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "a1fe662eb26ffc2a036b37c4670392ade632c413",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-21.11",
+        "ref": "nixos-22.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -50,7 +34,6 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "nixpkgs-21_11": "nixpkgs-21_11",
         "utils": "utils"
       }
     },
